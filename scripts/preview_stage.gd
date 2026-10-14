@@ -31,6 +31,7 @@ var material_records: Array[Dictionary] = []
 var paused_speeds: Dictionary = {}
 var projectile_clock := 0.0
 var projectile_scales: Dictionary = {}
+var shader_origins: Dictionary = {}
 
 func _ready() -> void:
 	stretch = true
@@ -119,6 +120,7 @@ func load_effect(entry: Dictionary) -> void:
 	material_records.clear()
 	paused_speeds.clear()
 	projectile_scales.clear()
+	shader_origins.clear()
 	projectile_clock = 0.0
 	dummy.visible = entry.get("mode", "") == "hit"
 	target.visible = entry.get("mode", "") == "beam"
@@ -171,6 +173,10 @@ func load_effect(entry: Dictionary) -> void:
 	effect_changed.emit(effect)
 
 func _make_local(node: Node) -> void:
+	if node is GeometryInstance3D:
+		for material in _materials(node):
+			if material is ShaderMaterial and material.shader and not material.shader.resource_path.is_empty():
+				shader_origins[material.shader.code] = material.shader.resource_path.get_base_dir()
 	for property in ["material_override", "material_overlay", "process_material", "mesh"]:
 		if property in node and node.get(property) is Resource:
 			node.set(property, node.get(property).duplicate(true))
@@ -206,12 +212,28 @@ func _overlay_hit_materials() -> void:
 				var source: Shader = material.shader
 				if not shaders.has(source):
 					var overlay := Shader.new()
-					overlay.code = source.code.replace("shader_type spatial;", "shader_type spatial;\nrender_mode depth_test_disabled;")
+					var code := _expand_shader_includes(source.code, shader_origins.get(source.code, source.resource_path.get_base_dir()))
+					overlay.code = code.replace("shader_type spatial;", "shader_type spatial;\nrender_mode depth_test_disabled;")
 					shaders[source] = overlay
 				material.shader = shaders[source]
 				for uniform in material.shader.get_shader_uniform_list():
 					if uniform.name == "proximity_fade":
 						material.set_shader_parameter("proximity_fade", false if uniform.type == TYPE_BOOL else 0.0)
+
+func _expand_shader_includes(code: String, directory: String) -> String:
+	# Shader.code assignment does not run the file loader's include preprocessor.
+	var includes := RegEx.new()
+	includes.compile('(?m)^\\s*#include\\s+"([^"]+)"[^\\n]*')
+	var expanded := code
+	var matches := includes.search_all(code)
+	matches.reverse()
+	for found in matches:
+		var path: String = found.get_string(1)
+		if not path.begins_with("res://"):
+			path = directory.path_join(path).simplify_path()
+		var body := _expand_shader_includes(FileAccess.get_file_as_string(path), path.get_base_dir())
+		expanded = expanded.substr(0, found.get_start()) + body + expanded.substr(found.get_end())
+	return expanded
 
 func _setup_beam() -> void:
 	if descriptor.get("mode") != "beam" or not effect:
