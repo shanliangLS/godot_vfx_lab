@@ -29,6 +29,8 @@ var dummy: Node3D
 var last_repeat := 0.0
 var material_records: Array[Dictionary] = []
 var paused_speeds: Dictionary = {}
+var projectile_clock := 0.0
+var projectile_scales: Dictionary = {}
 
 func _ready() -> void:
 	stretch = true
@@ -116,6 +118,8 @@ func load_effect(entry: Dictionary) -> void:
 	playing = true
 	material_records.clear()
 	paused_speeds.clear()
+	projectile_scales.clear()
+	projectile_clock = 0.0
 	dummy.visible = entry.get("mode", "") == "hit"
 	target.visible = entry.get("mode", "") == "beam"
 	var path: String = entry.get("path", "")
@@ -154,6 +158,13 @@ func load_effect(entry: Dictionary) -> void:
 		_set_trail_gradient(effect, LabTheme.ACCENT)
 	_setup_beam()
 	_frame_effect()
+	if _is_inspired_projectile():
+		# The preview owns motion and lifetime; the source script otherwise frees itself.
+		effect.set_process(false)
+		effect.set_physics_process(false)
+		for node_path in ["Emitters", "TrailPrefab"]:
+			var node: Node3D = effect.get_node(node_path)
+			projectile_scales[node_path] = node.scale
 	if descriptor.get("mode") == "hit":
 		_overlay_hit_materials()
 	replay()
@@ -223,10 +234,14 @@ func _process(delta: float) -> void:
 	var mode: String = descriptor.get("mode", "static")
 	if mode == "trail" or mode == "projectile":
 		var time := elapsed * motion_speed
+		if _is_inspired_projectile():
+			time *= float(effect.get("speed")) / 10.0
 		carrier.position = Vector3(sin(time * 1.4) * path_radius, 1.5 + sin(time * 2.1) * 0.4, cos(time * 1.4) * path_radius * 0.5)
 		if mode == "projectile":
 			var direction := Vector3(cos(time * 1.4), cos(time * 2.1) * 0.25, -sin(time * 1.4) * 0.5)
 			carrier.look_at(carrier.global_position + direction)
+	if _is_inspired_projectile():
+		_update_inspired_projectile(delta * playback_speed)
 	if mode == "beam":
 		if orbit_target:
 			target.position = Vector3(2.3, 1.2 + sin(elapsed) * 0.7, sin(elapsed * 0.7) * 1.5)
@@ -238,6 +253,12 @@ func _process(delta: float) -> void:
 
 func replay() -> void:
 	if not is_instance_valid(effect):
+		return
+	last_repeat = elapsed
+	if _is_inspired_projectile():
+		_restart_inspired_projectile()
+		if not playing:
+			viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 		return
 	for node in _nodes(effect):
 		if node is AnimationPlayer:
@@ -260,6 +281,49 @@ func replay() -> void:
 			node.call("play_effect")
 		elif node.get_script() and node.has_method("play") and not node is AnimationPlayer:
 			node.call("play")
+
+func _is_inspired_projectile() -> bool:
+	return descriptor.get("pack_id") == "inspired_projectiles" and is_instance_valid(effect)
+
+func _update_inspired_projectile(delta: float) -> void:
+	projectile_clock += delta
+	var lifetime := maxf(float(effect.get("lifetime")), 0.001)
+	if repeat_effect and projectile_clock >= maxf(repeat_interval, lifetime + 0.5):
+		_restart_inspired_projectile()
+		return
+	effect.set("age", projectile_clock)
+	# Match the author's end-of-flight fade without queue_free or a second motion driver.
+	var fade_time := minf(lifetime, maxf(float(effect.get("fade_time")), 0.001))
+	var fade := clampf((projectile_clock - (lifetime - fade_time)) / fade_time, 0.0, 1.0)
+	for path in ["Emitters", "TrailPrefab"]:
+		effect.get_node(path).scale = projectile_scales[path] * maxf(1.0 - fade, 0.001)
+	if fade > 0.0:
+		for node in effect.get_node("Emitters").get_children():
+			if node is GPUParticles3D or node is CPUParticles3D:
+				node.emitting = false
+
+func _restart_inspired_projectile() -> void:
+	projectile_clock = 0.0
+	effect.set("age", 0.0)
+	effect.set("collided", false)
+	for path in ["Emitters", "TrailPrefab"]:
+		effect.get_node(path).scale = projectile_scales[path]
+	for node in _nodes(effect.get_node("Emitters")):
+		if node is GPUParticles3D or node is CPUParticles3D:
+			node.visible = true
+			node.restart()
+			node.emitting = true
+	# Impact emitters belong to collision playback, not the projectile launch.
+	for node in _nodes(effect.get_node("Impact")):
+		if node is GPUParticles3D or node is CPUParticles3D:
+			node.restart()
+			node.emitting = false
+	var trail := effect.get_node("TrailPrefab")
+	for key in ["points", "uvs", "widths", "age"]:
+		trail.get(key).clear()
+	trail.previous_position = trail.global_position
+	if trail.mesh is ImmediateMesh:
+		trail.mesh.clear_surfaces()
 
 func set_playing(value: bool) -> void:
 	var was_playing := playing
