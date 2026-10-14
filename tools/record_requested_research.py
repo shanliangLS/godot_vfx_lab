@@ -19,7 +19,7 @@ godot_projectiles = {
 for volume, (requested, url, description) in godot_projectiles.items():
     items.append(dict(id="gap_godot_projectiles_" + str(volume), name="Gabriel · Godot Projectiles Vol." + str(volume), category="魔法 / 飞弹", requested_url=requested, url=url, status="pending", godot=True, license="付费 · 未持有；以购买许可为准", price_usd=20, description=description + "。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。", evidence=[url, "https://www.gabrielaguiarprod.com/game-vfx-assets"]))
 for volume, requested, url, description in [
-    (1, "https://gabrielaguiarprod.itch.io/unique-magic-abilities-vol1", "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol", "官网提供 Godot Magic Abilities Vol.1"),
+    (1, "https://gabrielaguiarprod.itch.io/unique-magic-abilities-vol1", "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol", "31 个 Godot 魔法技能：光束、治疗、地面攻击、彗星、冲击和增益"),
     (2, "https://gabrielaguiarprod.itch.io/unique-magic-abilities-vol2", "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol-2", "50 个 Godot 范围技能：增益、减益、箭雨、陨石、彗星与冲击"),
 ]:
     items.append(dict(id="gap_godot_magic_" + str(volume), name="Gabriel · Godot Magic Abilities Vol." + str(volume), category="范围 / 魔法阵", requested_url=requested, url=url, status="pending", godot=True, license="付费 · 未持有；以购买许可为准", price_usd=20, description=description + "，售价 $20。未持有源文件，待导入。", evidence=[url, "https://www.gabrielaguiarprod.com/game-vfx-assets"]))

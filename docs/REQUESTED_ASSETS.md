@@ -19,7 +19,7 @@
 | [Gabriel · Godot Projectiles Vol.1](https://www.gabrielaguiarprod.com/product-page/unity-vfx-graph-muzzle-flash-effect) | 原生 Godot · 付费未持有 | 30 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。 |
 | [Gabriel · Godot Projectiles Vol.2](https://www.gabrielaguiarprod.com/product-page/godot-projectiles-vol-2) | 原生 Godot · 付费未持有 | 60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。 |
 | [Gabriel · Godot Projectiles Vol.3](https://www.gabrielaguiarprod.com/product-page/godot-projectiles-vol-3) | 原生 Godot · 付费未持有 | 60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。 |
-| [Gabriel · Godot Magic Abilities Vol.1](https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol) | 原生 Godot · 付费未持有 | 官网提供 Godot Magic Abilities Vol.1，售价 $20。未持有源文件，待导入。 |
+| [Gabriel · Godot Magic Abilities Vol.1](https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol) | 原生 Godot · 付费未持有 | 31 个 Godot 魔法技能：光束、治疗、地面攻击、彗星、冲击和增益，售价 $20。未持有源文件，待导入。 |
 | [Gabriel · Godot Magic Abilities Vol.2](https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol-2) | 原生 Godot · 付费未持有 | 50 个 Godot 范围技能：增益、减益、箭雨、陨石、彗星与冲击，售价 $20。未持有源文件，待导入。 |
 | [laplahce · Stylized Projectiles](https://laplahce.itch.io/stylized-projectiles-pack) | 不适配 · 排除 | 提供 Unity URP / HDRP 资产和 Windows Demo，没有 Godot 场景。 按用户要求排除，不下载、不移植，不加入效果目录。 |
 | [Gabriel · Unique Projectiles Vol.4](https://gabrielaguiarprod.itch.io/unique-projectiles-vol4) | 不适配 · 排除 | Unity Shader Graph / URP / HDRP / BIRP 版；在作者官网当前 Godot 产品列表中未找到对应 Vol.4。 按用户要求排除，不下载、不移植，不加入效果目录。 |
