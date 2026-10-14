@@ -366,6 +366,9 @@ func _camera_input(event: InputEvent) -> void:
 func _update_camera() -> void:
 	camera.position = focus + Vector3(sin(yaw) * cos(pitch), -sin(pitch), cos(yaw) * cos(pitch)) * distance
 	camera.look_at(focus)
+	if not playing:
+		# Render the changed camera without advancing effects or shader time.
+		viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
 
 func camera_preset(id: int) -> void:
 	match id:
