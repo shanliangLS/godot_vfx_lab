@@ -14,11 +14,29 @@ func capture(app: Control, name: String) -> void:
 
 func run(app: Control) -> void:
 	await get_tree().process_frame
-	var hint: Control = app.stage.get_node("CameraHint")
+	var hint: Control = app.stage.get_node("CameraHintAnchor/CameraHint")
 	check(hint.mouse_filter == Control.MOUSE_FILTER_IGNORE, "Hint must pass camera input through")
 	var rect: Rect2 = app.stage.get_global_rect()
 	check(rect.encloses(hint.get_global_rect()), "Hint stays inside preview")
 	check(hint.get_global_rect().end.distance_to(rect.end) < 25.0, "Hint sits at bottom right")
+	check(hint.size.is_equal_approx(hint.get_combined_minimum_size()), "Hint background fits text")
+	var hint_style := hint.get_theme_stylebox("panel")
+	check(hint_style.content_margin_top == 3 and hint_style.content_margin_bottom == 3, "Compact hint vertical padding")
+	var hint_label: Label = hint.get_child(0)
+	var original_hint := hint_label.text
+	var original_size := hint.size
+	hint_label.text = "镜头提示"
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check(hint.size.x < original_size.x and hint.size.is_equal_approx(hint.get_combined_minimum_size()), "Hint shrinks with shorter text")
+	hint_label.text = "镜头提示\n第二行操作"
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check(hint.size.y > original_size.y and hint.size.is_equal_approx(hint.get_combined_minimum_size()), "Hint grows with multiline text")
+	hint_label.text = original_hint
+	await get_tree().process_frame
+	await get_tree().process_frame
+	check(hint.size.is_equal_approx(original_size), "Hint restores text-sized background")
 	var labels := PreviewStage._nodes(app).filter(func(node: Node): return node is Label)
 	var brand: Label
 	var title: Label

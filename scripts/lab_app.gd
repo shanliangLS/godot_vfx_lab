@@ -174,18 +174,25 @@ func _build_ui() -> void:
 	center.add_child(stage_panel)
 	stage = PreviewStage.new()
 	stage_panel.add_child(stage)
+	var hint_anchor := MarginContainer.new()
+	hint_anchor.name = "CameraHintAnchor"
+	hint_anchor.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	stage.add_child(hint_anchor)
+	hint_anchor.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
+	for side in ["left", "right", "top", "bottom"]:
+		hint_anchor.add_theme_constant_override("margin_" + side, 10)
 	var camera_hint := PanelContainer.new()
 	camera_hint.name = "CameraHint"
 	camera_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	camera_hint.add_theme_stylebox_override("panel", LabTheme.box(Color(0.04, 0.07, 0.12, 0.8), 5))
-	stage.add_child(camera_hint)
-	camera_hint.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
-	camera_hint.grow_horizontal = Control.GROW_DIRECTION_BEGIN
-	camera_hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
-	camera_hint.offset_left = -430
-	camera_hint.offset_top = -44
-	camera_hint.offset_right = -10
-	camera_hint.offset_bottom = -10
+	camera_hint.size_flags_horizontal = Control.SIZE_SHRINK_END
+	camera_hint.size_flags_vertical = Control.SIZE_SHRINK_END
+	var hint_style := LabTheme.box(Color(0.04, 0.07, 0.12, 0.8), 5)
+	hint_style.content_margin_left = 10
+	hint_style.content_margin_right = 10
+	hint_style.content_margin_top = 3
+	hint_style.content_margin_bottom = 3
+	camera_hint.add_theme_stylebox_override("panel", hint_style)
+	hint_anchor.add_child(camera_hint)
 	var hint_text := LabTheme.label("右键拖动旋转镜头 · 滚轮缩放 · 空格暂停 · R 重播", 11, LabTheme.MUTED)
 	hint_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hint_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
