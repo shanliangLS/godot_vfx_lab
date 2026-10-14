@@ -13,10 +13,15 @@ var environment: Environment
 var descriptor: Dictionary = {}
 var elapsed := 0.0
 var playing := true
-var repeat_effect := true
+var repeat_effect := true:
+	set(value):
+		repeat_effect = value
+		_sync_requested_loop()
 var repeat_interval := 2.4
 var playback_speed := 1.0
 var effect_scale := 1.0
+var authored_scale := Vector3.ONE
+var framed_origin := Vector3.ZERO
 var motion_speed := 1.0
 var path_radius := 2.0
 var orbit_target := true
@@ -115,7 +120,9 @@ func load_effect(entry: Dictionary) -> void:
 	mount.add_child(carrier)
 	elapsed = 0
 	last_repeat = 0
+	focus = Vector3(0, 1.1, 0)
 	effect_scale = 1
+	framed_origin = Vector3.ZERO
 	playing = true
 	material_records.clear()
 	paused_speeds.clear()
@@ -123,7 +130,7 @@ func load_effect(entry: Dictionary) -> void:
 	shader_origins.clear()
 	projectile_clock = 0.0
 	dummy.visible = entry.get("mode", "") == "hit"
-	target.visible = entry.get("mode", "") == "beam"
+	target.visible = entry.get("mode", "") in ["beam", "bolt"]
 	var path: String = entry.get("path", "")
 	if path.is_empty():
 		return
@@ -142,6 +149,13 @@ func load_effect(entry: Dictionary) -> void:
 	if not effect:
 		return
 	effect.name = "Effect"
+	authored_scale = effect.scale
+	for key in entry.get("initial", {}):
+		effect.set(key, entry.initial[key])
+	for key in ["auto_free", "free_on_finish", "one_shot_free"]:
+		if key in effect:
+			effect.set(key, false)
+	effect.set_meta("vfx_lab_keep_alive", true)
 	if "auto_free" in effect:
 		effect.set("auto_free", false)
 	if entry.get("id", "") == "motion_trail":
@@ -154,6 +168,7 @@ func load_effect(entry: Dictionary) -> void:
 		effect.material_override = material
 	_make_local(effect)
 	carrier.add_child(effect)
+	_setup_requested_effect()
 	if effect is GPUTrail3D:
 		effect.visibility_aabb = AABB(Vector3(-15, -15, -15), Vector3(30, 30, 30))
 		effect.fixed_fps = 60
@@ -170,6 +185,7 @@ func load_effect(entry: Dictionary) -> void:
 	if descriptor.get("mode") == "hit":
 		_overlay_hit_materials()
 	replay()
+	_update_camera()
 	effect_changed.emit(effect)
 
 func _make_local(node: Node) -> void:
@@ -178,6 +194,9 @@ func _make_local(node: Node) -> void:
 			if material is ShaderMaterial and material.shader and not material.shader.resource_path.is_empty():
 				shader_origins[material.shader.code] = material.shader.resource_path.get_base_dir()
 	for property in ["material_override", "material_overlay", "process_material", "mesh"]:
+		if property in node and node.get(property) is Resource:
+			node.set(property, node.get(property).duplicate(true))
+	for property in ["preset", "palette"]:
 		if property in node and node.get(property) is Resource:
 			node.set(property, node.get(property).duplicate(true))
 	if node is GPUParticles3D:
@@ -194,8 +213,29 @@ func _frame_effect() -> void:
 		carrier.position = Vector3(0, 0.05, 0)
 	if descriptor.get("mode") == "beam":
 		carrier.position = Vector3(-2.5, 1.2, 0)
+	if descriptor.get("mode") == "bolt":
+		carrier.position = Vector3(-2.5, 2.5, 0)
 	if descriptor.get("mode") == "slash":
 		carrier.position = Vector3(0, 1.5, 0)
+	if descriptor.get("pack_id") == "soygus_tornado":
+		_frame_tornado()
+
+func _frame_tornado() -> void:
+	var bounds := AABB()
+	var found := false
+	for node in _nodes(effect):
+		if node is MeshInstance3D and node.mesh and node.is_visible_in_tree():
+			var relative: Transform3D = effect.global_transform.affine_inverse() * node.global_transform
+			var local_bounds: AABB = relative * node.get_aabb()
+			bounds = bounds.merge(local_bounds) if found else local_bounds
+			found = true
+	if found:
+		var extent: Vector3 = bounds.size * effect.scale
+		carrier.scale = Vector3.ONE * (4.5 / maxf(maxf(extent.x, extent.y), maxf(extent.z, 0.1)))
+		framed_origin = Vector3(bounds.get_center().x, bounds.position.y, bounds.get_center().z)
+		effect.position = -framed_origin * effect.scale
+		carrier.position = Vector3.ZERO
+		focus.y = maxf(1.1, bounds.size.y * effect.scale.y * carrier.scale.y * 0.5)
 
 func _overlay_hit_materials() -> void:
 	# Only adapt this preview instance. Priority alone cannot bypass the dummy's depth.
@@ -210,12 +250,17 @@ func _overlay_hit_materials() -> void:
 				material.proximity_fade_enabled = false
 			elif material is ShaderMaterial and material.shader:
 				var source: Shader = material.shader
-				if not shaders.has(source):
+				if "depth_test_disabled" not in source.code and not shaders.has(source):
 					var overlay := Shader.new()
 					var code := _expand_shader_includes(source.code, shader_origins.get(source.code, source.resource_path.get_base_dir()))
-					overlay.code = code.replace("shader_type spatial;", "shader_type spatial;\nrender_mode depth_test_disabled;")
+					if "depth_test_default" in code:
+						code = code.replace("depth_test_default", "depth_test_disabled")
+					else:
+						code = code.replace("shader_type spatial;", "shader_type spatial;\nrender_mode depth_test_disabled;")
+					overlay.code = code
 					shaders[source] = overlay
-				material.shader = shaders[source]
+				if shaders.has(source):
+					material.shader = shaders[source]
 				for uniform in material.shader.get_shader_uniform_list():
 					if uniform.name == "proximity_fade":
 						material.set_shader_parameter("proximity_fade", false if uniform.type == TYPE_BOOL else 0.0)
@@ -236,7 +281,7 @@ func _expand_shader_includes(code: String, directory: String) -> String:
 	return expanded
 
 func _setup_beam() -> void:
-	if descriptor.get("mode") != "beam" or not effect:
+	if descriptor.get("mode") not in ["beam", "bolt"] or not effect:
 		return
 	for node in _nodes(effect):
 		for p in node.get_property_list():
@@ -269,7 +314,7 @@ func _process(delta: float) -> void:
 			target.position = Vector3(2.3, 1.2 + sin(elapsed) * 0.7, sin(elapsed * 0.7) * 1.5)
 		if carrier.global_position.distance_squared_to(target.global_position) > 0.001:
 			carrier.look_at(target.global_position)
-	if repeat_effect and elapsed - last_repeat > repeat_interval and mode in ["hit", "slash", "area"]:
+	if repeat_effect and elapsed - last_repeat > repeat_interval and mode in ["hit", "slash", "area", "bolt"]:
 		last_repeat = elapsed
 		replay()
 
@@ -303,6 +348,49 @@ func replay() -> void:
 			node.call("play_effect")
 		elif node.get_script() and node.has_method("play") and not node is AnimationPlayer:
 			node.call("play")
+	if descriptor.get("mode") == "hit":
+		_overlay_hit_materials()
+	if not playing:
+		_freeze_new_particles()
+		viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+
+func _setup_requested_effect() -> void:
+	var pack: String = descriptor.get("pack_id", "")
+	if pack == "berry_hit_free":
+		effect.loop = false  # The toolbar owns repeats; keep the same data-resource editors.
+	if pack == "starter_lite":
+		# Source manager repeats single shots itself; the laboratory owns this timing.
+		effect.set_process(false)
+	_sync_requested_loop()
+
+func _sync_requested_loop() -> void:
+	if not is_instance_valid(effect):
+		return
+	var pack: String = descriptor.get("pack_id", "")
+	if pack == "magic_circles_free":
+		effect.one_shot = not repeat_effect
+	elif pack == "starter_lite" and descriptor.get("mode") == "static":
+		effect.is_looping = repeat_effect
+
+func parameter_edited(parameter: Dictionary) -> void:
+	if not is_instance_valid(effect):
+		return
+	if descriptor.get("pack_id") == "berry_hit_free" and parameter.target is Resource:
+		# This pack reads its preset when rebuilding, rather than observing Resource.changed.
+		effect.play()
+		_overlay_hit_materials()
+		if not playing:
+			_freeze_new_particles()
+	if not playing:
+		viewport.render_target_update_mode = SubViewport.UPDATE_ONCE
+
+func _freeze_new_particles() -> void:
+	for node in _nodes(effect):
+		if node is GPUParticles3D or node is CPUParticles3D:
+			var id := node.get_instance_id()
+			if not paused_speeds.has(id):
+				paused_speeds[id] = node.speed_scale
+			node.speed_scale = 0.0
 
 func _is_inspired_projectile() -> bool:
 	return descriptor.get("pack_id") == "inspired_projectiles" and is_instance_valid(effect)
@@ -377,12 +465,20 @@ func set_playback_speed(value: float) -> void:
 func set_effect_scale(value: float) -> void:
 	effect_scale = value
 	if is_instance_valid(effect):
-		effect.scale = Vector3.ONE * value
+		effect.scale = authored_scale * value
+		if descriptor.get("pack_id") == "soygus_tornado":
+			effect.position = -framed_origin * effect.scale
 
 func tint(color: Color) -> void:
 	if not is_instance_valid(effect):
 		return
 	for node in _nodes(effect):
+		for key in ["preset", "palette"]:
+			if key in node and node.get(key) is Resource:
+				var palette: Resource = node.get(key)
+				for property in ["color_core", "color_main", "color_accent", "core_color", "glow_color", "light_color", "spark_color", "main_color", "secondary_color", "tertiary_color"]:
+					if property in palette:
+						palette.set(property, color)
 		for p in node.get_property_list():
 			if p.usage & PROPERTY_USAGE_SCRIPT_VARIABLE and p.usage & PROPERTY_USAGE_EDITOR and p.type == TYPE_COLOR:
 				var previous: Color = node.get(p.name)
@@ -412,7 +508,7 @@ func _set_trail_gradient(node: GPUTrail3D, color: Color) -> void:
 
 static func _nodes(root: Node) -> Array[Node]:
 	var result: Array[Node] = [root]
-	for child in root.get_children():
+	for child in root.get_children(true):
 		result.append_array(_nodes(child))
 	return result
 

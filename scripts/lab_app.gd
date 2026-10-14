@@ -1,6 +1,6 @@
 extends Control
 
-const CATEGORIES := ["全部效果", "攻击 / 刀光", "受击 / 冲击", "魔法 / 飞弹", "激光 / 射线", "火焰 / 火球", "拖尾 / 插件", "官方 / 粒子", "范围 / 魔法阵", "资源 / 授权"]
+const CATEGORIES := ["全部效果", "攻击 / 刀光", "受击 / 冲击", "魔法 / 飞弹", "激光 / 射线", "火焰 / 火球", "电击 / 闪电", "掉落 / 拾取", "状态 / 护盾", "范围 / 魔法阵", "拖尾 / 插件", "官方 / 粒子", "资源 / 授权"]
 const PRESETS := [
 	{"name":"作者默认", "color":"ffffff", "scale":1.0, "speed":1.0},
 	{"name":"烈焰 · Fire", "color":"ff702a", "secondary":"ffcf76", "scale":1.15, "speed":1.1},
@@ -62,6 +62,8 @@ func _ready() -> void:
 		call_deferred("_run_smoke")
 	elif "--interaction-qa" in OS.get_cmdline_user_args():
 		call_deferred("_run_interaction_qa")
+	elif "--requested-qa" in OS.get_cmdline_user_args():
+		call_deferred("_run_requested_qa")
 
 func _build_ui() -> void:
 	var background := ColorRect.new()
@@ -93,6 +95,14 @@ func _build_ui() -> void:
 	var left_column := VBoxContainer.new()
 	left.add_child(left_column)
 	left_column.add_child(LabTheme.label("探索资源", 18))
+	var nav_scroll := ScrollContainer.new()
+	nav_scroll.custom_minimum_size.y = 310
+	nav_scroll.horizontal_scroll_mode = ScrollContainer.SCROLL_MODE_DISABLED
+	left_column.add_child(nav_scroll)
+	var nav_column := VBoxContainer.new()
+	nav_column.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	nav_column.add_theme_constant_override("separation", 3)
+	nav_scroll.add_child(nav_column)
 	var nav_group := ButtonGroup.new()
 	for text in CATEGORIES:
 		var button := Button.new()
@@ -102,14 +112,14 @@ func _build_ui() -> void:
 		button.button_group = nav_group
 		button.button_pressed = text == category
 		button.pressed.connect(_switch_category.bind(text))
-		button.custom_minimum_size.y = 33
+		button.custom_minimum_size.y = 28
 		for state in ["normal", "hover", "pressed", "hover_pressed"]:
 			var style: StyleBoxFlat = theme.get_stylebox(state, "Button").duplicate()
-			style.content_margin_top = 6
-			style.content_margin_bottom = 6
+			style.content_margin_top = 4
+			style.content_margin_bottom = 4
 			button.add_theme_stylebox_override(state, style)
 		nav_buttons.append(button)
-		left_column.add_child(button)
+		nav_column.add_child(button)
 	left_column.add_child(HSeparator.new())
 	library_search = LineEdit.new()
 	library_search.placeholder_text = "查找资源 / 效果"
@@ -288,7 +298,7 @@ func _switch_category(value: String) -> void:
 	stage.set_playing(value != "资源 / 授权")
 	_build_library()
 	if value == "资源 / 授权":
-		footer.text = "绿色 = 可运行的真实资源 · 金色 = 待导入 / 需额外工具"
+		footer.text = "绿色 = 已接入可运行 · 金色 = 待导入 / 需额外工具 · 灰色 = 不适配已排除"
 		return
 	var filtered: Array = catalog.filter(func(entry: Dictionary): return value == "全部效果" or entry.category == value)
 	if not filtered.is_empty():
@@ -391,16 +401,26 @@ func _build_source_page() -> void:
 		var label := LabTheme.label(source.name, 19)
 		label.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		row.add_child(label)
-		row.add_child(LabTheme.label("已接入 · 可运行" if source.status == "installed" else "待接入", 12, LabTheme.ACCENT if source.status == "installed" else LabTheme.GOLD))
+		var status_text: String = {"installed": "已接入 · 可运行", "pending": "待导入 · 未持有", "excluded": "不适配 · 已排除"}.get(source.status, source.status)
+		row.add_child(LabTheme.label(status_text, 12, LabTheme.ACCENT if source.status == "installed" else (LabTheme.MUTED if source.status == "excluded" else LabTheme.GOLD)))
 		row.add_child(LabTheme.button("原始来源 ↗", func(): OS.shell_open(source.url)))
 		var description := LabTheme.label(source.description, 14, LabTheme.MUTED)
 		description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		column.add_child(description)
 		column.add_child(LabTheme.label("分类：%s   /   授权：%s" % [source.category, source.license], 12, LabTheme.MUTED))
 		if source.status == "installed":
-			column.add_child(LabTheme.button("查看效果", func(): _switch_category(source.category)))
+			column.add_child(LabTheme.button("查看效果", func(): _show_source(source.id)))
+		elif source.status == "excluded":
+			column.add_child(LabTheme.label("未加入效果目录；当前交付不适配 Godot。", 12, LabTheme.MUTED))
 		else:
 			column.add_child(LabTheme.label("购买或下载后保留完整目录，用 tools/import_pack.py 接入再启动项目。", 12, LabTheme.MUTED))
+
+func _show_source(id: String) -> void:
+	for entry in catalog:
+		if entry.pack_id == id:
+			_switch_category(entry.category)
+			select_entry(entry)
+			return
 
 func _read_saved() -> void:
 	if FileAccess.file_exists(storage_path):
@@ -536,5 +556,10 @@ func _run_smoke() -> void:
 
 func _run_interaction_qa() -> void:
 	var qa: Node = load("res://tools/interaction_regression.gd").new()
+	add_child(qa)
+	qa.run(self)
+
+func _run_requested_qa() -> void:
+	var qa: Node = load("res://tools/requested_qa.gd").new()
 	add_child(qa)
 	qa.run(self)

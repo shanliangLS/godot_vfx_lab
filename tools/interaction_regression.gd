@@ -32,7 +32,7 @@ func run(app: Control) -> void:
 	check(not app.library_search.has_focus(), "Blank space did not release input focus")
 	var spin: SpinBox
 	for node in PreviewStage._nodes(app.inspector.list):
-		if node is SpinBox:
+		if node is SpinBox and node.is_visible_in_tree() and node.get_viewport() == app.get_viewport():
 			spin = node
 			break
 	check(spin != null, "No numerical parameter editor found")

@@ -54,6 +54,8 @@ func inspect(effect: Node3D) -> void:
 		_render()
 		return
 	for node in PreviewStage._nodes(effect):
+		if preview_stage and preview_stage.descriptor.get("pack_id") == "berry_hit_free" and node != effect:
+			continue  # Generated layers are replaced by play(); edit their persistent preset data.
 		var relative := String(effect.get_path_to(node))
 		var fields: Array[Dictionary] = []
 		for property in node.get_property_list():
@@ -104,7 +106,30 @@ func _add_native_properties(object: Object, relative: String, fields: Array[Dict
 				fields.append(_descriptor(object, p, relative + ":" + p.name))
 
 func _descriptor(object: Object, p: Dictionary, id: String, shader := false) -> Dictionary:
-	return {"target": object, "key": String(p.name), "type": p.type, "hint": p.get("hint", 0), "hint_string": p.get("hint_string", ""), "id": id, "shader": shader}
+	var result := {"target": object, "key": String(p.name), "type": p.type, "hint": p.get("hint", 0), "hint_string": p.get("hint_string", ""), "id": id, "shader": shader}
+	if preview_stage and preview_stage.descriptor.get("pack_id") == "magic_circles_free":
+		for role in ["_sparks", "_light"]:
+			if object == root_effect.get(role):
+				result.target = root_effect
+				result.role = role
+				result.id = "generated" + role + ":" + p.name
+		if shader:
+			var index: int = root_effect.get("_materials").find(object)
+			if index >= 0:
+				result.target = root_effect
+				result.magic_shader = index
+				result.id = "generated_shader" + str(index) + ":" + p.name
+	return result
+
+func _resolved_target(p: Dictionary) -> Object:
+	if not is_instance_valid(p.target):
+		return null
+	if p.has("role"):
+		return p.target.get(p.role)
+	if p.has("magic_shader"):
+		var materials: Array = p.target.get("_materials")
+		return materials[p.magic_shader] if p.magic_shader < materials.size() else null
+	return p.target
 
 func _add_group(title: String, fields: Array[Dictionary]) -> void:
 	groups.append({"name": title, "fields": fields})
@@ -134,27 +159,42 @@ func _add_resource(resource: Resource, title: String, id: String, depth: int) ->
 		var value: Variant = read(p)
 		if value is Resource and not value is Material and not value is Mesh and not value is Script:
 			_add_resource(value, title + "/" + ParameterDictionary.translate(p.key), p.id + ":resource", depth + 1)
+		elif value is Array:
+			for index in value.size():
+				if value[index] is Resource:
+					_add_resource(value[index], title + "/" + ParameterDictionary.translate(p.key) + " " + str(index + 1), p.id + ":" + str(index), depth + 1)
 
 func read(p: Dictionary) -> Variant:
-	if not is_instance_valid(p.target):
+	var target := _resolved_target(p)
+	if not is_instance_valid(target):
 		return null
-	if p.key == "speed_scale" and preview_stage and not preview_stage.playing and preview_stage.paused_speeds.has(p.target.get_instance_id()):
-		return preview_stage.paused_speeds[p.target.get_instance_id()]
-	return p.target.get_shader_parameter(p.key) if p.shader else p.target.get(p.key)
+	if p.key == "speed_scale" and preview_stage and not preview_stage.playing and preview_stage.paused_speeds.has(target.get_instance_id()):
+		return preview_stage.paused_speeds[target.get_instance_id()]
+	if p.shader:
+		var value: Variant = target.get_shader_parameter(p.key)
+		if value == null and target.shader and p.type != TYPE_OBJECT:
+			value = RenderingServer.shader_get_parameter_default(target.shader.get_rid(), p.key)
+		return value
+	return target.get(p.key)
 
 func write(p: Dictionary, value: Variant) -> void:
-	if not is_instance_valid(p.target):
+	var target := _resolved_target(p)
+	if not is_instance_valid(target):
 		return
-	if p.key == "auto_free":
+	if p.key in ["auto_free", "free_on_finish", "one_shot_free"]:
 		value = false
-	if p.key == "speed_scale" and preview_stage and not preview_stage.playing and preview_stage.paused_speeds.has(p.target.get_instance_id()):
-		preview_stage.paused_speeds[p.target.get_instance_id()] = value
+	if p.key == "speed_scale" and preview_stage and not preview_stage.playing and preview_stage.paused_speeds.has(target.get_instance_id()):
+		preview_stage.paused_speeds[target.get_instance_id()] = value
 		parameter_changed.emit(p.id, value)
 		return
-	if p.shader:
-		p.target.set_shader_parameter(p.key, value)
+	if p.has("magic_shader"):
+		p.target.set_param(p.key, value)
+	elif p.shader:
+		target.set_shader_parameter(p.key, value)
 	else:
-		p.target.set(p.key, value)
+		target.set(p.key, value)
+	if preview_stage:
+		preview_stage.parameter_edited(p)
 	parameter_changed.emit(p.id, value)
 
 func _render() -> void:
@@ -174,6 +214,8 @@ func _render() -> void:
 		_add_editor(p)
 
 func _add_editor(p: Dictionary) -> void:
+	if not is_instance_valid(_resolved_target(p)):
+		return
 	var card := PanelContainer.new()
 	card.add_theme_stylebox_override("panel", LabTheme.box(Color("172237"), 7))
 	card.tooltip_text = ParameterDictionary.describe(p.key) + "\n" + p.id
@@ -191,7 +233,7 @@ func _add_editor(p: Dictionary) -> void:
 			var check := CheckButton.new()
 			check.text = "启用 / 禁用"
 			check.button_pressed = bool(value)
-			if p.key == "auto_free":
+			if p.key in ["auto_free", "free_on_finish", "one_shot_free"]:
 				check.disabled = true
 				check.text = "预览中固定关闭"
 			check.toggled.connect(func(next: bool): write(p, next))
@@ -234,6 +276,19 @@ func _add_editor(p: Dictionary) -> void:
 					vector[axis] = next
 					write(p, vector)))
 		TYPE_STRING, TYPE_STRING_NAME:
+			if p.hint == PROPERTY_HINT_ENUM:
+				var options := OptionButton.new()
+				options.fit_to_longest_item = false
+				var choices: PackedStringArray = String(p.hint_string).split(",")
+				if preview_stage and preview_stage.descriptor.get("pack_id") == "magic_circles_free" and p.key == "kind":
+					choices = PackedStringArray(["circle", "ripple"])
+				for choice in choices:
+					options.add_item(ParameterDictionary.translate(choice) + " · " + choice)
+					if choice == str(value):
+						options.select(options.item_count - 1)
+				options.item_selected.connect(func(index: int): write(p, choices[index]))
+				column.add_child(options)
+				return
 			var input := LineEdit.new()
 			input.text = str(value)
 			input.text_submitted.connect(func(next: String): write(p, StringName(next) if p.type == TYPE_STRING_NAME else next))
