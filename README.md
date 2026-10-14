@@ -45,13 +45,17 @@ Compatibility 的粒子碰撞、吸引器、拖尾等功能有限；主要验证
     Godot_v4.7.1-stable_win64_console.exe --headless --editor --path . --import --quit
     Godot_v4.7.1-stable_win64_console.exe --path . -- --qa
     Godot_v4.7.1-stable_win64_console.exe --path . -- --interaction-qa
+    Godot_v4.7.1-stable_win64_console.exe --path . -- --requested-qa
 
 自动检查逐个实例化成品效果、创建全部参数分组、切换模板、暂停、序列化 / 恢复预设和资源页导航。
 GPU 运行时生成分类截图与 artifacts/qa_report.json；检查日志中的 SCRIPT ERROR / ERROR 后才可判断通过。
 交互回归验证输入焦点、颜色弹窗、暂停镜头、受击叠加以及飞弹循环和重播，生成 artifacts/interaction-*.png。
 上游兼容修复见 docs/UPSTREAM_ADAPTATIONS.md。
 
-当前目录提供 50 个预览项，来自 11 个已接入来源：Binbun 的 Hit / Battle / Beam / Magic Projectiles / Flame，inspiredsloth Vol.1，GPUTrail，Motion Trail，Godot 官方粒子示例，Simple Laser Shader 和 REEBOO 免费样例。
+当前目录提供 105 个预览项，来自 22 个已接入资源包。保留原有 Binbun Hit / Battle / Beam / Magic Projectiles / Flame、inspiredsloth、GPUTrail、Motion Trail、官方粒子、Simple Laser 和 REEBOO 免费样例。
+新增 11 包、55 项：Binbun Electric（2）、Loot（12）、Status（1）、Elemental（3）、Dark（3）；berryhibiscus 免费命中样例（1）；soygus 龙卷风（3）和护盾（3）；Starter Lite（9）；Magic Circles Free（16）；ARCFLUX Lite（2）。
+新增电击 / 闪电、掉落 / 拾取、状态 / 护盾分类；分类栏可滚动。资源页显示已接入、待导入和不适配排除的状态。
+逐项来源、免费与付费范围、Gabriel 系列的 Godot 版本及排除理由见 docs/REQUESTED_ASSETS.md，机器可读记录见 data/requested_research.json。
 火球试飞是原 Flame 节点在实验室轨迹中的演示；程序激光使用作者 Shader 与实验室载体；官方示例按原测试节点分组。界面明确标注来源。
 参数标题旁的「参数清单」可导出当前效果的英文名、中文名、说明、类型、范围提示和当前值。
 预设保存数值、颜色、向量、开关、渐变和曲线；外部纹理与音频文件需要保留在原位置并单独管理。

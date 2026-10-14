@@ -23,3 +23,12 @@ GPU：NVIDIA GeForce GTX 1050 Ti，Vulkan 1.3.289，Forward+。
 - 7 个受击场景的叠加材质编译和深度设置通过，截图确认特效覆盖训练假人。
 - 4 个 inspiredsloth 飞弹经过两个循环、关闭循环后结束、手动重播、暂停时重播；实例未删除，参数保留，发射器恢复，旧拖尾清空。
 - --interaction-qa 输出 7 hit scenes, 4 projectile scenes, failures=0；最终日志无 SCRIPT ERROR、SHADER ERROR 或 ERROR。截图位于 artifacts/interaction-*.png。
+
+用户指定资源扩展（同日）：
+
+- 11 个新增原生 Godot 包、55 个效果；现有目录共 105 项、22 个已接入包。24 条用户指定资源与系列扩展的调研决策见 REQUESTED_ASSETS.md。
+- --requested-qa 验证新增 55 项的实例化、全部参数页、模板切换、恢复、暂停、源资源独立性和资源卡导航。额外检查命中数据层实时重建、魔法阵重建后的粒子 / Shader 参数、单次结束保留实例、ARCFLUX 闪电循环与重播；输出 11 packs, 0 failures。
+- --interaction-qa 验证 15 个受击场景、4 个 inspiredsloth 飞弹与原有焦点 / 颜色弹窗 / 暂停镜头交互，失败数为 0。输入测试只选择主窗口内可见的 SpinBox，排除 ColorPicker 内部的隐藏输入框。
+- 完整目录 --qa 验证 105 项的全部参数组、模板、暂停、快照与 JSON 预设 / 参数清单导入导出。
+- 原生 Godot 引擎修复 4 个共享脚本 / Shader 的重复 UID，重建生成的 UID / 文件系统缓存后重新导入。
+- 最终导入与 GPU 运行日志无 SCRIPT ERROR、SHADER ERROR、ERROR 或 WARNING。专项截图为 artifacts/requested-*.png，完整目录截图与报告位于 artifacts/。
