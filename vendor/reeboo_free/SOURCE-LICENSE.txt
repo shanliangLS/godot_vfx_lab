@@ -1,0 +1,2 @@
+Upstream license: custom; personal/commercial project use; no asset redistribution
+Source: https://reebo0.itch.io/stylized-vfx-godot-free

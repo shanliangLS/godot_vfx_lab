@@ -1,0 +1,25 @@
+{
+  "url": "https://github.com/godotengine/godot-demo-projects",
+  "branch": "master",
+  "commit": "b761b4cd5718a7118f2c95eb55f181d0a5f004f1",
+  "license": "MIT",
+  "files": [
+    "3d/particles/README.md",
+    "3d/particles/checker.LICENSE.md",
+    "3d/particles/checker.png",
+    "3d/particles/checker.png.import",
+    "3d/particles/icon.webp",
+    "3d/particles/icon.webp.import",
+    "3d/particles/kenney/smoke_05.png",
+    "3d/particles/kenney/smoke_05.png.import",
+    "3d/particles/project.godot",
+    "3d/particles/screenshots/.gdignore",
+    "3d/particles/screenshots/3d_particles.png",
+    "3d/particles/test.GPUParticlesCollisionSDF3D_data.exr",
+    "3d/particles/test.GPUParticlesCollisionSDF3D_data.exr.import",
+    "3d/particles/test.tscn",
+    "3d/particles/tester.gd",
+    "3d/particles/tester.gd.uid",
+    "LICENSE.md"
+  ]
+}

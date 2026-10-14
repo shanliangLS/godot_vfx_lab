@@ -80,6 +80,26 @@
     "directory": "res://vendor/motion_trail"
   },
   {
+    "id": "official_particles",
+    "name": "Godot 官方 · 3D Particles",
+    "category": "官方 / 粒子",
+    "url": "https://godotengine.org/asset-library/asset/2745",
+    "license": "MIT",
+    "description": "官方示例的原始节点：火焰、烟雾、力场、爆炸、吸引器、碰撞、拖尾和子发射器。",
+    "status": "installed",
+    "directory": "res://vendor/official_particles"
+  },
+  {
+    "id": "simple_laser",
+    "name": "Godot Shaders · Simple Laser",
+    "category": "激光 / 射线",
+    "url": "https://godotshaders.com/shader/simple-laser-shader-sls/",
+    "license": "代码 CC0",
+    "description": "作者激光 Shader + 实验室圆柱载体；可调核心、光晕、脉冲和噪声。",
+    "status": "installed",
+    "directory": "res://vendor/simple_laser"
+  },
+  {
     "id": "effectblocks",
     "name": "EffectBlocks",
     "category": "综合资源",
@@ -150,16 +170,6 @@
     "directory": ""
   },
   {
-    "id": "official_particles",
-    "name": "Godot 官方 · 3D Particles Demo",
-    "category": "工具 / 插件",
-    "url": "https://godotengine.org/asset-library/asset/2745",
-    "license": "MIT · 未接入",
-    "description": "官方粒子碰撞、吸引器、拖尾与子发射器参考。",
-    "status": "pending",
-    "directory": ""
-  },
-  {
     "id": "kenney",
     "name": "Kenney · Particle Pack",
     "category": "纹理素材",
@@ -176,16 +186,6 @@
     "url": "https://godotshaders.com/shader/slash-shader/",
     "license": "代码 CC0 · 未接入",
     "description": "需要配套网格及纹理；各自授权需要分别检查。",
-    "status": "pending",
-    "directory": ""
-  },
-  {
-    "id": "simple_laser",
-    "name": "Godot Shaders · Simple Laser",
-    "category": "激光 / 射线",
-    "url": "https://godotshaders.com/shader/simple-laser-shader-sls/",
-    "license": "代码 CC0 · 未接入",
-    "description": "激光材质示例，待接入。",
     "status": "pending",
     "directory": ""
   },

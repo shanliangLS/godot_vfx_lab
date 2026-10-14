@@ -1,6 +1,6 @@
 extends Control
 
-const CATEGORIES := ["全部效果", "攻击 / 刀光", "受击 / 冲击", "魔法 / 飞弹", "激光 / 射线", "火焰 / 火球", "拖尾 / 插件", "范围 / 魔法阵", "资源 / 授权"]
+const CATEGORIES := ["全部效果", "攻击 / 刀光", "受击 / 冲击", "魔法 / 飞弹", "激光 / 射线", "火焰 / 火球", "拖尾 / 插件", "官方 / 粒子", "范围 / 魔法阵", "资源 / 授权"]
 const PRESETS := [
 	{"name":"作者默认", "color":"ffffff", "scale":1.0, "speed":1.0},
 	{"name":"烈焰 · Fire", "color":"ff702a", "secondary":"ffcf76", "scale":1.15, "speed":1.1},
@@ -40,6 +40,8 @@ var scale_control: HSlider
 var source_link: Button
 var busy := false
 var built := false
+var storage_path := "user://lab_presets_qa.json" if "--qa" in OS.get_cmdline_user_args() else "user://lab_presets.json"
+var export_kind := "preset"
 
 func _ready() -> void:
 	theme = LabTheme.build()
@@ -187,7 +189,16 @@ func _build_ui() -> void:
 	workspace.add_child(right)
 	var right_col := VBoxContainer.new()
 	right.add_child(right_col)
-	right_col.add_child(LabTheme.label("参数 / Parameters", 18))
+	var parameter_header := HBoxContainer.new()
+	right_col.add_child(parameter_header)
+	var parameter_title := LabTheme.label("参数 / Parameters", 18)
+	parameter_title.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	parameter_header.add_child(parameter_title)
+	parameter_header.add_child(LabTheme.button("参数清单", func():
+		if current.is_empty(): return
+		export_kind = "parameters"
+		export_dialog.current_file = current.path.get_file().get_basename() + "_parameters.json"
+		export_dialog.popup_centered_ratio()))
 	var preset_row := HBoxContainer.new()
 	right_col.add_child(preset_row)
 	preset_picker = OptionButton.new()
@@ -213,6 +224,8 @@ func _build_ui() -> void:
 	var saved_row := HBoxContainer.new()
 	right_col.add_child(saved_row)
 	saved_picker = OptionButton.new()
+	saved_picker.fit_to_longest_item = false
+	saved_picker.clip_text = true
 	saved_picker.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	saved_row.add_child(saved_picker)
 	saved_row.add_child(LabTheme.button("加载", _load_preset))
@@ -228,6 +241,7 @@ func _build_ui() -> void:
 	source_panel.add_child(source_list)
 	_build_source_page()
 	footer = LabTheme.label("准备就绪", 12, LabTheme.MUTED)
+	footer.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	root.add_child(footer)
 	export_dialog = FileDialog.new()
 	export_dialog.access = FileDialog.ACCESS_FILESYSTEM
@@ -377,8 +391,8 @@ func _build_source_page() -> void:
 			column.add_child(LabTheme.label("购买或下载后保留完整目录，用 tools/import_pack.py 接入再启动项目。", 12, LabTheme.MUTED))
 
 func _read_saved() -> void:
-	if FileAccess.file_exists("user://lab_presets.json"):
-		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string("user://lab_presets.json"))
+	if FileAccess.file_exists(storage_path):
+		var data: Variant = JSON.parse_string(FileAccess.get_file_as_string(storage_path))
 		if data is Array: saved = data
 
 func _refresh_saved() -> void:
@@ -400,7 +414,7 @@ func _save_preset() -> void:
 	var record := _preset_record()
 	saved = saved.filter(func(item: Dictionary): return not (item.effect_id == record.effect_id and item.name == record.name))
 	saved.append(record)
-	var file := FileAccess.open("user://lab_presets.json", FileAccess.WRITE)
+	var file := FileAccess.open(storage_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(saved, "\t"))
 	_refresh_saved()
 	footer.text = "预设已保存；重新启动后仍可加载。"
@@ -421,6 +435,7 @@ func _restore_record(record: Dictionary) -> void:
 
 func _export_preset() -> void:
 	if current.is_empty(): return
+	export_kind = "preset"
 	export_dialog.current_file = current.path.get_file().get_basename() + "_preset.json"
 	export_dialog.popup_centered_ratio()
 
@@ -429,7 +444,15 @@ func _write_export(path: String) -> void:
 	if not file:
 		footer.text = "无法写入预设：" + error_string(FileAccess.get_open_error())
 		return
-	file.store_string(JSON.stringify(_preset_record(), "\t"))
+	var data: Dictionary
+	if export_kind == "parameters":
+		var parameters: Array[Dictionary] = []
+		for p in inspector.all_parameters:
+			parameters.append({"id":p.id, "english":p.key, "chinese":ParameterDictionary.translate(p.key), "description":ParameterDictionary.describe(p.key), "value":var_to_str(inspector.read(p)) if not inspector.read(p) is Object else str(inspector.read(p)), "type":type_string(p.type), "hint":p.hint_string})
+		data = {"effect":current.label, "source":current.url, "parameters":parameters}
+	else:
+		data = _preset_record()
+	file.store_string(JSON.stringify(data, "\t"))
 	footer.text = "已导出 JSON 预设：" + path
 
 func _import_local(path: String) -> void:
@@ -458,7 +481,7 @@ func _import_local(path: String) -> void:
 	select_entry(entry)
 
 func _save_imported() -> void:
-	var file := FileAccess.open("user://lab_presets.json", FileAccess.WRITE)
+	var file := FileAccess.open(storage_path, FileAccess.WRITE)
 	file.store_string(JSON.stringify(saved, "\t"))
 	_refresh_saved()
 

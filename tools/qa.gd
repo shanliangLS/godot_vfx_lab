@@ -56,6 +56,19 @@ func run(app: Control) -> void:
 			screenshots.append(path)
 		report.append({"id": entry.id, "parameters": app.inspector.all_parameters.size(), "groups": app.inspector.groups.size()})
 		print("QA_EFFECT ", entry.id, " ", app.inspector.all_parameters.size(), " params")
+	if not app.current.is_empty():
+		app.preset_name.text = "自动验证 · 中文预设"
+		app._save_preset()
+		var stored: Variant = JSON.parse_string(FileAccess.get_file_as_string(app.storage_path))
+		check(stored is Array and not stored.is_empty(), "Preset disk persistence")
+		app._write_export("res://artifacts/exported_preset.json")
+		var exported: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/exported_preset.json"))
+		check(exported is Dictionary and exported.format == "godot-vfx-lab/1", "Preset JSON export")
+		app._import_local(ProjectSettings.globalize_path("res://artifacts/exported_preset.json"))
+		app.export_kind = "parameters"
+		app._write_export("res://artifacts/exported_parameters.json")
+		var reference: Variant = JSON.parse_string(FileAccess.get_file_as_string("res://artifacts/exported_parameters.json"))
+		check(reference is Dictionary and not reference.parameters.is_empty(), "Bilingual parameter export")
 	app._switch_category("资源 / 授权")
 	await get_tree().process_frame
 	check(app.source_panel.visible and not app.workspace.visible, "Source page navigation")

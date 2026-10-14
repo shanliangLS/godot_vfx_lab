@@ -99,13 +99,13 @@ var quad_mesh : QuadMesh:
 @export var light_indirect_energy : float = 1.0:
 	set(v):
 		light_indirect_energy = v
-		if light: light.vfx_light_indirect_energy = light_indirect_energy
+		if light: light.vfx_indirect_energy = light_indirect_energy
 
 ## Energy of the light in volumetric fog emitted by this effect
 @export var light_volumetric_fog_energy : float = 1.0:
 	set(v):
 		light_volumetric_fog_energy = v
-		if light: light.vfx_light_volumetric_fog_energy = light_volumetric_fog_energy
+		if light: light.vfx_volumetric_fog_energy = light_volumetric_fog_energy
 
 @export_group("Shape")
 

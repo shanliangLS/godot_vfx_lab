@@ -15,6 +15,8 @@ var pending_resource: Dictionary = {}
 
 func _ready() -> void:
 	selector = OptionButton.new()
+	selector.fit_to_longest_item = false
+	selector.clip_text = true
 	selector.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	selector.item_selected.connect(func(index: int): selected = index; _render())
 	add_child(selector)
@@ -60,6 +62,10 @@ func inspect(effect: Node3D) -> void:
 		if node is GPUParticles3D or node is CPUParticles3D:
 			for key in ["amount", "lifetime", "one_shot", "emitting", "preprocess", "explosiveness", "randomness", "speed_scale", "fixed_fps", "local_coords", "trail_enabled", "trail_lifetime"]:
 				_add_builtin(node, key, relative, fields)
+			if node is CPUParticles3D:
+				_add_native_properties(node, relative, fields)
+		elif node is GPUParticlesAttractor3D or node is GPUParticlesCollision3D:
+			_add_native_properties(node, relative, fields)
 		if node is Light3D:
 			for key in ["light_color", "light_energy", "light_indirect_energy", "shadow_enabled", "omni_range"]:
 				_add_builtin(node, key, relative, fields)
@@ -86,6 +92,15 @@ func _add_builtin(object: Object, key: String, relative: String, fields: Array[D
 		if p.name == key and not fields.any(func(item: Dictionary): return item.key == key):
 			fields.append(_descriptor(object, p, relative + ":" + key))
 			return
+
+func _add_native_properties(object: Object, relative: String, fields: Array[Dictionary]) -> void:
+	var in_class := false
+	for p in object.get_property_list():
+		if p.usage & PROPERTY_USAGE_CATEGORY:
+			in_class = p.name == object.get_class()
+		elif in_class and p.usage & PROPERTY_USAGE_EDITOR and p.type != TYPE_NIL:
+			if not fields.any(func(item: Dictionary): return item.key == p.name):
+				fields.append(_descriptor(object, p, relative + ":" + p.name))
 
 func _descriptor(object: Object, p: Dictionary, id: String, shader := false) -> Dictionary:
 	return {"target": object, "key": String(p.name), "type": p.type, "hint": p.get("hint", 0), "hint_string": p.get("hint_string", ""), "id": id, "shader": shader}
@@ -172,6 +187,8 @@ func _add_editor(p: Dictionary) -> void:
 		TYPE_INT, TYPE_FLOAT:
 			if p.hint == PROPERTY_HINT_ENUM:
 				var options := OptionButton.new()
+				options.fit_to_longest_item = false
+				options.clip_text = true
 				var idx := 0
 				for choice in String(p.hint_string).split(","):
 					var parts := choice.split(":")
@@ -275,6 +292,7 @@ func _resource_editor(column: VBoxContainer, p: Dictionary, value: Variant) -> v
 			preview.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 			column.add_child(preview)
 		var choices := OptionButton.new()
+		choices.fit_to_longest_item = false
 		for text in ["程序纹理…", "细密噪声", "流动噪声", "高对比噪声", "导入本地纹理"]: choices.add_item(text)
 		choices.item_selected.connect(func(index: int):
 			if index == 4: pending_resource = p; picker.popup_centered_ratio(); return

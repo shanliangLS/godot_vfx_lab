@@ -121,7 +121,14 @@ func load_effect(entry: Dictionary) -> void:
 		return
 	var resource := load(path)
 	if resource is PackedScene:
-		effect = resource.instantiate() as Node3D
+		var scene_root: Node = resource.instantiate()
+		if entry.has("subnode"):
+			effect = scene_root.get_node(entry.subnode) as Node3D
+			effect.get_parent().remove_child(effect)
+			scene_root.free()
+			effect.position = Vector3.ZERO
+		else:
+			effect = scene_root as Node3D
 	elif resource is Script:
 		effect = resource.new() as Node3D
 	if not effect:

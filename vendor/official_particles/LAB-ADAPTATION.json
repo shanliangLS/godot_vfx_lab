@@ -1,0 +1,8 @@
+{
+  "relocation_prefix": "res://vendor/official_particles/",
+  "class_names": {},
+  "changed_files": [
+    "test.tscn"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

@@ -1,0 +1,6 @@
+{
+  "relocation_prefix": "res://vendor/simple_laser/",
+  "class_names": {},
+  "changed_files": [],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

@@ -1,0 +1,2 @@
+Shader code CC0; page media is excluded.
+https://godotshaders.com/shader/simple-laser-shader-sls/
