@@ -7,7 +7,8 @@
     "license": "CC0",
     "description": "6 个免费命中预设；可调三色、噪声、边缘、动画与音频。",
     "status": "installed",
-    "directory": "res://vendor/binbun_hit"
+    "directory": "res://vendor/binbun_hit",
+    "author": "Binbun"
   },
   {
     "id": "binbun_battle",
@@ -17,7 +18,8 @@
     "license": "CC0",
     "description": "免费基础预设：挥砍、飞行斩击、爪击、蓄力和护盾。",
     "status": "installed",
-    "directory": "res://vendor/binbun_battle"
+    "directory": "res://vendor/binbun_battle",
+    "author": "Binbun"
   },
   {
     "id": "binbun_beam",
@@ -27,7 +29,8 @@
     "license": "CC0",
     "description": "完整免费光束控制器；付费版额外增加 16 个美术预设。",
     "status": "installed",
-    "directory": "res://vendor/binbun_beam"
+    "directory": "res://vendor/binbun_beam",
+    "author": "Binbun"
   },
   {
     "id": "binbun_projectiles",
@@ -37,7 +40,8 @@
     "license": "CC0",
     "description": "12 个作者原始弹体：基础球形、波动弹体与魔法标枪。",
     "status": "installed",
-    "directory": "res://vendor/binbun_projectiles"
+    "directory": "res://vendor/binbun_projectiles",
+    "author": "Binbun"
   },
   {
     "id": "binbun_flame",
@@ -47,7 +51,8 @@
     "license": "CC0",
     "description": "作者免费火焰预设；火球运动由预览舞台提供，不是另购的火球包。",
     "status": "installed",
-    "directory": "res://vendor/binbun_flame"
+    "directory": "res://vendor/binbun_flame",
+    "author": "Binbun"
   },
   {
     "id": "inspired_projectiles",
@@ -57,7 +62,8 @@
     "license": "CC0",
     "description": "Vol.1 的 4 个原始弹体场景，包含真实拖尾与材质。",
     "status": "installed",
-    "directory": "res://vendor/inspired_projectiles"
+    "directory": "res://vendor/inspired_projectiles",
+    "author": "inspiredsloth"
   },
   {
     "id": "gpu_trail",
@@ -67,7 +73,8 @@
     "license": "MIT",
     "description": "GPU 带状拖尾；采样数、时长、渐变、宽度曲线、遮罩和纹理滚动。",
     "status": "installed",
-    "directory": "res://vendor/gpu_trail"
+    "directory": "res://vendor/gpu_trail",
+    "author": "celyk"
   },
   {
     "id": "motion_trail",
@@ -77,7 +84,8 @@
     "license": "MIT",
     "description": "CPU 带状拖尾；起末宽度、寿命、颜色与插值方式。",
     "status": "installed",
-    "directory": "res://vendor/motion_trail"
+    "directory": "res://vendor/motion_trail",
+    "author": "metanoia83"
   },
   {
     "id": "official_particles",
@@ -87,7 +95,8 @@
     "license": "MIT",
     "description": "官方示例的原始节点：火焰、烟雾、力场、爆炸、吸引器、碰撞、拖尾和子发射器。",
     "status": "installed",
-    "directory": "res://vendor/official_particles"
+    "directory": "res://vendor/official_particles",
+    "author": "Godot Engine"
   },
   {
     "id": "simple_laser",
@@ -97,7 +106,8 @@
     "license": "代码 CC0",
     "description": "作者激光 Shader + 实验室圆柱载体；可调核心、光晕、脉冲和噪声。",
     "status": "installed",
-    "directory": "res://vendor/simple_laser"
+    "directory": "res://vendor/simple_laser",
+    "author": "WhyNilliana"
   },
   {
     "id": "reeboo_free",
@@ -107,7 +117,8 @@
     "license": "项目可商用；禁止资源再分发",
     "description": "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。",
     "status": "installed",
-    "directory": "res://vendor/reeboo_free"
+    "directory": "res://vendor/reeboo_free",
+    "author": "REEBOO"
   },
   {
     "id": "effectblocks",
@@ -117,7 +128,8 @@
     "license": "付费 · 未持有",
     "description": "100+ 成品 VFX。缺少购买后的源文件；免费可执行 Demo 不能代替源场景。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Bukkbeek"
   },
   {
     "id": "gameidea_fireball",
@@ -127,7 +139,8 @@
     "license": "付费 · 未持有",
     "description": "火球与配套命中爆发。需本地导入购买后的资源。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "GameIdea Studio"
   },
   {
     "id": "gameidea_beam",
@@ -137,7 +150,8 @@
     "license": "付费 · 未持有",
     "description": "模块化核心、端点与冲击光束。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "GameIdea Studio"
   },
   {
     "id": "magic_area",
@@ -147,7 +161,8 @@
     "license": "付费 · 未持有",
     "description": "地面波纹、脉冲和光柱；未把其他资源假冒为此包。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Binbun"
   },
   {
     "id": "flame_wizard",
@@ -157,7 +172,8 @@
     "license": "付费 · 授权待确认",
     "description": "15 个火系施法、蓄力、火球、喷火、爆发与光环。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "berrryhibiscus"
   },
   {
     "id": "reeboo",
@@ -167,7 +183,8 @@
     "license": "付费 / 免费样例",
     "description": "完整 25 个效果需购买；未下载样例时显示未接入。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "REEBOO"
   },
   {
     "id": "effekseer",
@@ -177,7 +194,8 @@
     "license": "MIT · 未接入",
     "description": "需要额外原生运行插件与 .efkefc 样例。本项目目前使用 Godot 原生资源。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Effekseer"
   },
   {
     "id": "kenney",
@@ -187,7 +205,8 @@
     "license": "CC0 · 未接入",
     "description": "80 个粒子贴图，需要搭建发射器后才能成为完整效果。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Kenney"
   },
   {
     "id": "slash_shader",
@@ -197,7 +216,8 @@
     "license": "代码 CC0 · 未接入",
     "description": "需要配套网格及纹理；各自授权需要分别检查。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Dev Quest"
   },
   {
     "id": "fab_textures",
@@ -207,7 +227,8 @@
     "license": "付费 · Unreal 交付",
     "description": "须确认独立 PNG 交付；需要在 Godot 重建材质。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "MinSeok Hong"
   },
   {
     "id": "oga_hit",
@@ -217,7 +238,8 @@
     "license": "CC0 · 需移植",
     "description": "20+ Unity 命中特效；不是可直接运行的 Godot 场景。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "HighPixel"
   },
   {
     "id": "binbun_electric",
@@ -227,7 +249,8 @@
     "license": "CC0",
     "description": "2 个免费预设：闪电与电球；完整 Shader 和控制器。付费版 18 预设未持有。",
     "status": "installed",
-    "directory": "res://vendor/binbun_electric"
+    "directory": "res://vendor/binbun_electric",
+    "author": "Binbun"
   },
   {
     "id": "binbun_loot",
@@ -237,7 +260,8 @@
     "license": "CC0",
     "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
     "status": "installed",
-    "directory": "res://vendor/binbun_loot"
+    "directory": "res://vendor/binbun_loot",
+    "author": "Binbun"
   },
   {
     "id": "binbun_status",
@@ -247,7 +271,8 @@
     "license": "CC0",
     "description": "免费状态样例与完整组件 / 叠加 Shader；付费 18 效果和 18 叠加材质未持有。",
     "status": "installed",
-    "directory": "res://vendor/binbun_status"
+    "directory": "res://vendor/binbun_status",
+    "author": "Binbun"
   },
   {
     "id": "binbun_elemental",
@@ -257,7 +282,8 @@
     "license": "CC0",
     "description": "火系飞弹、施法、范围各一个免费预设；付费 24 预设未持有。",
     "status": "installed",
-    "directory": "res://vendor/binbun_elemental"
+    "directory": "res://vendor/binbun_elemental",
+    "author": "Binbun"
   },
   {
     "id": "binbun_dark",
@@ -267,7 +293,8 @@
     "license": "CC0",
     "description": "免费飞弹、暗球、范围三个预设；付费 21 预设未持有。",
     "status": "installed",
-    "directory": "res://vendor/binbun_dark"
+    "directory": "res://vendor/binbun_dark",
+    "author": "Binbun"
   },
   {
     "id": "berry_hit_free",
@@ -277,7 +304,8 @@
     "license": "可商用 / 可修改；禁止资源包再分发、NFT 和模型训练",
     "description": "仅免费 Crimson Slash 样例；页面的 30 效果完整版需付费，未持有。",
     "status": "installed",
-    "directory": "res://vendor/berry_hit_free"
+    "directory": "res://vendor/berry_hit_free",
+    "author": "berrryhibiscus"
   },
   {
     "id": "soygus_tornado",
@@ -287,7 +315,8 @@
     "license": "可商用 / 可修改；禁止再分发与重新打包",
     "description": "原始蓝色龙卷风、毒雾龙卷风和火龙卷风，拆分作者示例中的三个节点预览。",
     "status": "installed",
-    "directory": "res://vendor/soygus_tornado"
+    "directory": "res://vendor/soygus_tornado",
+    "author": "soygus"
   },
   {
     "id": "starter_lite",
@@ -297,7 +326,8 @@
     "license": "作者页面 CC0 / MIT",
     "description": "9 个免费原始效果：命中、拾取、营火、爆炸、枪口和移动反馈；支持调色板和整体缩放。",
     "status": "installed",
-    "directory": "res://vendor/starter_lite"
+    "directory": "res://vendor/starter_lite",
+    "author": "AlekseiRamirov"
   },
   {
     "id": "magic_circles_free",
@@ -307,7 +337,8 @@
     "license": "CC BY 4.0 · 必须署名",
     "description": "原生 Godot ZIP：八种元素 × 魔法阵 / 波纹，共 16 个预设；其余种类的 Shader 不在免费包内。",
     "status": "installed",
-    "directory": "res://vendor/magic_circles_free"
+    "directory": "res://vendor/magic_circles_free",
+    "author": "heyheythere"
   },
   {
     "id": "arcflux_lite",
@@ -317,7 +348,8 @@
     "license": "可商用；禁止资源包再分发",
     "description": "蓝色分叉闪电与红色激光两个原始预设；支持长度、分支、闪烁、余辉、碰撞和调色板。",
     "status": "installed",
-    "directory": "res://vendor/arcflux_lite"
+    "directory": "res://vendor/arcflux_lite",
+    "author": "gennai"
   },
   {
     "id": "soygus_shield",
@@ -327,7 +359,8 @@
     "license": "可商用 / 可修改；禁止再分发与重新打包",
     "description": "作者三个原始护盾节点，保留网格、Shader 和粒子。",
     "status": "installed",
-    "directory": "res://vendor/soygus_shield"
+    "directory": "res://vendor/soygus_shield",
+    "author": "soygus"
   },
   {
     "id": "gap_godot_projectiles_1",
@@ -337,7 +370,8 @@
     "license": "付费 · 未持有；以购买许可为准",
     "description": "30 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_godot_projectiles_2",
@@ -347,7 +381,8 @@
     "license": "付费 · 未持有；以购买许可为准",
     "description": "60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_godot_projectiles_3",
@@ -357,7 +392,8 @@
     "license": "付费 · 未持有；以购买许可为准",
     "description": "60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_godot_magic_1",
@@ -367,7 +403,8 @@
     "license": "付费 · 未持有；以购买许可为准",
     "description": "31 个 Godot 魔法技能：光束、治疗、地面攻击、彗星、冲击和增益，售价 $20。未持有源文件，待导入。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_godot_magic_2",
@@ -377,7 +414,8 @@
     "license": "付费 · 未持有；以购买许可为准",
     "description": "50 个 Godot 范围技能：增益、减益、箭雨、陨石、彗星与冲击，售价 $20。未持有源文件，待导入。",
     "status": "pending",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "laplahce_projectiles",
@@ -387,7 +425,8 @@
     "license": "未导入",
     "description": "提供 Unity URP / HDRP 资产和 Windows Demo，没有 Godot 场景。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "laplahce"
   },
   {
     "id": "gap_projectiles_4",
@@ -397,7 +436,8 @@
     "license": "未导入",
     "description": "Unity Shader Graph / URP / HDRP / BIRP 版；在作者官网当前 Godot 产品列表中未找到对应 Vol.4。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_projectiles_5",
@@ -407,7 +447,8 @@
     "license": "未导入",
     "description": "当前交付为 Unity；官网 Godot 飞弹目前核实到 Vol.1–3，未找到 Vol.5。旧评论中的移植承诺不代表可下载交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_magic_3",
@@ -417,7 +458,8 @@
     "license": "未导入",
     "description": "Unity 和 Niagara 版本；官网 Godot 技能目前核实到 Vol.1–2，未找到 Vol.3。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_loot_1",
@@ -427,7 +469,8 @@
     "license": "未导入",
     "description": "Unity HDRP / URP / BIRP 资产；未找到 Godot 交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "gap_sword_1",
@@ -437,7 +480,8 @@
     "license": "未导入",
     "description": "Unity HDRP / URP / BIRP 资产；作者系列目录核实到此 Vol.1，未找到 Godot 剑斩系列交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "Gabriel Aguiar Prod."
   },
   {
     "id": "wallcoeur_fire",
@@ -447,6 +491,7 @@
     "license": "未导入",
     "description": "交付 .unitypackage 和 Unity URP Prefab，不能直接载入 Godot。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": ""
+    "directory": "",
+    "author": "wallcoeur"
   }
 ]

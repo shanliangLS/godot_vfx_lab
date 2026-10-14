@@ -5,6 +5,32 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 VENDOR = ROOT / "vendor"
+AUTHOR_GROUPS = {
+    "AlekseiRamirov": ("starter_lite",),
+    "berrryhibiscus": ("berry_hit_free", "flame_wizard"),
+    "Binbun": ("binbun_hit", "binbun_battle", "binbun_beam", "binbun_projectiles", "binbun_flame", "binbun_electric", "binbun_loot", "binbun_status", "binbun_elemental", "binbun_dark", "magic_area"),
+    "Bukkbeek": ("effectblocks",),
+    "celyk": ("gpu_trail",),
+    "Dev Quest": ("slash_shader",),
+    "Effekseer": ("effekseer",),
+    "Gabriel Aguiar Prod.": ("gap_godot_projectiles_1", "gap_godot_projectiles_2", "gap_godot_projectiles_3", "gap_godot_magic_1", "gap_godot_magic_2", "gap_projectiles_4", "gap_projectiles_5", "gap_magic_3", "gap_loot_1", "gap_sword_1"),
+    "GameIdea Studio": ("gameidea_fireball", "gameidea_beam"),
+    "gennai": ("arcflux_lite",),
+    "Godot Engine": ("official_particles",),
+    "heyheythere": ("magic_circles_free",),
+    "HighPixel": ("oga_hit",),
+    "inspiredsloth": ("inspired_projectiles",),
+    "Kenney": ("kenney",),
+    "laplahce": ("laplahce_projectiles",),
+    "metanoia83": ("motion_trail",),
+    "MinSeok Hong": ("fab_textures",),
+    "REEBOO": ("reeboo_free", "reeboo"),
+    "soygus": ("soygus_tornado", "soygus_shield"),
+    "wallcoeur": ("wallcoeur_fire",),
+    "WhyNilliana": ("simple_laser",),
+}
+SOURCE_AUTHORS = {source_id: author for author, source_ids in AUTHOR_GROUPS.items() for source_id in source_ids}
+
 PACKS = {
     "binbun_hit": ("Binbun · Hit FX", "受击 / 冲击", "hit", "https://binbun3d.itch.io/hit-fx", "CC0", "6 个免费命中预设；可调三色、噪声、边缘、动画与音频。"),
     "binbun_battle": ("Binbun · Battle FX", "攻击 / 刀光", "slash", "https://binbun3d.itch.io/battle-fx", "CC0", "免费基础预设：挥砍、飞行斩击、爪击、蓄力和护盾。"),
@@ -146,6 +172,8 @@ def build():
         for source in json.loads(custom_file.read_text(encoding="utf-8")):
             sources.append(source["source"])
             entries.extend(source["entries"])
+    for source in sources:
+        source["author"] = source.get("author") or SOURCE_AUTHORS.get(source["id"], "作者未注明")
     (data / "catalog.json").write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
     (data / "sources.json").write_text(json.dumps(sources, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Catalog:", len(entries), "effects;", len(sources), "sources")

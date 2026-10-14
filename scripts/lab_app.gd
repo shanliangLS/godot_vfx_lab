@@ -384,15 +384,45 @@ func _apply_template(index: int) -> void:
 	stage.replay()
 	footer.text = "已应用实验室模板「%s」· 模板基于当前免费资源，不代表付费预设" % preset.name
 
+func _ordered_sources() -> Array:
+	var ordered := sources.duplicate()
+	var status_order := {"installed": 0, "pending": 1, "excluded": 2}
+	ordered.sort_custom(func(a: Dictionary, b: Dictionary) -> bool:
+		var a_status: int = status_order.get(a.status, 3)
+		var b_status: int = status_order.get(b.status, 3)
+		if a_status != b_status:
+			return a_status < b_status
+		var author_order := str(a.get("author", "作者未注明")).naturalnocasecmp_to(str(b.get("author", "作者未注明")))
+		if author_order != 0:
+			return author_order < 0
+		var a_title: String = str(a.name).split(" · ", true, 1)[-1]
+		var b_title: String = str(b.name).split(" · ", true, 1)[-1]
+		var title_order := a_title.naturalnocasecmp_to(b_title)
+		if title_order != 0:
+			return title_order < 0
+		return str(a.id).naturalnocasecmp_to(str(b.id)) < 0
+	)
+	return ordered
+
 func _build_source_page() -> void:
 	source_list.add_child(LabTheme.label("资源与授权", 28))
-	source_list.add_child(LabTheme.label("实际安装状态、原始来源和后续接入位置。", 14, LabTheme.MUTED))
+	source_list.add_child(LabTheme.label("按已接入、待导入、不适配分区；区内按作者 A–Z 分组，再按资源名称排序。", 14, LabTheme.MUTED))
 	var tools := HBoxContainer.new()
 	source_list.add_child(tools)
 	tools.add_child(LabTheme.button("导入项目场景 / JSON 预设", func(): import_dialog.popup_centered_ratio()))
 	tools.add_child(LabTheme.button("打开项目目录", func(): OS.shell_open(ProjectSettings.globalize_path("res://"))))
-	for source in sources:
+	var ordered := _ordered_sources()
+	var last_status := ""
+	for source in ordered:
+		if source.status != last_status:
+			last_status = source.status
+			var section_name: String = {"installed": "已接入", "pending": "待导入", "excluded": "不适配"}.get(last_status, last_status)
+			var count := ordered.filter(func(item: Dictionary): return item.status == last_status).size()
+			var section := LabTheme.label("%s · %d 项" % [section_name, count], 22)
+			section.custom_minimum_size.y = 48
+			source_list.add_child(section)
 		var card := PanelContainer.new()
+		card.set_meta("source_id", source.id)
 		source_list.add_child(card)
 		var column := VBoxContainer.new()
 		card.add_child(column)
@@ -404,6 +434,7 @@ func _build_source_page() -> void:
 		var status_text: String = {"installed": "已接入 · 可运行", "pending": "待导入 · 未持有", "excluded": "不适配 · 已排除"}.get(source.status, source.status)
 		row.add_child(LabTheme.label(status_text, 12, LabTheme.ACCENT if source.status == "installed" else (LabTheme.MUTED if source.status == "excluded" else LabTheme.GOLD)))
 		row.add_child(LabTheme.button("原始来源 ↗", func(): OS.shell_open(source.url)))
+		column.add_child(LabTheme.label("作者：%s" % source.get("author", "作者未注明"), 13, LabTheme.ACCENT))
 		var description := LabTheme.label(source.description, 14, LabTheme.MUTED)
 		description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		column.add_child(description)
