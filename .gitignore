@@ -1,0 +1,8 @@
+.godot/
+.cache/
+downloads/
+artifacts/
+*.log
+*.tmp
+__pycache__/
+.DS_Store
