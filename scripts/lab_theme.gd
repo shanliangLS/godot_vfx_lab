@@ -33,6 +33,7 @@ static func build() -> Theme:
 		result.set_stylebox("pressed", cls, box(Color("1b4449"), 7, ACCENT))
 		result.set_stylebox("focus", cls, box(Color.TRANSPARENT, 7, ACCENT))
 	result.set_stylebox("panel", "PanelContainer", box(PANEL))
+	result.set_stylebox("panel", "PopupPanel", box(PANEL, 10, Color("40627b")))
 	result.set_stylebox("normal", "LineEdit", box(Color("0e1727"), 6))
 	result.set_stylebox("focus", "LineEdit", box(Color("0e1727"), 6, ACCENT))
 	result.set_stylebox("panel", "Tree", box(Color("0f1828"), 7))
@@ -41,6 +42,12 @@ static func build() -> Theme:
 	result.set_constant("separation", "VBoxContainer", 10)
 	result.set_constant("separation", "HBoxContainer", 10)
 	return result
+
+static func configure_color_picker(button: ColorPickerButton) -> void:
+	# Popup windows need their own opaque panel, including gradient point pickers.
+	var popup := button.get_popup()
+	popup.transparent_bg = false
+	popup.add_theme_stylebox_override("panel", box(PANEL, 10, Color("40627b")))
 
 static func label(text: String, size: int = 15, color: Color = TEXT) -> Label:
 	var result := Label.new()

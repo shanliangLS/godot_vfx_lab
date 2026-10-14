@@ -218,6 +218,7 @@ func _add_editor(p: Dictionary) -> void:
 			color.color = value if value is Color else Color.WHITE
 			color.color_changed.connect(func(next: Color): write(p, next))
 			column.add_child(color)
+			LabTheme.configure_color_picker(color)
 		TYPE_VECTOR2, TYPE_VECTOR3, TYPE_VECTOR4:
 			var row := HBoxContainer.new()
 			column.add_child(row)
@@ -282,6 +283,7 @@ func _resource_editor(column: VBoxContainer, p: Dictionary, value: Variant) -> v
 			button.tooltip_text = "渐变点 %.2f" % value.get_offset(index)
 			button.color_changed.connect(func(next: Color): value.set_color(index, next); parameter_changed.emit(p.id, value))
 			row.add_child(button)
+			LabTheme.configure_color_picker(button)
 		return
 	if value is Curve:
 		for index in value.point_count:
