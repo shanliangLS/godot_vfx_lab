@@ -3,6 +3,7 @@ class_name PropertyInspector extends VBoxContainer
 signal parameter_changed(key: String, value: Variant)
 
 var root_effect: Node3D
+var preview_stage: PreviewStage
 var groups: Array[Dictionary] = []
 var all_parameters: Array[Dictionary] = []
 var selected := 0
@@ -137,10 +138,18 @@ func _add_resource(resource: Resource, title: String, id: String, depth: int) ->
 func read(p: Dictionary) -> Variant:
 	if not is_instance_valid(p.target):
 		return null
+	if p.key == "speed_scale" and preview_stage and not preview_stage.playing and preview_stage.paused_speeds.has(p.target.get_instance_id()):
+		return preview_stage.paused_speeds[p.target.get_instance_id()]
 	return p.target.get_shader_parameter(p.key) if p.shader else p.target.get(p.key)
 
 func write(p: Dictionary, value: Variant) -> void:
 	if not is_instance_valid(p.target):
+		return
+	if p.key == "auto_free":
+		value = false
+	if p.key == "speed_scale" and preview_stage and not preview_stage.playing and preview_stage.paused_speeds.has(p.target.get_instance_id()):
+		preview_stage.paused_speeds[p.target.get_instance_id()] = value
+		parameter_changed.emit(p.id, value)
 		return
 	if p.shader:
 		p.target.set_shader_parameter(p.key, value)
@@ -182,6 +191,9 @@ func _add_editor(p: Dictionary) -> void:
 			var check := CheckButton.new()
 			check.text = "启用 / 禁用"
 			check.button_pressed = bool(value)
+			if p.key == "auto_free":
+				check.disabled = true
+				check.text = "预览中固定关闭"
 			check.toggled.connect(func(next: bool): write(p, next))
 			column.add_child(check)
 		TYPE_INT, TYPE_FLOAT:

@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bqs8hdalvlp65"
-path="res://.godot/imported/noise_soft.png-44e9d60c9c7df3b9e4125ad981f0a917.ctex"
+path="res://.godot/imported/noise_soft.png-a080926ce82d6068bd7fc1d22e962091.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/reeboo_vfx/textures/noise_soft.png"
-dest_files=["res://.godot/imported/noise_soft.png-44e9d60c9c7df3b9e4125ad981f0a917.ctex"]
+source_file="res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/textures/noise_soft.png"
+dest_files=["res://.godot/imported/noise_soft.png-a080926ce82d6068bd7fc1d22e962091.ctex"]
 
 [params]
 

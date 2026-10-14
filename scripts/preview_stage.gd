@@ -28,6 +28,7 @@ var grid: MeshInstance3D
 var dummy: Node3D
 var last_repeat := 0.0
 var material_records: Array[Dictionary] = []
+var paused_speeds: Dictionary = {}
 
 func _ready() -> void:
 	stretch = true
@@ -114,6 +115,7 @@ func load_effect(entry: Dictionary) -> void:
 	effect_scale = 1
 	playing = true
 	material_records.clear()
+	paused_speeds.clear()
 	dummy.visible = entry.get("mode", "") == "hit"
 	target.visible = entry.get("mode", "") == "beam"
 	var path: String = entry.get("path", "")
@@ -134,6 +136,8 @@ func load_effect(entry: Dictionary) -> void:
 	if not effect:
 		return
 	effect.name = "Effect"
+	if "auto_free" in effect:
+		effect.set("auto_free", false)
 	if entry.get("id", "") == "motion_trail":
 		var material := StandardMaterial3D.new()
 		material.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
@@ -234,17 +238,31 @@ func replay() -> void:
 			node.call("play")
 
 func set_playing(value: bool) -> void:
+	var was_playing := playing
 	playing = value
+	Engine.time_scale = 1.0 if value else 0.0
 	viewport.render_target_update_mode = SubViewport.UPDATE_ALWAYS if value else SubViewport.UPDATE_DISABLED
 	if is_instance_valid(effect):
 		effect.process_mode = Node.PROCESS_MODE_INHERIT if value else Node.PROCESS_MODE_DISABLED
 		for node in _nodes(effect):
 			if node is GPUParticles3D or node is CPUParticles3D or node is AnimationPlayer:
-				node.speed_scale = playback_speed if value else 0.0
+				var id := node.get_instance_id()
+				if not value and was_playing:
+					paused_speeds[id] = node.speed_scale
+					node.speed_scale = 0.0
+				elif value and not was_playing:
+					node.speed_scale = paused_speeds.get(id, node.speed_scale)
+		if value: paused_speeds.clear()
 
 func set_playback_speed(value: float) -> void:
+	var ratio := value / maxf(playback_speed, 0.01)
 	playback_speed = value
-	set_playing(playing)
+	if is_instance_valid(effect):
+		for node in _nodes(effect):
+			if node is GPUParticles3D or node is CPUParticles3D or node is AnimationPlayer:
+				var id := node.get_instance_id()
+				if playing: node.speed_scale *= ratio
+				else: paused_speeds[id] = paused_speeds.get(id, node.speed_scale) * ratio
 
 func set_effect_scale(value: float) -> void:
 	effect_scale = value

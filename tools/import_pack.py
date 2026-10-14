@@ -60,6 +60,7 @@ for scene in scenes:
 if not entries:
     parser.error("no suitable 3D scenes found")
 custom_file = ROOT / "data" / "custom_sources.json"
+custom_file.parent.mkdir(parents=True, exist_ok=True)
 custom = json.loads(custom_file.read_text(encoding="utf-8")) if custom_file.exists() else []
 custom.append({"source": base, "entries": entries})
 custom_file.write_text(json.dumps(custom, ensure_ascii=False, indent=2), encoding="utf-8")

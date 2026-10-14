@@ -1,6 +1,9 @@
 class_name ParameterDictionary extends RefCounted
 
 const TERMS := {
+	"auto_free": ["播放后自动销毁", "预览器固定关闭自动销毁，以便持续调参和重播；实际游戏可开启。"],
+	"time_scale": ["特效时间倍率", "作者控制器的整体播放速度。"],
+	"replay_button": ["重播效果", "调用作者提供的重播操作。"],
 	"primary_color": ["主色", "效果主体的颜色，实时传递到作者控制器的材质。"],
 	"secondary_color": ["辅助色", "光晕或中间层颜色。"],
 	"tertiary_color": ["第三层颜色", "边缘和细节层的颜色。"],

@@ -8,7 +8,7 @@ extends Node3D
 ## Looping effects (projectiles, auras, shields) run until you call stop() or free them.
 ##
 ## Spawn one from code:
-##     var fx := VFXEffect.spawn(preload("res://addons/reeboo_vfx/effects/explosion.tscn"), get_tree().current_scene, hit_position)
+##     var fx := VFXEffect.spawn(preload("res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/explosion.tscn"), get_tree().current_scene, hit_position)
 ##
 ## Per-layer timing lives in node metadata, editable in the Inspector:
 ##     vfx_delay   (float) seconds before a particle layer or light starts

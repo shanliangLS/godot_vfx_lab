@@ -1,8 +1,8 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://addons/reeboo_vfx/vfx_effect.gd" id="1_xvp3y"]
-[ext_resource type="Shader" path="res://addons/reeboo_vfx/shaders/vfx_add.gdshader" id="2_1b378"]
-[ext_resource type="Texture2D" path="res://addons/reeboo_vfx/textures/noise_soft.png" id="3_5xwui"]
+[ext_resource type="Script" path="res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/vfx_effect.gd" id="1_xvp3y"]
+[ext_resource type="Shader" path="res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/shaders/vfx_add.gdshader" id="2_1b378"]
+[ext_resource type="Texture2D" path="res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/textures/noise_soft.png" id="3_5xwui"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cd6ea"]
 render_priority = 0

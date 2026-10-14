@@ -48,4 +48,9 @@ Compatibility 的粒子碰撞、吸引器、拖尾等功能有限；主要验证
 GPU 运行时生成分类截图与 artifacts/qa_report.json；检查日志中的 SCRIPT ERROR / ERROR 后才可判断通过。
 上游兼容修复见 docs/UPSTREAM_ADAPTATIONS.md。
 
+当前目录提供 50 个预览项，来自 11 个已接入来源：Binbun 的 Hit / Battle / Beam / Magic Projectiles / Flame，inspiredsloth Vol.1，GPUTrail，Motion Trail，Godot 官方粒子示例，Simple Laser Shader 和 REEBOO 免费样例。
+火球试飞是原 Flame 节点在实验室轨迹中的演示；程序激光使用作者 Shader 与实验室载体；官方示例按原测试节点分组。界面明确标注来源。
+参数标题旁的「参数清单」可导出当前效果的英文名、中文名、说明、类型、范围提示和当前值。
+预设保存数值、颜色、向量、开关、渐变和曲线；外部纹理与音频文件需要保留在原位置并单独管理。
+
 本地 Git 未连接远程。发布项目或上传仓库前，需要按各资源的原始许可处理第三方文件，特别是后续自行购买的资源。

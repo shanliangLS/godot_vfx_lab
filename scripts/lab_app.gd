@@ -58,6 +58,8 @@ func _ready() -> void:
 		select_entry(catalog[first])
 	if "--qa" in OS.get_cmdline_user_args():
 		call_deferred("_run_qa")
+	elif "--smoke" in OS.get_cmdline_user_args():
+		call_deferred("_run_smoke")
 
 func _build_ui() -> void:
 	var background := ColorRect.new()
@@ -99,6 +101,11 @@ func _build_ui() -> void:
 		button.button_pressed = text == category
 		button.pressed.connect(_switch_category.bind(text))
 		button.custom_minimum_size.y = 33
+		for state in ["normal", "hover", "pressed"]:
+			var style: StyleBoxFlat = theme.get_stylebox(state, "Button").duplicate()
+			style.content_margin_top = 6
+			style.content_margin_bottom = 6
+			button.add_theme_stylebox_override(state, style)
 		nav_buttons.append(button)
 		left_column.add_child(button)
 	left_column.add_child(HSeparator.new())
@@ -208,6 +215,7 @@ func _build_ui() -> void:
 	preset_row.add_child(preset_picker)
 	preset_row.add_child(LabTheme.button("重置", _reset_current))
 	inspector = PropertyInspector.new()
+	inspector.preview_stage = stage
 	inspector.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	right_col.add_child(inspector)
 	inspector.parameter_changed.connect(func(_key: String, _value: Variant):
@@ -345,6 +353,8 @@ func _reset_current() -> void:
 
 func _apply_template(index: int) -> void:
 	if current.is_empty(): return
+	speed_control.value = 1.0
+	scale_control.value = 1.0
 	inspector.restore(baselines[current.id])
 	var preset: Dictionary = PRESETS[index]
 	scale_control.value = preset.scale
@@ -425,12 +435,12 @@ func _load_preset() -> void:
 	if record is Dictionary: _restore_record(record)
 
 func _restore_record(record: Dictionary) -> void:
-	inspector.restore(record.parameters)
 	if record.has("stage"):
 		scale_control.value = float(record.stage.scale)
 		speed_control.value = float(record.stage.speed)
 		stage.motion_speed = float(record.stage.motion_speed)
 		stage.path_radius = float(record.stage.path_radius)
+	inspector.restore(record.parameters)
 	footer.text = "已加载「%s」" % record.name
 
 func _export_preset() -> void:
@@ -502,3 +512,8 @@ func _run_qa() -> void:
 	var qa: Node = load("res://tools/qa.gd").new()
 	add_child(qa)
 	qa.run(self)
+
+func _run_smoke() -> void:
+	var smoke: Node = load("res://tools/smoke.gd").new()
+	add_child(smoke)
+	smoke.run(self)

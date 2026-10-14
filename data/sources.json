@@ -100,6 +100,16 @@
     "directory": "res://vendor/simple_laser"
   },
   {
+    "id": "reeboo_free",
+    "name": "REEBOO · 免费样例",
+    "category": "攻击 / 刀光",
+    "url": "https://reebo0.itch.io/stylized-vfx-godot-free",
+    "license": "项目可商用；禁止资源再分发",
+    "description": "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。",
+    "status": "installed",
+    "directory": "res://vendor/reeboo_free"
+  },
+  {
     "id": "effectblocks",
     "name": "EffectBlocks",
     "category": "综合资源",

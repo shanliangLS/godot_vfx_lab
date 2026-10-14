@@ -16,6 +16,7 @@ PACKS = {
     "motion_trail": ("metanoia83 · Motion Trail", "拖尾 / 插件", "trail", "https://github.com/metanoia83/Godot-4.0-Motion-Trail", "MIT", "CPU 带状拖尾；起末宽度、寿命、颜色与插值方式。"),
     "official_particles": ("Godot 官方 · 3D Particles", "官方 / 粒子", "static", "https://godotengine.org/asset-library/asset/2745", "MIT", "官方示例的原始节点：火焰、烟雾、力场、爆炸、吸引器、碰撞、拖尾和子发射器。"),
     "simple_laser": ("Godot Shaders · Simple Laser", "激光 / 射线", "beam", "https://godotshaders.com/shader/simple-laser-shader-sls/", "代码 CC0", "作者激光 Shader + 实验室圆柱载体；可调核心、光晕、脉冲和噪声。"),
+    "reeboo_free": ("REEBOO · 免费样例", "攻击 / 刀光", "slash", "https://reebo0.itch.io/stylized-vfx-godot-free", "项目可商用；禁止资源再分发", "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。"),
 }
 PENDING = [
     ("effectblocks", "EffectBlocks", "综合资源", "https://bukkbeek.itch.io/effectblocks", "付费 · 未持有", "100+ 成品 VFX。缺少购买后的源文件；免费可执行 Demo 不能代替源场景。"),
@@ -45,6 +46,8 @@ def normalize(key):
         base = folder / "FlameFXFree"
     elif key == "binbun_hit":
         base = folder / "HitFXFree"
+    elif key == "reeboo_free":
+        base = folder / "REEBOO_Stylized_VFX_Free_Sample"
     else:
         base = folder
     prefix = "res://" + base.relative_to(ROOT).as_posix() + "/"
@@ -68,8 +71,8 @@ def normalize(key):
             f.write_text(new, encoding="utf-8")
             changes.append(f.relative_to(folder).as_posix())
     marker.write_text(json.dumps({"relocation_prefix": prefix, "class_names": classes, "changed_files": changes, "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."}, indent=2), encoding="utf-8")
-    nested = folder / "project.godot"
-    if nested.exists(): nested.rename(folder / "project.godot.upstream")
+    for nested in folder.rglob("project.godot"):
+        nested.rename(nested.with_suffix(".godot.upstream"))
 
 
 def build():
@@ -112,6 +115,10 @@ def build():
             label = label.replace("projectile_", "成品弹体 · ").replace("swing", "挥砍").replace("slash", "飞行斩击").replace("claw", "爪击").replace("charge", "蓄力").replace("shield", "护盾").replace("fire", "火焰")
             label = label.replace("vfx_big_impact_", "大型冲击 · ").replace("vfx_impact_", "冲击爆发 · ").replace("vfx_hit_", "命中爆闪 · ")
             entry.update(id=key + "/" + stem, pack_id=key, label=label, path="res://" + scene.relative_to(ROOT).as_posix(), mode=mode)
+            if key == "reeboo_free":
+                entry["label"] = {"hit_spark":"成品 · 命中火花", "slash":"成品 · 剑斩", "pickup_sparkle":"成品 · 拾取闪光"}[stem]
+                entry["mode"] = {"hit_spark":"hit", "slash":"slash", "pickup_sparkle":"area"}[stem]
+                entry["category"] = {"hit_spark":"受击 / 冲击", "slash":"攻击 / 刀光", "pickup_sparkle":"魔法 / 飞弹"}[stem]
             if "shield" in stem or "charge" in stem:
                 entry["mode"] = "static"
             if key in ["gpu_trail", "motion_trail"]:

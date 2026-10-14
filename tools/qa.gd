@@ -25,10 +25,12 @@ func run(app: Control) -> void:
 		check(is_equal_approx(app.scale_control.value, 0.95), "Preset scale " + entry.id)
 		app.inspector.restore(before)
 		app.stage.set_playing(false)
+		var paused_snapshot: Dictionary = app.inspector.snapshot()
 		var time: float = app.stage.elapsed
 		await get_tree().process_frame
 		check(is_equal_approx(app.stage.elapsed, time), "Pause " + entry.id)
 		app.stage.set_playing(true)
+		check(paused_snapshot == app.inspector.snapshot(), "Pause preserves parameter values " + entry.id)
 		app._apply_template(3)
 		app.stage.replay()
 		app.inspector.search.text = "颜色"
@@ -43,16 +45,16 @@ func run(app: Control) -> void:
 		var restored: Variant = JSON.parse_string(JSON.stringify(record))
 		check(restored is Dictionary and restored.parameters.size() > 0, "Serialize " + entry.id)
 		app._restore_record(restored)
-		if not photographed.has(entry.category) and DisplayServer.get_name() != "headless":
+		if not photographed.has(entry.pack_id) and DisplayServer.get_name() != "headless":
 			app._switch_category(entry.category)
 			app.select_entry(entry)
 			app._apply_template(3)
-			await get_tree().create_timer(0.35).timeout
+			await get_tree().create_timer(1.6 if entry.mode == "trail" else 0.25).timeout
 			await RenderingServer.frame_post_draw
 			var path: String = "res://artifacts/" + entry.pack_id + ".png"
 			var image: Image = app.get_viewport().get_texture().get_image()
 			check(image.save_png(path) == OK, "Screenshot " + entry.id)
-			photographed[entry.category] = true
+			photographed[entry.pack_id] = true
 			screenshots.append(path)
 		report.append({"id": entry.id, "parameters": app.inspector.all_parameters.size(), "groups": app.inspector.groups.size()})
 		print("QA_EFFECT ", entry.id, " ", app.inspector.all_parameters.size(), " params")

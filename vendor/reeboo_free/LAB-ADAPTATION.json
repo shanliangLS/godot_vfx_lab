@@ -1,0 +1,13 @@
+{
+  "relocation_prefix": "res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/",
+  "class_names": {},
+  "changed_files": [
+    "REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/vfx_effect.gd",
+    "REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/hit_spark.tscn",
+    "REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/pickup_sparkle.tscn",
+    "REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/slash.tscn",
+    "REEBOO_Stylized_VFX_Free_Sample/demo/demo.gd",
+    "REEBOO_Stylized_VFX_Free_Sample/demo/demo.tscn"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

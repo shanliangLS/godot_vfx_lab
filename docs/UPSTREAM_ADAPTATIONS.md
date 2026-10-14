@@ -11,3 +11,6 @@
 - GPUTrail 的 _get_property_list() 显式返回 Array[Dictionary]，兼容 Godot 4.7.1 的类型检查。
 
 预览舞台的运动轨迹、配色模板、训练假人和 UI 属于本项目。它们不冒充作者的付费预设。
+
+官方示例预览会从原始 Testers 子节点中取出各测试组，放到实验室舞台，不运行原 Demo 的镜头和 GUI。
+REEBOO 免费样例的 auto_free 在预览中固定关闭，保证参数面板始终绑定同一个可重播实例。

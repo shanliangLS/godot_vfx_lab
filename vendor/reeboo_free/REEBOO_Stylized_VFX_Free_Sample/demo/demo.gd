@@ -5,8 +5,8 @@ extends Node3D
 ## Recording mode (used for the store previews): pass "++ --fx=explosion" on the command line
 ## to show a single effect on repeat with no UI.
 
-const EFFECT_DIR := "res://addons/reeboo_vfx/effects/"
-const GROUND_SHADER := preload("res://demo/ground.gdshader")
+const EFFECT_DIR := "res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/"
+const GROUND_SHADER := preload("res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/demo/ground.gdshader")
 ## The free sample shows a link to the full pack (hidden when every effect is present).
 const FULL_PACK_EFFECTS := 25
 const FULL_PACK_URL := "https://reebo0.itch.io/stylized-vfx-godot"

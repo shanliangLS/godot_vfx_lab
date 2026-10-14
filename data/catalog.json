@@ -670,5 +670,47 @@
     "label": "程序激光 · 原作者 Shader",
     "path": "res://scenes/adapters/simple_laser.tscn",
     "mode": "beam"
+  },
+  {
+    "id": "reeboo_free/hit_spark",
+    "name": "REEBOO · 免费样例",
+    "category": "受击 / 冲击",
+    "url": "https://reebo0.itch.io/stylized-vfx-godot-free",
+    "license": "项目可商用；禁止资源再分发",
+    "description": "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。",
+    "status": "installed",
+    "directory": "res://vendor/reeboo_free",
+    "pack_id": "reeboo_free",
+    "label": "成品 · 命中火花",
+    "path": "res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/hit_spark.tscn",
+    "mode": "hit"
+  },
+  {
+    "id": "reeboo_free/pickup_sparkle",
+    "name": "REEBOO · 免费样例",
+    "category": "魔法 / 飞弹",
+    "url": "https://reebo0.itch.io/stylized-vfx-godot-free",
+    "license": "项目可商用；禁止资源再分发",
+    "description": "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。",
+    "status": "installed",
+    "directory": "res://vendor/reeboo_free",
+    "pack_id": "reeboo_free",
+    "label": "成品 · 拾取闪光",
+    "path": "res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/pickup_sparkle.tscn",
+    "mode": "area"
+  },
+  {
+    "id": "reeboo_free/slash",
+    "name": "REEBOO · 免费样例",
+    "category": "攻击 / 刀光",
+    "url": "https://reebo0.itch.io/stylized-vfx-godot-free",
+    "license": "项目可商用；禁止资源再分发",
+    "description": "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。",
+    "status": "installed",
+    "directory": "res://vendor/reeboo_free",
+    "pack_id": "reeboo_free",
+    "label": "成品 · 剑斩",
+    "path": "res://vendor/reeboo_free/REEBOO_Stylized_VFX_Free_Sample/addons/reeboo_vfx/effects/slash.tscn",
+    "mode": "slash"
   }
 ]
