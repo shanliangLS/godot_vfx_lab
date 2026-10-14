@@ -68,7 +68,7 @@ def fetch(key, allow_assets=False):
         result = {"id": key, "status": "excluded", "reason": "Download contains no native Godot scripts, scenes or shaders", "files": names}
         (CACHE / (key + "_inspection.json")).write_text(json.dumps(result, indent=2), encoding="utf-8")
         return result
-    digest = safe_extract(blob, folder)
+    digest = safe_extract(blob, folder, ("Unity",) if key == "glyph_free" else ())
     record = {"id": key, "url": url, "file": filename, "sha256": digest, "license": license_name, "fetched": "2026-10-14", "native_godot_files": len(native)}
     if allow_assets:
         record["importable_assets"] = len(assets)

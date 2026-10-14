@@ -66,7 +66,7 @@ def inspect_page(url):
     print("DOWNLOAD LINKS", re.findall(r'.{0,200}(?:upload_id|file_link|data-upload_id).{0,350}', download_page))
 
 
-def safe_extract(blob, folder):
+def safe_extract(blob, folder, excluded_parts=()):
     folder.mkdir(parents=True, exist_ok=True)
     archive = CACHE / (folder.name + ".zip")
     archive.write_bytes(blob)
@@ -75,7 +75,9 @@ def safe_extract(blob, folder):
             target = (folder / item.filename).resolve()
             if folder.resolve() not in target.parents and target != folder.resolve():
                 raise ValueError("Unsafe archive path")
-        z.extractall(folder)
+        for item in z.infolist():
+            if not any(part in excluded_parts for part in Path(item.filename).parts):
+                z.extract(item, folder)
     return hashlib.sha256(blob).hexdigest()
 
 
