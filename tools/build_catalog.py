@@ -41,6 +41,8 @@ def normalize(key):
         base = folder / "BattleFXFree"
     elif key == "binbun_flame":
         base = folder / "FlameFXFree"
+    elif key == "binbun_hit":
+        base = folder / "HitFXFree"
     else:
         base = folder
     prefix = "res://" + base.relative_to(ROOT).as_posix() + "/"
@@ -58,6 +60,8 @@ def normalize(key):
         new = re.sub(r'\s+uid="uid://[^"]+"', "", new)
         for name, replacement in classes.items():
             new = re.sub(r'\b' + name + r'\b', replacement, new)
+        for name, replacement in classes.items():
+            new = new.replace(replacement + ".gd", name + ".gd")
         if new != old:
             f.write_text(new, encoding="utf-8")
             changes.append(f.relative_to(folder).as_posix())

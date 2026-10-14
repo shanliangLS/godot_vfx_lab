@@ -1,9 +1,9 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://vendor/binbun_flame/FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/script/LabBinbunFlameVFXFireBB.gd" id="1_m3gkq"]
+[ext_resource type="Script" path="res://vendor/binbun_flame/FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/script/VFXFireBB.gd" id="1_m3gkq"]
 [ext_resource type="Shader" path="res://vendor/binbun_flame/FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/shader/fire_particle.gdshader" id="2_m3gkq"]
 [ext_resource type="Shader" path="res://vendor/binbun_flame/FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/shader/fire_core.gdshader" id="3_exy6d"]
-[ext_resource type="Script" path="res://vendor/binbun_flame/FlameFXFree/assets/BinbunVFX_Vol2/shared/script/LabBinbunFlameVFXOmniLightBB.gd" id="4_m3gkq"]
+[ext_resource type="Script" path="res://vendor/binbun_flame/FlameFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd" id="4_m3gkq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_wbfbh"]
 noise_type = 2

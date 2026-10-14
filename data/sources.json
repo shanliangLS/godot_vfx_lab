@@ -1,5 +1,15 @@
 [
   {
+    "id": "binbun_hit",
+    "name": "Binbun · Hit FX",
+    "category": "受击 / 冲击",
+    "url": "https://binbun3d.itch.io/hit-fx",
+    "license": "CC0",
+    "description": "6 个免费命中预设；可调三色、噪声、边缘、动画与音频。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_hit"
+  },
+  {
     "id": "binbun_battle",
     "name": "Binbun · Battle FX",
     "category": "攻击 / 刀光",

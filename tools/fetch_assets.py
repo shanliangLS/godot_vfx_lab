@@ -22,6 +22,7 @@ PACKS = {
     "binbun_projectiles": ("https://binbun3d.itch.io/magic-projectiles-vfx", "MagicProjectilesVFX.zip"),
     "binbun_flame": ("https://binbun3d.itch.io/flame-fx", "Flame FX Free"),
     "inspired_projectiles": ("https://inspiredsloth.itch.io/projectile-effects", "Projectile Effects Vol. 1"),
+    "reeboo_free": ("https://reebo0.itch.io/stylized-vfx-godot-free", "REEBOO_Stylized_VFX_Free_Sample_v1.2.zip"),
 }
 
 
@@ -82,8 +83,11 @@ def fetch_itch(key):
     page = request(opener, url).decode()
     token = re.search(r'name="csrf_token"\s+value="([^"]+)', page)
     data = {"csrf_token": html.unescape(token.group(1))} if token else {}
-    download_url = json.loads(request(opener, url + "/download_url", data, url))["url"]
-    download_page = request(opener, download_url).decode()
+    if "generate_download_url" in page:
+        download_url = json.loads(request(opener, url + "/download_url", data, url))["url"]
+        download_page = request(opener, download_url).decode()
+    else:
+        download_url, download_page = url, page
     uploads = re.findall(r'data-upload_id="(\d+)".*?<strong[^>]*title="([^"]+)"', download_page, re.S)
     selected = [x for x in uploads if html.unescape(x[1]) == filename]
     if not selected:
@@ -96,9 +100,10 @@ def fetch_itch(key):
     link = json.loads(response)["url"]
     blob = request(opener, link, referer=download_url)
     digest = safe_extract(blob, ROOT / "vendor" / key)
-    record = {"id": key, "url": url, "file": filename, "sha256": digest, "license": "CC0", "fetched": "2026-10-14"}
+    license_name = "custom; personal/commercial project use; no asset redistribution" if key == "reeboo_free" else "CC0"
+    record = {"id": key, "url": url, "file": filename, "sha256": digest, "license": license_name, "fetched": "2026-10-14"}
     (ROOT / "vendor" / key / "PROVENANCE.json").write_text(json.dumps(record, indent=2), encoding="utf-8")
-    (ROOT / "vendor" / key / "SOURCE-LICENSE.txt").write_text("Upstream declares this free pack CC0 1.0 Universal.\nSource: " + url + "\nhttps://creativecommons.org/publicdomain/zero/1.0/\n", encoding="utf-8")
+    (ROOT / "vendor" / key / "SOURCE-LICENSE.txt").write_text("Upstream license: " + license_name + "\nSource: " + url + "\n", encoding="utf-8")
     print("FETCHED", key, len(blob), flush=True)
     return record
 

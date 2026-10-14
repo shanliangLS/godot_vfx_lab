@@ -2,21 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-path="res://.godot/imported/screenshot.png-024a21af5d37bf0f0dd0e2bccdd149d0.ctex"
+uid="uid://b4gxdgxvtt274"
+path="res://.godot/imported/screenshot.png-f552b1da7ed2dd6fe98cecdac0908836.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://screenshot.png"
-dest_files=["res://.godot/imported/screenshot.png-024a21af5d37bf0f0dd0e2bccdd149d0.ctex"]
+source_file="res://vendor/motion_trail/screenshot.png"
+dest_files=["res://.godot/imported/screenshot.png-f552b1da7ed2dd6fe98cecdac0908836.ctex"]
 
 [params]
 
 compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
@@ -24,6 +27,10 @@ mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

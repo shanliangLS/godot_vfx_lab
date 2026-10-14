@@ -1,7 +1,7 @@
 [gd_scene format=3]
 
 [ext_resource type="Shader" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/shader/swing.gdshader" id="1_7br8d"]
-[ext_resource type="Script" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/LabBinbunBattleVFXBattleSwingBB.gd" id="1_ge86n"]
+[ext_resource type="Script" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleSwingBB.gd" id="1_ge86n"]
 [ext_resource type="Shader" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/shader/claw.gdshader" id="2_ge86n"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_epw6m"]

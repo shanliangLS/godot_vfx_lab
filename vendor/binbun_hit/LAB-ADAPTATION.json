@@ -1,0 +1,21 @@
+{
+  "relocation_prefix": "res://vendor/binbun_hit/",
+  "class_names": {
+    "VFXControllerBB": "LabBinbunHitVFXControllerBB",
+    "VFXOmniLightBB": "LabBinbunHitVFXOmniLightBB",
+    "VFXImpactBB": "LabBinbunHitVFXImpactBB"
+  },
+  "changed_files": [
+    "HitFXFree/assets/BinbunVFX_Vol2/shared/script/VFXControllerBB.gd",
+    "HitFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/stylized_hit_vfx_scene_free.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/effects/big_impact/vfx_big_impact_01.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/effects/big_impact/vfx_big_impact_02.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/effects/hit/vfx_hit_01.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/effects/hit/vfx_hit_02.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/effects/impact/vfx_impact_01.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/effects/impact/vfx_impact_02.tscn",
+    "HitFXFree/assets/BinbunVFX_Vol2/StylizedHitFX/script/VFXImpactBB.gd"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

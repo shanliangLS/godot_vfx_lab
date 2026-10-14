@@ -1,6 +1,6 @@
 [gd_scene format=3]
 
-[ext_resource type="Script" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/LabBinbunBattleVFXBattleChargeBB.gd" id="1_gdaet"]
+[ext_resource type="Script" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleChargeBB.gd" id="1_gdaet"]
 [ext_resource type="Shader" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/shader/attack_particles.gdshader" id="2_v48bc"]
 [ext_resource type="Shader" path="res://vendor/binbun_battle/BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/shader/shield_surface.gdshader" id="3_i47w5"]
 

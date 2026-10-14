@@ -3,6 +3,7 @@
 importer="wavefront_obj"
 importer_version=1
 type="Mesh"
+uid="uid://bfrpxoi2src0r"
 path="res://.godot/imported/suzanne.obj-42f07f9a4bf2438fd3ef9f1b57f166f1.mesh"
 
 [deps]
