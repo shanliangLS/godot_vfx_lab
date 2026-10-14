@@ -1,0 +1,14 @@
+{
+  "relocation_prefix": "res://vendor/inspired_projectiles/",
+  "class_names": {},
+  "changed_files": [
+    "projectiles/demo.tscn",
+    "projectiles/preview.tscn",
+    "projectiles/projectile_1.tscn",
+    "projectiles/projectile_2.tscn",
+    "projectiles/projectile_3.tscn",
+    "projectiles/projectile_4.tscn",
+    "projectiles/scripts/demo.gd"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

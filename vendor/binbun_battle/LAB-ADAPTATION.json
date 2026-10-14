@@ -1,0 +1,28 @@
+{
+  "relocation_prefix": "res://vendor/binbun_battle/BattleFXFree/",
+  "class_names": {
+    "VFXBattleChargeBB": "LabBinbunBattleVFXBattleChargeBB",
+    "VFXBattleShieldBB": "LabBinbunBattleVFXBattleShieldBB",
+    "VFXBattleSlashBB": "LabBinbunBattleVFXBattleSlashBB",
+    "VFXBattleSwingBB": "LabBinbunBattleVFXBattleSwingBB",
+    "VFXControllerBB": "LabBinbunBattleVFXControllerBB",
+    "VFXEmitterBB": "LabBinbunBattleVFXEmitterBB",
+    "VFXOmniLightBB": "LabBinbunBattleVFXOmniLightBB"
+  },
+  "changed_files": [
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/battle_fx_scene_free.tscn",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/effects/charge/vfx_blank_charge.tscn",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/effects/claw/vfx_blank_claw.tscn",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/effects/shield/vfx_blank_shield_01.tscn",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/effects/slash/vfx_blank_slash.tscn",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/effects/swing/vfx_blank_swing.tscn",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleChargeBB.gd",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleShieldBB.gd",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleSlash.gd",
+    "BattleFXFree/assets/BinbunVFX_Vol2/BattleFX/script/VFXBattleSwingBB.gd",
+    "BattleFXFree/assets/BinbunVFX_Vol2/shared/script/VFXControllerBB.gd",
+    "BattleFXFree/assets/BinbunVFX_Vol2/shared/script/VFXEmitterBB.gd",
+    "BattleFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

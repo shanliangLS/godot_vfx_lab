@@ -1,0 +1,11 @@
+{
+  "relocation_prefix": "res://vendor/gpu_trail/",
+  "class_names": {},
+  "changed_files": [
+    "defaults/curve.tres",
+    "defaults/texture.tres",
+    "shaders/custom_example_alpha_erosion.gdshader",
+    "shaders/custom_example_blank.gdshader"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

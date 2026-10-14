@@ -1,0 +1,8 @@
+{
+  "relocation_prefix": "res://vendor/motion_trail/",
+  "class_names": {},
+  "changed_files": [
+    "MainScene.tscn"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

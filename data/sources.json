@@ -1,0 +1,202 @@
+[
+  {
+    "id": "binbun_battle",
+    "name": "Binbun · Battle FX",
+    "category": "攻击 / 刀光",
+    "url": "https://binbun3d.itch.io/battle-fx",
+    "license": "CC0",
+    "description": "免费基础预设：挥砍、飞行斩击、爪击、蓄力和护盾。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_battle"
+  },
+  {
+    "id": "binbun_beam",
+    "name": "Binbun · Beam VFX",
+    "category": "激光 / 射线",
+    "url": "https://binbun3d.itch.io/beam-vfx",
+    "license": "CC0",
+    "description": "完整免费光束控制器；付费版额外增加 16 个美术预设。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_beam"
+  },
+  {
+    "id": "binbun_projectiles",
+    "name": "Binbun · Magic Projectiles",
+    "category": "魔法 / 飞弹",
+    "url": "https://binbun3d.itch.io/magic-projectiles-vfx",
+    "license": "CC0",
+    "description": "12 个作者原始弹体：基础球形、波动弹体与魔法标枪。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_projectiles"
+  },
+  {
+    "id": "binbun_flame",
+    "name": "Binbun · Flame FX",
+    "category": "火焰 / 火球",
+    "url": "https://binbun3d.itch.io/flame-fx",
+    "license": "CC0",
+    "description": "作者免费火焰预设；火球运动由预览舞台提供，不是另购的火球包。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_flame"
+  },
+  {
+    "id": "inspired_projectiles",
+    "name": "inspiredsloth · Projectile Effects",
+    "category": "魔法 / 飞弹",
+    "url": "https://inspiredsloth.itch.io/projectile-effects",
+    "license": "CC0",
+    "description": "Vol.1 的 4 个原始弹体场景，包含真实拖尾与材质。",
+    "status": "installed",
+    "directory": "res://vendor/inspired_projectiles"
+  },
+  {
+    "id": "gpu_trail",
+    "name": "celyk · GPUTrail",
+    "category": "拖尾 / 插件",
+    "url": "https://github.com/celyk/GPUTrail",
+    "license": "MIT",
+    "description": "GPU 带状拖尾；采样数、时长、渐变、宽度曲线、遮罩和纹理滚动。",
+    "status": "installed",
+    "directory": "res://vendor/gpu_trail"
+  },
+  {
+    "id": "motion_trail",
+    "name": "metanoia83 · Motion Trail",
+    "category": "拖尾 / 插件",
+    "url": "https://github.com/metanoia83/Godot-4.0-Motion-Trail",
+    "license": "MIT",
+    "description": "CPU 带状拖尾；起末宽度、寿命、颜色与插值方式。",
+    "status": "installed",
+    "directory": "res://vendor/motion_trail"
+  },
+  {
+    "id": "effectblocks",
+    "name": "EffectBlocks",
+    "category": "综合资源",
+    "url": "https://bukkbeek.itch.io/effectblocks",
+    "license": "付费 · 未持有",
+    "description": "100+ 成品 VFX。缺少购买后的源文件；免费可执行 Demo 不能代替源场景。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "gameidea_fireball",
+    "name": "GameIdea · Fireballs",
+    "category": "火焰 / 火球",
+    "url": "https://gameidea-studio.itch.io/godot-fireballs-projectiles-vfx",
+    "license": "付费 · 未持有",
+    "description": "火球与配套命中爆发。需本地导入购买后的资源。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "gameidea_beam",
+    "name": "GameIdea · Beam VFX",
+    "category": "激光 / 射线",
+    "url": "https://gameidea-studio.itch.io/godot-beam-vfx",
+    "license": "付费 · 未持有",
+    "description": "模块化核心、端点与冲击光束。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "magic_area",
+    "name": "Binbun · Magic Area",
+    "category": "范围 / 魔法阵",
+    "url": "https://binbun3d.itch.io/magic-area-vfx",
+    "license": "付费 · 未持有",
+    "description": "地面波纹、脉冲和光柱；未把其他资源假冒为此包。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "flame_wizard",
+    "name": "Flame Wizard VFX Set",
+    "category": "火焰 / 火球",
+    "url": "https://berryhibiscus.itch.io/flame-wizard-vfx-set-godot-4",
+    "license": "付费 · 授权待确认",
+    "description": "15 个火系施法、蓄力、火球、喷火、爆发与光环。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "reeboo",
+    "name": "REEBOO · Stylized VFX",
+    "category": "综合资源",
+    "url": "https://reebo0.itch.io/stylized-vfx-godot",
+    "license": "付费 / 免费样例",
+    "description": "完整 25 个效果需购买；未下载样例时显示未接入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "effekseer",
+    "name": "Effekseer · Godot 4",
+    "category": "工具 / 插件",
+    "url": "https://github.com/effekseer/EffekseerForGodot4",
+    "license": "MIT · 未接入",
+    "description": "需要额外原生运行插件与 .efkefc 样例。本项目目前使用 Godot 原生资源。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "official_particles",
+    "name": "Godot 官方 · 3D Particles Demo",
+    "category": "工具 / 插件",
+    "url": "https://godotengine.org/asset-library/asset/2745",
+    "license": "MIT · 未接入",
+    "description": "官方粒子碰撞、吸引器、拖尾与子发射器参考。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "kenney",
+    "name": "Kenney · Particle Pack",
+    "category": "纹理素材",
+    "url": "https://kenney.nl/assets/particle-pack",
+    "license": "CC0 · 未接入",
+    "description": "80 个粒子贴图，需要搭建发射器后才能成为完整效果。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "slash_shader",
+    "name": "Godot Shaders · Slash Shader",
+    "category": "攻击 / 刀光",
+    "url": "https://godotshaders.com/shader/slash-shader/",
+    "license": "代码 CC0 · 未接入",
+    "description": "需要配套网格及纹理；各自授权需要分别检查。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "simple_laser",
+    "name": "Godot Shaders · Simple Laser",
+    "category": "激光 / 射线",
+    "url": "https://godotshaders.com/shader/simple-laser-shader-sls/",
+    "license": "代码 CC0 · 未接入",
+    "description": "激光材质示例，待接入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "fab_textures",
+    "name": "Fab · 150++ VFX Textures",
+    "category": "纹理素材",
+    "url": "https://www.fab.com/listings/69a74c16-09aa-41bf-a139-e81810267df6",
+    "license": "付费 · Unreal 交付",
+    "description": "须确认独立 PNG 交付；需要在 Godot 重建材质。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "oga_hit",
+    "name": "OpenGameArt · Unity Hit VFX Vol.2",
+    "category": "受击 / 冲击",
+    "url": "https://opengameart.org/content/unity-hit-vfx-volume-2",
+    "license": "CC0 · 需移植",
+    "description": "20+ Unity 命中特效；不是可直接运行的 Godot 场景。",
+    "status": "pending",
+    "directory": ""
+  }
+]

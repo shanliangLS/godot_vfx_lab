@@ -1,0 +1,17 @@
+{
+  "relocation_prefix": "res://vendor/binbun_flame/FlameFXFree/",
+  "class_names": {
+    "VFXFireBB": "LabBinbunFlameVFXFireBB",
+    "VFXEmitterBB": "LabBinbunFlameVFXEmitterBB",
+    "VFXOmniLightBB": "LabBinbunFlameVFXOmniLightBB"
+  },
+  "changed_files": [
+    "FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/flame_fx_free_scene.tscn",
+    "FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/effects/fire/vfx_basic_fire_01.tscn",
+    "FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/effects/overlay/basic_fire_overlay_material.tres",
+    "FlameFXFree/assets/BinbunVFX_Vol2/FlameFX/script/VFXFireBB.gd",
+    "FlameFXFree/assets/BinbunVFX_Vol2/shared/script/VFXEmitterBB.gd",
+    "FlameFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}

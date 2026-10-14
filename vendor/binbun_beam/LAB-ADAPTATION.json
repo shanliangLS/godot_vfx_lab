@@ -1,0 +1,8 @@
+{
+  "relocation_prefix": "res://vendor/binbun_beam/",
+  "class_names": {},
+  "changed_files": [
+    "assets/BinbunVFX/beam_vfx/effects/base/base_beam_vfx.tscn"
+  ],
+  "note": "Path relocation, stale UID removal and per-pack class namespaces only; upstream ZIP remains in downloads."
+}
