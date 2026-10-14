@@ -134,6 +134,13 @@ def build():
         sources.append(dict(id=key, name=name, category=category, url=url, license=license_name, description=description, status="pending", directory=""))
     data = ROOT / "data"
     data.mkdir(exist_ok=True)
+    from requested_assets import append_requested
+    append_requested(entries, sources)
+    research_file = data / "requested_research.json"
+    if research_file.exists():
+        for item in json.loads(research_file.read_text(encoding="utf-8"))["items"]:
+            if item["status"] in ("pending", "excluded") and not any(source["id"] == item["id"] for source in sources):
+                sources.append(dict(id=item["id"], name=item["name"], category=item["category"], url=item["url"], license=item["license"], description=item["description"], status=item["status"], directory=""))
     custom_file = data / "custom_sources.json"
     if custom_file.exists():
         for source in json.loads(custom_file.read_text(encoding="utf-8")):

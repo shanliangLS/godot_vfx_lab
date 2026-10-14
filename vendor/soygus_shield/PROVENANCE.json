@@ -1,0 +1,9 @@
+{
+  "id": "soygus_shield",
+  "url": "https://soygus.itch.io/shield-force-vfx",
+  "file": "shield-vfx.zip",
+  "sha256": "e8e4f9f38df51f873311f3e791355da51c77a24544cd7d678c43f4d70d11992b",
+  "license": "Personal/commercial use and modification; no redistribution, resale or repackaging",
+  "fetched": "2026-10-14",
+  "native_godot_files": 1
+}

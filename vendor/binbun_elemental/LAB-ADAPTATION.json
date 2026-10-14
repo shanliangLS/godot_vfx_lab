@@ -1,0 +1,27 @@
+{
+  "relocation_prefix": "res://vendor/binbun_elemental/ElementalMagicFXFree/",
+  "class_names": {
+    "VFXElementalAreaBB": "LabBinbunElementalVFXElementalAreaBB",
+    "VFXElementalProjectileBB": "LabBinbunElementalVFXElementalProjectileBB",
+    "VFXControllerBB": "LabBinbunElementalVFXControllerBB",
+    "VFXEmitterBB": "LabBinbunElementalVFXEmitterBB",
+    "VFXOmniLightBB": "LabBinbunElementalVFXOmniLightBB"
+  },
+  "changed_files": [
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/elemental_magic_scene_free.tscn",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/effects/area/vfx_fire_area_01.tscn",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/effects/cast/vfx_fire_cast_01.tscn",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/effects/projectile/vfx_fire_projectile_01.tscn",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/icons/leaf.png.import",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/script/VFXElementalAreaBB.gd",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/script/VFXElementalCastBB.gd",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/ElementalMagicFX/script/VFXElementalProjectileBB.gd",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/shared/scene_empty.tscn",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/shared/story_studio_02_1k.hdr.import",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/shared/script/VFXControllerBB.gd",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/shared/script/VFXEmitterBB.gd",
+    "ElementalMagicFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

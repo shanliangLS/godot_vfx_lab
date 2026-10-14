@@ -1,0 +1,28 @@
+{
+  "relocation_prefix": "res://vendor/binbun_electric/ElectricFXFree/",
+  "class_names": {
+    "VFXElectricBallBB": "LabBinbunElectricVFXElectricBallBB",
+    "VFXImpactLightningBB": "LabBinbunElectricVFXImpactLightningBB",
+    "VFXZapBB": "LabBinbunElectricVFXZapBB",
+    "VFXControllerBB": "LabBinbunElectricVFXControllerBB",
+    "VFXEmitterBB": "LabBinbunElectricVFXEmitterBB",
+    "VFXOmniLightBB": "LabBinbunElectricVFXOmniLightBB"
+  },
+  "changed_files": [
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/electric_scene_free.tscn",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/electric_scene_full.tscn",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/preview.png.import",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/effects/ball/vfx_ball_lightning_01.tscn",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/effects/zap/vfx_zap_lightning_01.tscn",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/script/VFXElectricBallBB.gd",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/script/VFXImpactLightningBB.gd",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/ElectricFX/script/VFXZapBB.gd",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/shared/scene_empty.tscn",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/shared/story_studio_02_1k.hdr.import",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/shared/script/VFXControllerBB.gd",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/shared/script/VFXEmitterBB.gd",
+    "ElectricFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

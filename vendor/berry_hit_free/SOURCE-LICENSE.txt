@@ -1,0 +1,3 @@
+Author page license: Personal/commercial use; no asset-pack redistribution, NFT use or generative-model training
+Source: https://berryhibiscus.itch.io/hit-vfx-pack-30-stylized-impact-effects-for-godot-4
+Retrieved: 2026-10-14

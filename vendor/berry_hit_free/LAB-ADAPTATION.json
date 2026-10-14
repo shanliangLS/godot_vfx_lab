@@ -1,0 +1,19 @@
+{
+  "relocation_prefix": "res://vendor/berry_hit_free/",
+  "class_names": {
+    "FreeHitFx": "LabBerryHitFreeFreeHitFx",
+    "FreeHitFxLayer": "LabBerryHitFreeFreeHitFxLayer",
+    "FreeHitFxPreset": "LabBerryHitFreeFreeHitFxPreset"
+  },
+  "changed_files": [
+    "FreeHitVfx/core/free_hit_fx.gd",
+    "FreeHitVfx/core/free_hit_fx_layer.gd",
+    "FreeHitVfx/core/free_hit_fx_preset.gd",
+    "FreeHitVfx/demo/dragdrop_example.tscn",
+    "FreeHitVfx/presets/hit_slash_crimson.tres",
+    "FreeHitVfx/scenes/hit_slash_crimson.tscn",
+    "FreeHitVfx/textures/t_stylizedhit_1.png.import"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

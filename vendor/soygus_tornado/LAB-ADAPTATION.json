@@ -1,0 +1,19 @@
+{
+  "relocation_prefix": "res://vendor/soygus_tornado/tornado/",
+  "class_names": {},
+  "changed_files": [
+    "tornado/FireNoise1.tga.import",
+    "tornado/icon.svg.import",
+    "tornado/node_3d.tscn",
+    "tornado/Noise_17.tga.import",
+    "tornado/Noise_18.tga.import",
+    "tornado/tornado.obj.import",
+    "tornado/tornado2.obj.import",
+    "tornado/Turbulence_08-512x512.png.import",
+    "tornado/T_Random_45.png.import",
+    "tornado/Vein_08-512x512.png.import",
+    "tornado/whiteT.tres"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

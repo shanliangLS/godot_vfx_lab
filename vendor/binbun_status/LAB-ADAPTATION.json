@@ -1,0 +1,23 @@
+{
+  "relocation_prefix": "res://vendor/binbun_status/StatusFXFree/",
+  "class_names": {
+    "VFXControllerBB": "LabBinbunStatusVFXControllerBB",
+    "VFXEmitterBB": "LabBinbunStatusVFXEmitterBB",
+    "VFXOmniLightBB": "LabBinbunStatusVFXOmniLightBB"
+  },
+  "changed_files": [
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/scene_empty.tscn",
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/story_studio_02_1k.hdr.import",
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/guy/guy.glb.import",
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/guy/guy.tscn",
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/script/VFXControllerBB.gd",
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/script/VFXEmitterBB.gd",
+    "StatusFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd",
+    "StatusFXFree/assets/BinbunVFX_Vol2/StatusFX/status_fx_free.tscn",
+    "StatusFXFree/assets/BinbunVFX_Vol2/StatusFX/effects/overlay/shatter_overlay.tres",
+    "StatusFXFree/assets/BinbunVFX_Vol2/StatusFX/effects/status/vfx_status_shatter.tscn",
+    "StatusFXFree/assets/BinbunVFX_Vol2/StatusFX/script/VFXStatusBB.gd"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

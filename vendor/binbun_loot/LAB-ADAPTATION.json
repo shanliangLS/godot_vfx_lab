@@ -1,0 +1,33 @@
+{
+  "relocation_prefix": "res://vendor/binbun_loot/",
+  "class_names": {
+    "VFXLoot": "LabBinbunLootVFXLoot",
+    "VFXEffect": "LabBinbunLootVFXEffect"
+  },
+  "changed_files": [
+    "assets/BinbunVFX/loot_effects/loot_vfx_scene.tscn",
+    "assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_common.tscn",
+    "assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_epic.tscn",
+    "assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_legendary.tscn",
+    "assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_mythic.tscn",
+    "assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_rare.tscn",
+    "assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_uncommon.tscn",
+    "assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_common.tscn",
+    "assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_epic.tscn",
+    "assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_legendary.tscn",
+    "assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_mythic.tscn",
+    "assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_rare.tscn",
+    "assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_uncommon.tscn",
+    "assets/BinbunVFX/loot_effects/src/script/vfx_loot.gd",
+    "assets/BinbunVFX/shared/script/vfx_effect.gd",
+    "assets/BinbunVFX/shared/texture/placeholder.png.import",
+    "assets/BinbunVFX/shared/texture/icon/pickup_icons.svg.import",
+    "assets/BinbunVFX/shared/texture/icon/pickup_icons/batch_health_icon.png.import",
+    "assets/BinbunVFX/shared/texture/icon/pickup_icons/batch_heart_icon.png.import",
+    "assets/BinbunVFX/shared/texture/icon/pickup_icons/batch_lightning_icon.png.import",
+    "assets/BinbunVFX/shared/texture/icon/pickup_icons/batch_shield_icon.png.import",
+    "assets/BinbunVFX/shared/texture/icon/pickup_icons/pickup_icons.svg.import"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

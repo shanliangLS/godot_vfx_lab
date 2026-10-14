@@ -1,0 +1,16 @@
+{
+  "relocation_prefix": "res://vendor/magic_circles_free/magic-circles-3d-free/",
+  "class_names": {
+    "MagicArea": "LabMagicCirclesFreeMagicArea"
+  },
+  "changed_files": [
+    "magic-circles-3d-free/addons/magic_circles/magic_area.gd",
+    "magic-circles-3d-free/addons/magic_circles/demo/demo.gd",
+    "magic-circles-3d-free/addons/magic_circles/demo/demo.tscn",
+    "magic-circles-3d-free/addons/magic_circles/demo/stage.gd",
+    "magic-circles-3d-free/addons/magic_circles/shaders/area.gdshaderinc"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true,
+  "preview_lifetime_guard": true
+}

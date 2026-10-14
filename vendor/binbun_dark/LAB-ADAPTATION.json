@@ -1,0 +1,26 @@
+{
+  "relocation_prefix": "res://vendor/binbun_dark/DarkMagicFXFree/",
+  "class_names": {
+    "VFXDarkAreaBB": "LabBinbunDarkVFXDarkAreaBB",
+    "VFXDarkBallBB": "LabBinbunDarkVFXDarkBallBB",
+    "VFXDarkProjectileBB": "LabBinbunDarkVFXDarkProjectileBB",
+    "VFXEmitterBB": "LabBinbunDarkVFXEmitterBB",
+    "VFXOmniLightBB": "LabBinbunDarkVFXOmniLightBB"
+  },
+  "changed_files": [
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/dark_magic_fx_scene_free.tscn",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/dark_magic_fx_scene_full.tscn",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/effects/area/vfx_evil_area_01.tscn",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/effects/ball/vfx_ball_evil_01.tscn",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/effects/projectile/vfx_evil_projectile_01.tscn",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkAreaBB.gd",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkBallBB.gd",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/DarkMagicFX/script/VFXDarkProjectileBB.gd",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/shared/story_studio_02_1k.hdr.import",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/shared/suzanne.obj.import",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/shared/script/VFXEmitterBB.gd",
+    "DarkMagicFXFree/assets/BinbunVFX_Vol2/shared/script/VFXOmniLightBB.gd"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

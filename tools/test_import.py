@@ -15,7 +15,7 @@ SOURCE.mkdir(parents=True, exist_ok=True)
 (ROOT / "artifacts" / ".gdignore").write_text("", encoding="utf-8")
 tools_dir = TEST / "tools"
 tools_dir.mkdir(exist_ok=True)
-for name in ["import_pack.py", "build_catalog.py"]:
+for name in ["import_pack.py", "build_catalog.py", "requested_assets.py"]:
     shutil.copy2(ROOT / "tools" / name, tools_dir / name)
 (SOURCE / "project.godot").write_text('config_version=5\n[application]\nconfig/name="Importer Fixture"\n', encoding="utf-8")
 (SOURCE / "Helper.gd").write_text('class_name ImportSmokeHelper extends RefCounted\nstatic func value(): return 42\n', encoding="utf-8")

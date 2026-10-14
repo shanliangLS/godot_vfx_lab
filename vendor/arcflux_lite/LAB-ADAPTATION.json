@@ -1,0 +1,40 @@
+{
+  "relocation_prefix": "res://vendor/arcflux_lite/arcflux_lite_v1.0.3/project/",
+  "class_names": {
+    "ArcfluxBeam3D": "LabArcfluxLiteArcfluxBeam3D",
+    "ArcfluxEffect3D": "LabArcfluxLiteArcfluxEffect3D",
+    "ArcfluxPalette": "LabArcfluxLiteArcfluxPalette",
+    "ArcfluxPath": "LabArcfluxLiteArcfluxPath",
+    "ArcfluxRibbon": "LabArcfluxLiteArcfluxRibbon",
+    "ArcfluxSparks": "LabArcfluxLiteArcfluxSparks",
+    "ArcfluxBolt3D": "LabArcfluxLiteArcfluxBolt3D",
+    "ArcfluxLaser3D": "LabArcfluxLiteArcfluxLaser3D"
+  },
+  "changed_files": [
+    "arcflux_lite_v1.0.3/project/icon.svg.import",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/core/arcflux_beam_3d.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/core/arcflux_effect_3d.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/core/arcflux_palette.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/core/arcflux_path.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/core/arcflux_ribbon.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/core/arcflux_sparks.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/icons/beam.svg.import",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/icons/bolt.svg.import",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/icons/effect.svg.import",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/icons/palette.svg.import",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/nodes_3d/arcflux_bolt_3d.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/nodes_3d/arcflux_laser_3d.gd",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/palettes/blue.tres",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/palettes/red.tres",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/presets/3d/bolt_blue.tscn",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/presets/3d/laser_red.tscn",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/shaders/arcflux_beam.gdshader",
+    "arcflux_lite_v1.0.3/project/addons/arcflux_fx/shaders/arcflux_ribbon.gdshader",
+    "arcflux_lite_v1.0.3/project/demo/lite_demo.gd",
+    "arcflux_lite_v1.0.3/project/demo/lite_demo.tscn",
+    "arcflux_lite_v1.0.3/project/demo/shared/demo_stage.gd",
+    "arcflux_lite_v1.0.3/project/demo/shared/demo_stage.tscn"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

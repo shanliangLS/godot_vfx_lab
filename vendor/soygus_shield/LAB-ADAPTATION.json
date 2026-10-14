@@ -1,0 +1,15 @@
+{
+  "relocation_prefix": "res://vendor/soygus_shield/shield-vfx/",
+  "class_names": {},
+  "changed_files": [
+    "shield-vfx/icon.svg.import",
+    "shield-vfx/main.tscn",
+    "shield-vfx/shield_basic.tres",
+    "shield-vfx/shield_basic2.tres",
+    "shield-vfx/shield_basic3.tres",
+    "shield-vfx/shield_ring.tres",
+    "shield-vfx/textures/star_06.png.import"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials.",
+  "uids_regenerated": true
+}

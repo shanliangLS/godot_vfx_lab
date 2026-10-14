@@ -218,5 +218,235 @@
     "description": "20+ Unity 命中特效；不是可直接运行的 Godot 场景。",
     "status": "pending",
     "directory": ""
+  },
+  {
+    "id": "binbun_electric",
+    "name": "Binbun · Electric FX 免费版",
+    "category": "电击 / 闪电",
+    "url": "https://binbun3d.itch.io/electric-fx",
+    "license": "CC0",
+    "description": "2 个免费预设：闪电与电球；完整 Shader 和控制器。付费版 18 预设未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_electric"
+  },
+  {
+    "id": "binbun_loot",
+    "name": "Binbun · Loot VFX 基础包",
+    "category": "掉落 / 拾取",
+    "url": "https://binbun3d.itch.io/loot-vfx",
+    "license": "CC0",
+    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_loot"
+  },
+  {
+    "id": "binbun_status",
+    "name": "Binbun · Status FX 免费版",
+    "category": "状态 / 护盾",
+    "url": "https://binbun3d.itch.io/status-fx",
+    "license": "CC0",
+    "description": "免费状态样例与完整组件 / 叠加 Shader；付费 18 效果和 18 叠加材质未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_status"
+  },
+  {
+    "id": "binbun_elemental",
+    "name": "Binbun · Elemental Magic 免费版",
+    "category": "范围 / 魔法阵",
+    "url": "https://binbun3d.itch.io/elemental-magic-fx",
+    "license": "CC0",
+    "description": "火系飞弹、施法、范围各一个免费预设；付费 24 预设未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_elemental"
+  },
+  {
+    "id": "binbun_dark",
+    "name": "Binbun · Dark Magic 免费版",
+    "category": "范围 / 魔法阵",
+    "url": "https://binbun3d.itch.io/dark-magic-fx",
+    "license": "CC0",
+    "description": "免费飞弹、暗球、范围三个预设；付费 21 预设未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_dark"
+  },
+  {
+    "id": "berry_hit_free",
+    "name": "berryhibiscus · Hit VFX 免费样例",
+    "category": "受击 / 冲击",
+    "url": "https://berryhibiscus.itch.io/hit-vfx-pack-30-stylized-impact-effects-for-godot-4",
+    "license": "可商用 / 可修改；禁止资源包再分发、NFT 和模型训练",
+    "description": "仅免费 Crimson Slash 样例；页面的 30 效果完整版需付费，未持有。",
+    "status": "installed",
+    "directory": "res://vendor/berry_hit_free"
+  },
+  {
+    "id": "soygus_tornado",
+    "name": "soygus · Tornado VFX",
+    "category": "范围 / 魔法阵",
+    "url": "https://soygus.itch.io/tornado-vfx-godot",
+    "license": "可商用 / 可修改；禁止再分发与重新打包",
+    "description": "原始蓝色龙卷风、毒雾龙卷风和火龙卷风，拆分作者示例中的三个节点预览。",
+    "status": "installed",
+    "directory": "res://vendor/soygus_tornado"
+  },
+  {
+    "id": "starter_lite",
+    "name": "AlekseiRamirov · Starter VFX Lite",
+    "category": "受击 / 冲击",
+    "url": "https://alekseiramirov.itch.io/starter-vfx-pack-essential-juice-for-godot-lite-edition",
+    "license": "作者页面 CC0 / MIT",
+    "description": "9 个免费原始效果：命中、拾取、营火、爆炸、枪口和移动反馈；支持调色板和整体缩放。",
+    "status": "installed",
+    "directory": "res://vendor/starter_lite"
+  },
+  {
+    "id": "magic_circles_free",
+    "name": "heyheythere · Magic Circles 3D Free",
+    "category": "范围 / 魔法阵",
+    "url": "https://heyheythere.itch.io/magic-circles-3d-free",
+    "license": "CC BY 4.0 · 必须署名",
+    "description": "原生 Godot ZIP：八种元素 × 魔法阵 / 波纹，共 16 个预设；其余种类的 Shader 不在免费包内。",
+    "status": "installed",
+    "directory": "res://vendor/magic_circles_free"
+  },
+  {
+    "id": "arcflux_lite",
+    "name": "gennai · ARCFLUX Lite",
+    "category": "电击 / 闪电",
+    "url": "https://gennai.itch.io/arcflux-lite",
+    "license": "可商用；禁止资源包再分发",
+    "description": "蓝色分叉闪电与红色激光两个原始预设；支持长度、分支、闪烁、余辉、碰撞和调色板。",
+    "status": "installed",
+    "directory": "res://vendor/arcflux_lite"
+  },
+  {
+    "id": "soygus_shield",
+    "name": "soygus · Force Shield VFX",
+    "category": "状态 / 护盾",
+    "url": "https://soygus.itch.io/shield-force-vfx",
+    "license": "可商用 / 可修改；禁止再分发与重新打包",
+    "description": "作者三个原始护盾节点，保留网格、Shader 和粒子。",
+    "status": "installed",
+    "directory": "res://vendor/soygus_shield"
+  },
+  {
+    "id": "gap_godot_projectiles_1",
+    "name": "Gabriel · Godot Projectiles Vol.1",
+    "category": "魔法 / 飞弹",
+    "url": "https://www.gabrielaguiarprod.com/product-page/unity-vfx-graph-muzzle-flash-effect",
+    "license": "付费 · 未持有；以购买许可为准",
+    "description": "30 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "gap_godot_projectiles_2",
+    "name": "Gabriel · Godot Projectiles Vol.2",
+    "category": "魔法 / 飞弹",
+    "url": "https://www.gabrielaguiarprod.com/product-page/godot-projectiles-vol-2",
+    "license": "付费 · 未持有；以购买许可为准",
+    "description": "60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "gap_godot_projectiles_3",
+    "name": "Gabriel · Godot Projectiles Vol.3",
+    "category": "魔法 / 飞弹",
+    "url": "https://www.gabrielaguiarprod.com/product-page/godot-projectiles-vol-3",
+    "license": "付费 · 未持有；以购买许可为准",
+    "description": "60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "gap_godot_magic_1",
+    "name": "Gabriel · Godot Magic Abilities Vol.1",
+    "category": "范围 / 魔法阵",
+    "url": "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol",
+    "license": "付费 · 未持有；以购买许可为准",
+    "description": "官网提供 Godot Magic Abilities Vol.1，售价 $20。未持有源文件，待导入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "gap_godot_magic_2",
+    "name": "Gabriel · Godot Magic Abilities Vol.2",
+    "category": "范围 / 魔法阵",
+    "url": "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol-2",
+    "license": "付费 · 未持有；以购买许可为准",
+    "description": "50 个 Godot 范围技能：增益、减益、箭雨、陨石、彗星与冲击，售价 $20。未持有源文件，待导入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "laplahce_projectiles",
+    "name": "laplahce · Stylized Projectiles",
+    "category": "不适配 / 排除",
+    "url": "https://laplahce.itch.io/stylized-projectiles-pack",
+    "license": "未导入",
+    "description": "提供 Unity URP / HDRP 资产和 Windows Demo，没有 Godot 场景。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "gap_projectiles_4",
+    "name": "Gabriel · Unique Projectiles Vol.4",
+    "category": "不适配 / 排除",
+    "url": "https://gabrielaguiarprod.itch.io/unique-projectiles-vol4",
+    "license": "未导入",
+    "description": "Unity Shader Graph / URP / HDRP / BIRP 版；在作者官网当前 Godot 产品列表中未找到对应 Vol.4。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "gap_projectiles_5",
+    "name": "Gabriel · Unique Projectiles Vol.5",
+    "category": "不适配 / 排除",
+    "url": "https://gabrielaguiarprod.itch.io/unique-projectiles-vol5",
+    "license": "未导入",
+    "description": "当前交付为 Unity；官网 Godot 飞弹目前核实到 Vol.1–3，未找到 Vol.5。旧评论中的移植承诺不代表可下载交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "gap_magic_3",
+    "name": "Gabriel · Unique Magic Abilities Vol.3",
+    "category": "不适配 / 排除",
+    "url": "https://gabrielaguiarprod.itch.io/magic-abilities-vol3",
+    "license": "未导入",
+    "description": "Unity 和 Niagara 版本；官网 Godot 技能目前核实到 Vol.1–2，未找到 Vol.3。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "gap_loot_1",
+    "name": "Gabriel · Unique Loot Drops Vol.1",
+    "category": "不适配 / 排除",
+    "url": "https://gabrielaguiarprod.itch.io/unique-loot-drops-vol-1",
+    "license": "未导入",
+    "description": "Unity HDRP / URP / BIRP 资产；未找到 Godot 交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "gap_sword_1",
+    "name": "Gabriel · Unique Sword Slashes Vol.1",
+    "category": "不适配 / 排除",
+    "url": "https://gabrielaguiarprod.itch.io/unique-sword-slashes-vol1",
+    "license": "未导入",
+    "description": "Unity HDRP / URP / BIRP 资产；作者系列目录核实到此 Vol.1，未找到 Godot 剑斩系列交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "wallcoeur_fire",
+    "name": "wallcoeur · Fire Toon Particle",
+    "category": "不适配 / 排除",
+    "url": "https://wallcoeur.itch.io/unity-urp-vfx-fire-toon-particle",
+    "license": "未导入",
+    "description": "交付 .unitypackage 和 Unity URP Prefab，不能直接载入 Godot。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "status": "excluded",
+    "directory": ""
   }
 ]

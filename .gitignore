@@ -5,4 +5,6 @@ artifacts/
 *.log
 *.tmp
 __pycache__/
+__MACOSX/
+.DS_Store
 .DS_Store
