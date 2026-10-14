@@ -94,6 +94,18 @@ def repair_pack_metadata(key):
             repaired = original.replace("vfx_light_indirect_energy", "vfx_indirect_energy").replace("vfx_light_volumetric_fog_energy", "vfx_volumetric_fog_energy")
             if repaired != original:
                 script.write_text(repaired, encoding="utf-8")
+    if key == "soygus_shield":
+        for resource in list(folder.rglob("*.tscn")) + list(folder.rglob("*.tres")):
+            original = resource.read_text(encoding="utf-8")
+            repaired = re.sub(r"^graph_offset = .*\n", "", original, flags=re.M)
+            if repaired != original:
+                resource.write_text(repaired, encoding="utf-8")
+    if key == "binbun_loot":
+        for shader in folder.rglob("*.gdshader"):
+            original = shader.read_text(encoding="utf-8")
+            if "ALBEDO = color *" in original and "ALBEDO = max(ALBEDO" not in original:
+                repaired = re.sub(r"(\tALBEDO = color \* [^\n]+)", r"\1\n\tALBEDO = max(ALBEDO, vec3(0.0));", original)
+                shader.write_text(repaired, encoding="utf-8")
 
 def append_requested(entries, sources):
     for key, values in INFO.items():

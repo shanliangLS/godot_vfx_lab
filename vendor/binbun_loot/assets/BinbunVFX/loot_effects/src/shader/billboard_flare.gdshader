@@ -61,4 +61,5 @@ void fragment() {
 	color = shift_hue(color, hue);
 	
 	ALBEDO = color * emission;
+	ALBEDO = max(ALBEDO, vec3(0.0));
 }

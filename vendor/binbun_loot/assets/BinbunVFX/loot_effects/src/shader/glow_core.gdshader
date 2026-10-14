@@ -41,4 +41,5 @@ void fragment() {
 	float hue = (noise * 2.0 - 1.0) * (min(UV.y, 1.0 - UV.y) * 2.0) * hue_variation;
 	color = shift_hue(color, hue);
 	ALBEDO = color * emission;
+	ALBEDO = max(ALBEDO, vec3(0.0));
 }
