@@ -60,6 +60,8 @@ func _ready() -> void:
 		call_deferred("_run_qa")
 	elif "--smoke" in OS.get_cmdline_user_args():
 		call_deferred("_run_smoke")
+	elif "--interaction-qa" in OS.get_cmdline_user_args():
+		call_deferred("_run_interaction_qa")
 
 func _build_ui() -> void:
 	var background := ColorRect.new()
@@ -531,3 +533,8 @@ func _run_smoke() -> void:
 	var smoke: Node = load("res://tools/smoke.gd").new()
 	add_child(smoke)
 	smoke.run(self)
+
+func _run_interaction_qa() -> void:
+	var qa: Node = load("res://tools/interaction_regression.gd").new()
+	add_child(qa)
+	qa.run(self)

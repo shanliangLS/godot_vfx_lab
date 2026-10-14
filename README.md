@@ -25,6 +25,7 @@ Compatibility 的粒子碰撞、吸引器、拖尾等功能有限；主要验证
 - 参数同时显示中文与英文，悬停可读中文说明；搜索支持中英关键词。
 - 数值、颜色、向量、枚举、纹理、音效、渐变和宽度曲线直接应用到当前实例。
 - 右键拖动旋转镜头，滚轮缩放，空格暂停，R 重播；镜头可切正面、侧面和俯视。
+- 暂停时仍可旋转、缩放镜头；点击字段外部解除输入焦点。颜色选择器使用不透明背景。
 - 作者默认 + 烈焰、冰霜、奥术、剧毒、圣光五个实验室模板。
 - 自定义预设保存到 user://lab_presets.json，可导出 / 导入 JSON；保存同名预设会更新原预设。
 - 「资源 / 授权」页面明确区分已接入与待购买、待移植项目。
@@ -43,9 +44,11 @@ Compatibility 的粒子碰撞、吸引器、拖尾等功能有限；主要验证
 
     Godot_v4.7.1-stable_win64_console.exe --headless --editor --path . --import --quit
     Godot_v4.7.1-stable_win64_console.exe --path . -- --qa
+    Godot_v4.7.1-stable_win64_console.exe --path . -- --interaction-qa
 
 自动检查逐个实例化成品效果、创建全部参数分组、切换模板、暂停、序列化 / 恢复预设和资源页导航。
 GPU 运行时生成分类截图与 artifacts/qa_report.json；检查日志中的 SCRIPT ERROR / ERROR 后才可判断通过。
+交互回归验证输入焦点、颜色弹窗、暂停镜头、受击叠加以及飞弹循环和重播，生成 artifacts/interaction-*.png。
 上游兼容修复见 docs/UPSTREAM_ADAPTATIONS.md。
 
 当前目录提供 50 个预览项，来自 11 个已接入来源：Binbun 的 Hit / Battle / Beam / Magic Projectiles / Flame，inspiredsloth Vol.1，GPUTrail，Motion Trail，Godot 官方粒子示例，Simple Laser Shader 和 REEBOO 免费样例。
