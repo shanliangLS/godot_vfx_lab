@@ -193,6 +193,8 @@ func load_effect(entry: Dictionary) -> void:
 	_frame_effect()
 	if entry.has("preview_scale"):
 		carrier.scale = Vector3.ONE * float(entry.preview_scale)
+	_align_ground_model()
+	_center_camera_gust()
 	if _is_inspired_projectile():
 		# The preview owns motion and lifetime; the source script otherwise frees itself.
 		effect.set_process(false)
@@ -235,8 +237,36 @@ func _frame_effect() -> void:
 		carrier.position = Vector3(-2.5, 2.5, 0)
 	if descriptor.get("mode") == "slash":
 		carrier.position = Vector3(0, 1.5, 0)
+	if descriptor.get("preview_origin") == "feet":
+		carrier.position = Vector3(0, 0.02, 0)
 	if descriptor.get("pack_id") == "soygus_tornado":
 		_frame_tornado()
+
+func _ground_model_bounds() -> AABB:
+	var bounds := AABB()
+	if not is_instance_valid(effect) or not descriptor.has("ground_model"):
+		return bounds
+	var model := effect.get_node_or_null(descriptor.ground_model)
+	if not model:
+		return bounds
+	var found := false
+	for node in _nodes(model):
+		if node is MeshInstance3D and node.mesh and node.is_visible_in_tree():
+			var world_bounds: AABB = node.global_transform * node.get_aabb()
+			bounds = bounds.merge(world_bounds) if found else world_bounds
+			found = true
+	return bounds
+
+func _align_ground_model() -> void:
+	var bounds := _ground_model_bounds()
+	if bounds.size.y > 0.0:
+		carrier.position.y += 0.02 - bounds.position.y
+
+func _center_camera_gust() -> void:
+	if not is_instance_valid(effect) or descriptor.get("preview_origin") != "camera_center":
+		return
+	var center := Vector3(0, float(effect.height) * 0.5, 0)
+	carrier.position = camera.position - carrier.basis * (effect.transform * center)
 
 func _frame_tornado() -> void:
 	var bounds := AABB()
@@ -313,6 +343,10 @@ func _setup_beam() -> void:
 func _process(delta: float) -> void:
 	if not is_instance_valid(effect):
 		return
+	# Deferred alignment follows the author's animation/bobbing updates in this frame.
+	if descriptor.has("ground_model"):
+		call_deferred("_align_ground_model")
+	_center_camera_gust()
 	if not playing:
 		return
 	elapsed += delta * playback_speed
@@ -488,6 +522,8 @@ func set_effect_scale(value: float) -> void:
 		effect.scale = authored_scale * value
 		if descriptor.get("pack_id") == "soygus_tornado":
 			effect.position = -framed_origin * effect.scale
+		_align_ground_model()
+		_center_camera_gust()
 
 func tint(color: Color) -> void:
 	if not is_instance_valid(effect):

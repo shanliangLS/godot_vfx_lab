@@ -152,7 +152,11 @@ def append_requested(entries, sources):
                 scenes = list((folder / relative_root / "addons/arcflux_fx/presets/3d").glob("*.tscn"))
             else:
                 scenes = [p for p in folder.rglob("*.tscn") if "/effects/" in p.as_posix()]
-            for path in sorted(scenes):
+            scenes = sorted(scenes)
+            if key == "binbun_loot":
+                rarities = ["common", "uncommon", "rare", "epic", "legendary", "mythic"]
+                scenes.sort(key=lambda path: (path.parent.as_posix(), next((i for i, rarity in enumerate(rarities) if path.stem.endswith("_" + rarity)), len(rarities))))
+            for path in scenes:
                 stem = path.stem
                 category_for_scene, mode_for_scene = category, mode
                 label = stem
@@ -182,4 +186,5 @@ def append_requested(entries, sources):
                     label = "免费样例 · 赤红斩击"
                 elif key == "binbun_status":
                     label = "免费样例 · 状态碎片"
-                add(path, label, mode_for_scene, category_for_scene)
+                extras = {"preview_origin": "feet"} if key == "starter_lite" and path.parent.name == "movement" else {}
+                add(path, label, mode_for_scene, category_for_scene, **extras)

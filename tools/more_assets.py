@@ -59,7 +59,7 @@ def append_more(entries, sources):
             for style, label in [("storm", "雷暴"), ("arcane", "奥术"), ("fire", "烈焰"), ("toxic", "剧毒"), ("holy", "圣光"), ("void", "虚空")]:
                 add(script, label + " · 天降雷击", "area", initial={"kind": "strike", "style": style})
             for style, label in [("air", "空气"), ("leaves", "落叶"), ("snow", "飘雪"), ("sand", "沙尘"), ("petals", "花瓣"), ("ash", "灰烬")]:
-                add(script, label + " · 阵风", entry_category="环境 / 天气", initial={"kind": "gust", "style": style})
+                add(script, label + " · 阵风", entry_category="环境 / 天气", initial={"kind": "gust", "style": style}, preview_origin="camera_center")
         elif key == "fx_collection_free":
             for subpack, script, sampler, variants in [
                 ("vfx-2d-free", "vfx_2d/vfx_2d.gd", "vfx", [("explosion", "2D 爆炸"), ("smoke", "2D 烟雾"), ("spark", "2D 命中火花"), ("fire", "2D 火焰")]),
@@ -91,12 +91,17 @@ def append_more(entries, sources):
                 stem = path.stem
                 label = "地面传送门" if "Portal" in stem else ("水晶闪烁" if "Crystal" in stem else "灯光闪烁")
                 color = next((cn for en, cn in [("Violet", "紫色"), ("Gold", "金色"), ("Red", "红色")] if en in stem), "青色")
-                add(path, label + " · " + color, "area" if "Portal" in stem else "static", strip_demo_stage=True, strip_demo_nodes=["Floor", "Overlay"])
+                extras = {}
+                if "Crystal" in stem:
+                    extras["ground_model"] = "SM_Crystal_ClusterLarge_A"
+                elif "Lamp" in stem:
+                    extras["ground_model"] = "SM_Light_LampPost"
+                add(path, label + " · " + color, "area" if "Portal" in stem else "static", strip_demo_stage=True, strip_demo_nodes=["Floor", "Overlay"], **extras)
         elif key == "binbun_grass":
             add(folder / "assets/BinbunGrass/main.tscn", "草地与风动 · 作者免费样式", "area", strip_demo_stage=True, preview_scale=0.3)
         elif key == "soygus_card":
             for subnode, label in [("yugioh card", "全息卡片 A"), ("pokemon card", "全息卡片 B"), ("magic card", "全息卡片 C")]:
-                add(folder / base / "main.tscn", label, visible_subnode=subnode, strip_demo_stage=True, preview_scale=1.5)
+                add(folder / base / "main.tscn", label, visible_subnode=subnode, strip_demo_stage=True, preview_scale=1.0, ground_model=subnode)
         elif key == "rain_free":
             for scene in sorted(folder.rglob("*.tscn")):
                 if "/presets/3d/" in scene.as_posix():

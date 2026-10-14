@@ -70,6 +70,8 @@ func _ready() -> void:
 		call_deferred("_run_requested_qa")
 	elif "--more-qa" in OS.get_cmdline_user_args():
 		call_deferred("_run_more_qa")
+	elif "--layout-qa" in OS.get_cmdline_user_args():
+		call_deferred("_run_layout_qa")
 
 func _build_ui() -> void:
 	var background := ColorRect.new()
@@ -660,6 +662,11 @@ func _run_requested_qa() -> void:
 
 func _run_more_qa() -> void:
 	var qa: Node = load("res://tools/more_qa.gd").new()
+	add_child(qa)
+	qa.run(self)
+
+func _run_layout_qa() -> void:
+	var qa: Node = load("res://tools/layout_qa.gd").new()
 	add_child(qa)
 	qa.run(self)
 

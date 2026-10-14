@@ -21,11 +21,13 @@ Compatibility 的粒子碰撞、吸引器、拖尾等功能有限；主要验证
 ## 操作
 
 - 左侧切换攻击、受击、魔法飞弹、激光、火焰、拖尾插件、官方粒子页面。
+- 掉落资源保持悬浮 / 地面分组，各组按普通、优秀、稀有、史诗、传说、神话排序。
 - 资源树切换作者原始效果。右侧选择主控制器、子节点或 Shader / 粒子材质参数。
 - 参数同时显示中文与英文，悬停可读中文说明；搜索支持中英关键词。
 - 数值、颜色、向量、枚举、纹理、音效、渐变和宽度曲线直接应用到当前实例。
 - 右键拖动旋转镜头，滚轮缩放，空格暂停，R 重播；操作提示位于预览窗口右下角，镜头可切正面、侧面和俯视。
 - 暂停时仍可旋转、缩放镜头；点击字段外部解除输入焦点。颜色选择器使用不透明背景。
+- 水晶、路灯与全息卡片按可见模型包围盒接地，缩放和卡片动画后继续保持在地面上；跳跃 / 移动烟尘位于预览模型脚下。阵风范围中心跟随相机镜头位置。
 - 作者默认 + 烈焰、冰霜、奥术、剧毒、圣光五个实验室模板。
 - 自定义预设保存到 user://lab_presets.json，可导出 / 导入 JSON；保存同名预设会更新原预设。
 - 「资源 / 授权」页面按已接入、待导入、不适配排序；各分区按来源 A–Z 分组，同一来源的资源按名称排序。左侧固定宽度输入框支持资源名称与来源组合筛选，来源支持名称、平台和网址；导入与打开目录按钮在右侧。
@@ -47,6 +49,7 @@ Compatibility 的粒子碰撞、吸引器、拖尾等功能有限；主要验证
     Godot_v4.7.1-stable_win64_console.exe --path . -- --interaction-qa
     Godot_v4.7.1-stable_win64_console.exe --path . -- --requested-qa
     Godot_v4.7.1-stable_win64_console.exe --path . -- --more-qa
+    Godot_v4.7.1-stable_win64_console.exe --path . -- --layout-qa
 
 自动检查逐个实例化成品效果、创建全部参数分组、切换模板、暂停、序列化 / 恢复预设和资源页导航。
 GPU 运行时生成分类截图与 artifacts/qa_report.json；检查日志中的 SCRIPT ERROR / ERROR 后才可判断通过。
@@ -59,6 +62,7 @@ GPU 运行时生成分类截图与 artifacts/qa_report.json；检查日志中的
 逐项来源、免费与付费范围、Gabriel 系列的 Godot 版本及排除理由见 docs/REQUESTED_ASSETS.md，机器可读记录见 data/requested_research.json。
 第二、三批新增 10 包、327 项：Godot FX Collection（27）、Rain（1）、Chest Looting（1）、Storm & Wind（12）、Glyph Cities（12）、Hologram（3）、Grass（1）、Holographic Card（3）；Christmas 素材（54）与 Brackeys 素材（213）。合集中的 Magic Circles 和 Storm 子包复用已有 / 单独接入项；2D 效果、屏幕叠加和实验室素材载体均明确标注。
 新增环境 / 天气、屏幕 / 材质、纹理 / 网格页面。来源、授权、排除理由和适配记录见 docs/MORE_REQUESTED_ASSETS.md、data/more_research.json；新增回归截图和结果在 artifacts/more-*.png、artifacts/more-qa-report.json。
+布局与定位回归覆盖模型缩放接地、烟尘脚下位置、暂停镜头下的阵风跟随、掉落稀有度顺序、预览操作提示及资源页固定输入框和标题间距，结果在 artifacts/layout-qa-report.json，截图在 artifacts/layout-*.png。
 火球试飞是原 Flame 节点在实验室轨迹中的演示；程序激光使用作者 Shader 与实验室载体；官方示例按原测试节点分组。界面明确标注来源。
 参数标题旁的「参数清单」可导出当前效果的英文名、中文名、说明、类型、范围提示和当前值。
 预设保存数值、颜色、向量、开关、渐变和曲线；外部纹理与音频文件需要保留在原位置并单独管理。

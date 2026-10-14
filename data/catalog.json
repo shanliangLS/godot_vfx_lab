@@ -756,6 +756,34 @@
     "mode": "area"
   },
   {
+    "id": "binbun_loot/loot_vfx_uncommon",
+    "name": "Binbun · Loot VFX 基础包",
+    "category": "掉落 / 拾取",
+    "url": "https://binbun3d.itch.io/loot-vfx",
+    "license": "CC0",
+    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_loot",
+    "pack_id": "binbun_loot",
+    "label": "悬浮掉落 · 优秀",
+    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_uncommon.tscn",
+    "mode": "area"
+  },
+  {
+    "id": "binbun_loot/loot_vfx_rare",
+    "name": "Binbun · Loot VFX 基础包",
+    "category": "掉落 / 拾取",
+    "url": "https://binbun3d.itch.io/loot-vfx",
+    "license": "CC0",
+    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_loot",
+    "pack_id": "binbun_loot",
+    "label": "悬浮掉落 · 稀有",
+    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_rare.tscn",
+    "mode": "area"
+  },
+  {
     "id": "binbun_loot/loot_vfx_epic",
     "name": "Binbun · Loot VFX 基础包",
     "category": "掉落 / 拾取",
@@ -798,34 +826,6 @@
     "mode": "area"
   },
   {
-    "id": "binbun_loot/loot_vfx_rare",
-    "name": "Binbun · Loot VFX 基础包",
-    "category": "掉落 / 拾取",
-    "url": "https://binbun3d.itch.io/loot-vfx",
-    "license": "CC0",
-    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
-    "status": "installed",
-    "directory": "res://vendor/binbun_loot",
-    "pack_id": "binbun_loot",
-    "label": "悬浮掉落 · 稀有",
-    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_rare.tscn",
-    "mode": "area"
-  },
-  {
-    "id": "binbun_loot/loot_vfx_uncommon",
-    "name": "Binbun · Loot VFX 基础包",
-    "category": "掉落 / 拾取",
-    "url": "https://binbun3d.itch.io/loot-vfx",
-    "license": "CC0",
-    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
-    "status": "installed",
-    "directory": "res://vendor/binbun_loot",
-    "pack_id": "binbun_loot",
-    "label": "悬浮掉落 · 优秀",
-    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/floating/loot_vfx_uncommon.tscn",
-    "mode": "area"
-  },
-  {
     "id": "binbun_loot/ground_loot_vfx_common",
     "name": "Binbun · Loot VFX 基础包",
     "category": "掉落 / 拾取",
@@ -837,6 +837,34 @@
     "pack_id": "binbun_loot",
     "label": "地面掉落 · 普通",
     "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_common.tscn",
+    "mode": "area"
+  },
+  {
+    "id": "binbun_loot/ground_loot_vfx_uncommon",
+    "name": "Binbun · Loot VFX 基础包",
+    "category": "掉落 / 拾取",
+    "url": "https://binbun3d.itch.io/loot-vfx",
+    "license": "CC0",
+    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_loot",
+    "pack_id": "binbun_loot",
+    "label": "地面掉落 · 优秀",
+    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_uncommon.tscn",
+    "mode": "area"
+  },
+  {
+    "id": "binbun_loot/ground_loot_vfx_rare",
+    "name": "Binbun · Loot VFX 基础包",
+    "category": "掉落 / 拾取",
+    "url": "https://binbun3d.itch.io/loot-vfx",
+    "license": "CC0",
+    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_loot",
+    "pack_id": "binbun_loot",
+    "label": "地面掉落 · 稀有",
+    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_rare.tscn",
     "mode": "area"
   },
   {
@@ -879,34 +907,6 @@
     "pack_id": "binbun_loot",
     "label": "地面掉落 · 神话",
     "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_mythic.tscn",
-    "mode": "area"
-  },
-  {
-    "id": "binbun_loot/ground_loot_vfx_rare",
-    "name": "Binbun · Loot VFX 基础包",
-    "category": "掉落 / 拾取",
-    "url": "https://binbun3d.itch.io/loot-vfx",
-    "license": "CC0",
-    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
-    "status": "installed",
-    "directory": "res://vendor/binbun_loot",
-    "pack_id": "binbun_loot",
-    "label": "地面掉落 · 稀有",
-    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_rare.tscn",
-    "mode": "area"
-  },
-  {
-    "id": "binbun_loot/ground_loot_vfx_uncommon",
-    "name": "Binbun · Loot VFX 基础包",
-    "category": "掉落 / 拾取",
-    "url": "https://binbun3d.itch.io/loot-vfx",
-    "license": "CC0",
-    "description": "6 个稀有度，地面 / 悬浮各一套，共 12 个原始效果。Extra 付费包未持有。",
-    "status": "installed",
-    "directory": "res://vendor/binbun_loot",
-    "pack_id": "binbun_loot",
-    "label": "地面掉落 · 优秀",
-    "path": "res://vendor/binbun_loot/assets/BinbunVFX/loot_effects/effects/ground/ground_loot_vfx_uncommon.tscn",
     "mode": "area"
   },
   {
@@ -1162,7 +1162,8 @@
     "pack_id": "starter_lite",
     "label": "跳跃烟尘",
     "path": "res://vendor/starter_lite/Starter_Vfx/scenes/movement/vfx_ground_smoke_01.tscn",
-    "mode": "hit"
+    "mode": "hit",
+    "preview_origin": "feet"
   },
   {
     "id": "starter_lite/vfx_ground_smoke_02",
@@ -1176,7 +1177,8 @@
     "pack_id": "starter_lite",
     "label": "移动烟尘",
     "path": "res://vendor/starter_lite/Starter_Vfx/scenes/movement/vfx_ground_smoke_02.tscn",
-    "mode": "hit"
+    "mode": "hit",
+    "preview_origin": "feet"
   },
   {
     "id": "starter_lite/vfx_muzzle_01",
@@ -2255,7 +2257,8 @@
     "initial": {
       "kind": "gust",
       "style": "air"
-    }
+    },
+    "preview_origin": "camera_center"
   },
   {
     "id": "storm_free/storm_fx/gust_leaves",
@@ -2274,7 +2277,8 @@
     "initial": {
       "kind": "gust",
       "style": "leaves"
-    }
+    },
+    "preview_origin": "camera_center"
   },
   {
     "id": "storm_free/storm_fx/gust_snow",
@@ -2293,7 +2297,8 @@
     "initial": {
       "kind": "gust",
       "style": "snow"
-    }
+    },
+    "preview_origin": "camera_center"
   },
   {
     "id": "storm_free/storm_fx/gust_sand",
@@ -2312,7 +2317,8 @@
     "initial": {
       "kind": "gust",
       "style": "sand"
-    }
+    },
+    "preview_origin": "camera_center"
   },
   {
     "id": "storm_free/storm_fx/gust_petals",
@@ -2331,7 +2337,8 @@
     "initial": {
       "kind": "gust",
       "style": "petals"
-    }
+    },
+    "preview_origin": "camera_center"
   },
   {
     "id": "storm_free/storm_fx/gust_ash",
@@ -2350,7 +2357,8 @@
     "initial": {
       "kind": "gust",
       "style": "ash"
-    }
+    },
+    "preview_origin": "camera_center"
   },
   {
     "id": "glyph_free/D_FX_CrystalShimmer",
@@ -2370,7 +2378,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Crystal_ClusterLarge_A"
   },
   {
     "id": "glyph_free/D_FX_CrystalShimmer_Gold",
@@ -2390,7 +2399,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Crystal_ClusterLarge_A"
   },
   {
     "id": "glyph_free/D_FX_CrystalShimmer_Red",
@@ -2410,7 +2420,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Crystal_ClusterLarge_A"
   },
   {
     "id": "glyph_free/D_FX_CrystalShimmer_Violet",
@@ -2430,7 +2441,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Crystal_ClusterLarge_A"
   },
   {
     "id": "glyph_free/D_FX_LampFlicker",
@@ -2450,7 +2462,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Light_LampPost"
   },
   {
     "id": "glyph_free/D_FX_LampFlicker_Gold",
@@ -2470,7 +2483,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Light_LampPost"
   },
   {
     "id": "glyph_free/D_FX_LampFlicker_Red",
@@ -2490,7 +2504,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Light_LampPost"
   },
   {
     "id": "glyph_free/D_FX_LampFlicker_Violet",
@@ -2510,7 +2525,8 @@
     "strip_demo_nodes": [
       "Floor",
       "Overlay"
-    ]
+    ],
+    "ground_model": "SM_Light_LampPost"
   },
   {
     "id": "glyph_free/D_FX_PortalSwirl_Floor",
@@ -7563,7 +7579,8 @@
     "mode": "static",
     "visible_subnode": "yugioh card",
     "strip_demo_stage": true,
-    "preview_scale": 1.5
+    "preview_scale": 1.0,
+    "ground_model": "yugioh card"
   },
   {
     "id": "soygus_card/main/pokemon card",
@@ -7581,7 +7598,8 @@
     "mode": "static",
     "visible_subnode": "pokemon card",
     "strip_demo_stage": true,
-    "preview_scale": 1.5
+    "preview_scale": 1.0,
+    "ground_model": "pokemon card"
   },
   {
     "id": "soygus_card/main/magic card",
@@ -7599,6 +7617,7 @@
     "mode": "static",
     "visible_subnode": "magic card",
     "strip_demo_stage": true,
-    "preview_scale": 1.5
+    "preview_scale": 1.0,
+    "ground_model": "magic card"
   }
 ]
