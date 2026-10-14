@@ -26,6 +26,10 @@ var stats: Label
 var workspace: HBoxContainer
 var source_panel: ScrollContainer
 var source_list: VBoxContainer
+var source_cards: VBoxContainer
+var source_name_filter: LineEdit
+var source_origin_filter: LineEdit
+var source_result_label: Label
 var preset_picker: OptionButton
 var preset_name: LineEdit
 var saved_picker: OptionButton
@@ -406,12 +410,47 @@ func _ordered_sources() -> Array:
 
 func _build_source_page() -> void:
 	source_list.add_child(LabTheme.label("资源与授权", 28))
-	source_list.add_child(LabTheme.label("按已接入、待导入、不适配分区；区内按作者 A–Z 分组，再按资源名称排序。", 14, LabTheme.MUTED))
 	var tools := HBoxContainer.new()
 	source_list.add_child(tools)
 	tools.add_child(LabTheme.button("导入项目场景 / JSON 预设", func(): import_dialog.popup_centered_ratio()))
 	tools.add_child(LabTheme.button("打开项目目录", func(): OS.shell_open(ProjectSettings.globalize_path("res://"))))
+	var filters := HBoxContainer.new()
+	source_list.add_child(filters)
+	filters.add_child(LabTheme.label("资源名称", 13, LabTheme.MUTED))
+	source_name_filter = LineEdit.new()
+	source_name_filter.placeholder_text = "输入资源名称"
+	source_name_filter.clear_button_enabled = true
+	source_name_filter.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	filters.add_child(source_name_filter)
+	filters.add_child(LabTheme.label("来源", 13, LabTheme.MUTED))
+	source_origin_filter = LineEdit.new()
+	source_origin_filter.placeholder_text = "来源名称、平台或网址"
+	source_origin_filter.clear_button_enabled = true
+	source_origin_filter.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	filters.add_child(source_origin_filter)
+	source_result_label = LabTheme.label("", 12, LabTheme.MUTED)
+	source_list.add_child(source_result_label)
+	source_cards = VBoxContainer.new()
+	source_list.add_child(source_cards)
+	source_name_filter.text_changed.connect(func(_value: String): _refresh_source_cards())
+	source_origin_filter.text_changed.connect(func(_value: String): _refresh_source_cards())
+	_refresh_source_cards()
+
+func _refresh_source_cards() -> void:
+	for child in source_cards.get_children():
+		source_cards.remove_child(child)
+		child.queue_free()
+	var name_query := source_name_filter.text.strip_edges().to_lower()
+	var origin_query := source_origin_filter.text.strip_edges().to_lower()
 	var ordered := _ordered_sources()
+	ordered = ordered.filter(func(source: Dictionary) -> bool:
+		var origin := str(source.get("author", "来源未注明")) + " " + str(source.url)
+		return (name_query.is_empty() or name_query in str(source.name).to_lower()) and (origin_query.is_empty() or origin_query in origin.to_lower())
+	)
+	source_result_label.text = "显示 %d / %d 项资源" % [ordered.size(), sources.size()]
+	if ordered.is_empty():
+		source_cards.add_child(LabTheme.label("没有匹配的资源，请调整资源名称或来源筛选。", 16, LabTheme.MUTED))
+		return
 	var last_status := ""
 	for source in ordered:
 		if source.status != last_status:
@@ -420,10 +459,10 @@ func _build_source_page() -> void:
 			var count := ordered.filter(func(item: Dictionary): return item.status == last_status).size()
 			var section := LabTheme.label("%s · %d 项" % [section_name, count], 22)
 			section.custom_minimum_size.y = 48
-			source_list.add_child(section)
+			source_cards.add_child(section)
 		var card := PanelContainer.new()
 		card.set_meta("source_id", source.id)
-		source_list.add_child(card)
+		source_cards.add_child(card)
 		var column := VBoxContainer.new()
 		card.add_child(column)
 		var row := HBoxContainer.new()
@@ -434,7 +473,7 @@ func _build_source_page() -> void:
 		var status_text: String = {"installed": "已接入 · 可运行", "pending": "待导入 · 未持有", "excluded": "不适配 · 已排除"}.get(source.status, source.status)
 		row.add_child(LabTheme.label(status_text, 12, LabTheme.ACCENT if source.status == "installed" else (LabTheme.MUTED if source.status == "excluded" else LabTheme.GOLD)))
 		row.add_child(LabTheme.button("原始来源 ↗", func(): OS.shell_open(source.url)))
-		column.add_child(LabTheme.label("作者：%s" % source.get("author", "作者未注明"), 13, LabTheme.ACCENT))
+		column.add_child(LabTheme.label("来源：%s" % source.get("author", "来源未注明"), 13, LabTheme.ACCENT))
 		var description := LabTheme.label(source.description, 14, LabTheme.MUTED)
 		description.autowrap_mode = TextServer.AUTOWRAP_WORD_SMART
 		column.add_child(description)
