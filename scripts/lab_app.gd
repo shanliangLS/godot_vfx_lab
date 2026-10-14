@@ -101,7 +101,7 @@ func _build_ui() -> void:
 		button.button_pressed = text == category
 		button.pressed.connect(_switch_category.bind(text))
 		button.custom_minimum_size.y = 33
-		for state in ["normal", "hover", "pressed"]:
+		for state in ["normal", "hover", "pressed", "hover_pressed"]:
 			var style: StyleBoxFlat = theme.get_stylebox(state, "Button").duplicate()
 			style.content_margin_top = 6
 			style.content_margin_bottom = 6

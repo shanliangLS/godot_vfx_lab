@@ -27,10 +27,12 @@ static func build() -> Theme:
 		result.set_color("font_color", cls, TEXT)
 		result.set_color("font_hover_color", cls, Color.WHITE)
 		result.set_color("font_pressed_color", cls, ACCENT)
-	for cls in ["Button", "OptionButton"]:
+		result.set_color("font_hover_pressed_color", cls, ACCENT)
+	for cls in ["Button", "OptionButton", "CheckButton"]:
 		result.set_stylebox("normal", cls, box(Color("1b2940"), 7))
 		result.set_stylebox("hover", cls, box(Color("243a53"), 7, Color("40627b")))
 		result.set_stylebox("pressed", cls, box(Color("1b4449"), 7, ACCENT))
+		result.set_stylebox("hover_pressed", cls, box(Color("23535a"), 7, ACCENT))
 		result.set_stylebox("focus", cls, box(Color.TRANSPARENT, 7, ACCENT))
 	result.set_stylebox("panel", "PanelContainer", box(PANEL))
 	result.set_stylebox("panel", "PopupPanel", box(PANEL, 10, Color("40627b")))
