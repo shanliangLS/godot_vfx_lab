@@ -101,6 +101,12 @@ def normalize(key):
         nested.rename(nested.with_suffix(".godot.upstream"))
 
 
+def clean_description(text):
+    for before, after in [("按用户要求排除", "已排除"), ("按要求不接入", "不接入"), ("按用户要求", ""), ("按要求", "")]:
+        text = text.replace(before, after)
+    return text.strip()
+
+
 def build():
     entries = []
     sources = []
@@ -177,6 +183,8 @@ def build():
             entries.extend(source["entries"])
     for source in sources:
         source["author"] = source.get("author") or SOURCE_AUTHORS.get(source["id"], "来源未注明")
+    for record in sources + entries:
+        record["description"] = clean_description(record.get("description", ""))
     (data / "catalog.json").write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
     (data / "sources.json").write_text(json.dumps(sources, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Catalog:", len(entries), "effects;", len(sources), "sources")

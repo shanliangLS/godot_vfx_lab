@@ -84,11 +84,14 @@ func _build_ui() -> void:
 	margin.add_child(root)
 	var header := HBoxContainer.new()
 	root.add_child(header)
-	var brand := VBoxContainer.new()
+	var brand := HBoxContainer.new()
+	brand.add_theme_constant_override("separation", 14)
 	brand.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	header.add_child(brand)
 	brand.add_child(LabTheme.label("VFX LAB", 28, LabTheme.ACCENT))
-	brand.add_child(LabTheme.label("3D 特效实验室  /  真实资源 · 实时参数 · 中文说明", 13, LabTheme.MUTED))
+	var brand_title := LabTheme.label("3D 特效实验室", 18, LabTheme.MUTED)
+	brand_title.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	brand.add_child(brand_title)
 	stats = LabTheme.label("", 13, LabTheme.MUTED)
 	header.add_child(stats)
 	header.add_child(LabTheme.button("资源与授权 ↗", func(): _switch_category("资源 / 授权")))
@@ -169,6 +172,22 @@ func _build_ui() -> void:
 	center.add_child(stage_panel)
 	stage = PreviewStage.new()
 	stage_panel.add_child(stage)
+	var camera_hint := PanelContainer.new()
+	camera_hint.name = "CameraHint"
+	camera_hint.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	camera_hint.add_theme_stylebox_override("panel", LabTheme.box(Color(0.04, 0.07, 0.12, 0.8), 5))
+	stage.add_child(camera_hint)
+	camera_hint.set_anchors_and_offsets_preset(Control.PRESET_BOTTOM_RIGHT)
+	camera_hint.grow_horizontal = Control.GROW_DIRECTION_BEGIN
+	camera_hint.grow_vertical = Control.GROW_DIRECTION_BEGIN
+	camera_hint.offset_left = -430
+	camera_hint.offset_top = -44
+	camera_hint.offset_right = -10
+	camera_hint.offset_bottom = -10
+	var hint_text := LabTheme.label("右键拖动旋转镜头 · 滚轮缩放 · 空格暂停 · R 重播", 11, LabTheme.MUTED)
+	hint_text.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	hint_text.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
+	camera_hint.add_child(hint_text)
 	var toolbar := HBoxContainer.new()
 	center.add_child(toolbar)
 	toolbar.add_child(LabTheme.button("↻ 重播", func(): stage.replay()))
@@ -208,7 +227,6 @@ func _build_ui() -> void:
 	tuning_col.add_child(motion)
 	_slider(motion, "运动速度", 0.1, 4.0, 1.0, func(value: float): stage.motion_speed = value)
 	_slider(motion, "轨迹半径", 0.3, 5.0, 2.0, func(value: float): stage.path_radius = value)
-	center.add_child(LabTheme.label("右键拖动旋转镜头 · 滚轮缩放 · 空格暂停 · R 重播", 11, LabTheme.MUTED))
 	var right := PanelContainer.new()
 	right.custom_minimum_size.x = 360
 	workspace.add_child(right)
@@ -412,24 +430,29 @@ func _ordered_sources() -> Array:
 
 func _build_source_page() -> void:
 	source_list.add_child(LabTheme.label("资源与授权", 28))
-	var tools := HBoxContainer.new()
-	source_list.add_child(tools)
-	tools.add_child(LabTheme.button("导入项目场景 / JSON 预设", func(): import_dialog.popup_centered_ratio()))
-	tools.add_child(LabTheme.button("打开项目目录", func(): OS.shell_open(ProjectSettings.globalize_path("res://"))))
 	var filters := HBoxContainer.new()
 	source_list.add_child(filters)
 	filters.add_child(LabTheme.label("资源名称", 13, LabTheme.MUTED))
 	source_name_filter = LineEdit.new()
 	source_name_filter.placeholder_text = "输入资源名称"
 	source_name_filter.clear_button_enabled = true
-	source_name_filter.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	source_name_filter.custom_minimum_size.x = 180
+	source_name_filter.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	filters.add_child(source_name_filter)
 	filters.add_child(LabTheme.label("来源", 13, LabTheme.MUTED))
 	source_origin_filter = LineEdit.new()
 	source_origin_filter.placeholder_text = "来源名称、平台或网址"
 	source_origin_filter.clear_button_enabled = true
-	source_origin_filter.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	source_origin_filter.custom_minimum_size.x = 180
+	source_origin_filter.size_flags_horizontal = Control.SIZE_SHRINK_BEGIN
 	filters.add_child(source_origin_filter)
+	var spacer := Control.new()
+	spacer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	filters.add_child(spacer)
+	var tools := HBoxContainer.new()
+	filters.add_child(tools)
+	tools.add_child(LabTheme.button("导入项目场景 / JSON 预设", func(): import_dialog.popup_centered_ratio()))
+	tools.add_child(LabTheme.button("打开项目目录", func(): OS.shell_open(ProjectSettings.globalize_path("res://"))))
 	source_result_label = LabTheme.label("", 12, LabTheme.MUTED)
 	source_list.add_child(source_result_label)
 	source_cards = VBoxContainer.new()
@@ -460,7 +483,6 @@ func _refresh_source_cards() -> void:
 			var section_name: String = {"installed": "已接入", "pending": "待导入", "excluded": "不适配"}.get(last_status, last_status)
 			var count := ordered.filter(func(item: Dictionary): return item.status == last_status).size()
 			var section := LabTheme.label("%s · %d 项" % [section_name, count], 22)
-			section.custom_minimum_size.y = 48
 			source_cards.add_child(section)
 		var card := PanelContainer.new()
 		card.set_meta("source_id", source.id)
@@ -640,3 +662,4 @@ func _run_more_qa() -> void:
 	var qa: Node = load("res://tools/more_qa.gd").new()
 	add_child(qa)
 	qa.run(self)
+

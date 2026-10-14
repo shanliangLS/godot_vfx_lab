@@ -534,7 +534,7 @@
     "category": "不适配 / 排除",
     "url": "https://laplahce.itch.io/stylized-projectiles-pack",
     "license": "未导入",
-    "description": "提供 Unity URP / HDRP 资产和 Windows Demo，没有 Godot 场景。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "提供 Unity URP / HDRP 资产和 Windows Demo，没有 Godot 场景。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -545,7 +545,7 @@
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-projectiles-vol4",
     "license": "未导入",
-    "description": "Unity Shader Graph / URP / HDRP / BIRP 版；在作者官网当前 Godot 产品列表中未找到对应 Vol.4。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "Unity Shader Graph / URP / HDRP / BIRP 版；在作者官网当前 Godot 产品列表中未找到对应 Vol.4。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -556,7 +556,7 @@
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-projectiles-vol5",
     "license": "未导入",
-    "description": "当前交付为 Unity；官网 Godot 飞弹目前核实到 Vol.1–3，未找到 Vol.5。旧评论中的移植承诺不代表可下载交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "当前交付为 Unity；官网 Godot 飞弹目前核实到 Vol.1–3，未找到 Vol.5。旧评论中的移植承诺不代表可下载交付。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -567,7 +567,7 @@
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/magic-abilities-vol3",
     "license": "未导入",
-    "description": "Unity 和 Niagara 版本；官网 Godot 技能目前核实到 Vol.1–2，未找到 Vol.3。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "Unity 和 Niagara 版本；官网 Godot 技能目前核实到 Vol.1–2，未找到 Vol.3。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -578,7 +578,7 @@
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-loot-drops-vol-1",
     "license": "未导入",
-    "description": "Unity HDRP / URP / BIRP 资产；未找到 Godot 交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "Unity HDRP / URP / BIRP 资产；未找到 Godot 交付。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -589,7 +589,7 @@
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-sword-slashes-vol1",
     "license": "未导入",
-    "description": "Unity HDRP / URP / BIRP 资产；作者系列目录核实到此 Vol.1，未找到 Godot 剑斩系列交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "Unity HDRP / URP / BIRP 资产；作者系列目录核实到此 Vol.1，未找到 Godot 剑斩系列交付。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -600,7 +600,7 @@
     "category": "不适配 / 排除",
     "url": "https://wallcoeur.itch.io/unity-urp-vfx-fire-toon-particle",
     "license": "未导入",
-    "description": "交付 .unitypackage 和 Unity URP Prefab，不能直接载入 Godot。 按用户要求排除，不下载、不移植，不加入效果目录。",
+    "description": "交付 .unitypackage 和 Unity URP Prefab，不能直接载入 Godot。 已排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
     "directory": ""
   },
@@ -622,7 +622,7 @@
     "category": "不适配 / 排除",
     "url": "https://fox-jump.itch.io/lightning-shadergraph",
     "license": "未导入",
-    "description": "交付 Unity .shadergraph，无 Godot 场景或 Shader。 按要求不接入。",
+    "description": "交付 Unity .shadergraph，无 Godot 场景或 Shader。 不接入。",
     "status": "excluded",
     "directory": ""
   },
@@ -633,7 +633,7 @@
     "category": "不适配 / 排除",
     "url": "https://matthornb.itch.io/explosion",
     "license": "未导入",
-    "description": "交付三段可抠像 MP4 视频，不是 3D 特效源场景；Godot 不原生播放 MP4，未进行转码或重建。 按要求不接入。",
+    "description": "交付三段可抠像 MP4 视频，不是 3D 特效源场景；Godot 不原生播放 MP4，未进行转码或重建。 不接入。",
     "status": "excluded",
     "directory": ""
   },
@@ -644,7 +644,7 @@
     "category": "不适配 / 排除",
     "url": "https://nulltale.itch.io/asciifx",
     "license": "未导入",
-    "description": "Unity URP Render Feature / RenderGraph 后处理，不能直接载入 Godot。 按要求不接入。",
+    "description": "Unity URP Render Feature / RenderGraph 后处理，不能直接载入 Godot。 不接入。",
     "status": "excluded",
     "directory": ""
   },
@@ -655,7 +655,7 @@
     "category": "不适配 / 排除",
     "url": "https://nulltale.itch.io/volfx",
     "license": "未导入",
-    "description": "Unity 选择性后处理、LayerMask 和自定义渲染管线工具，没有 Godot 交付。 按要求不接入。",
+    "description": "Unity 选择性后处理、LayerMask 和自定义渲染管线工具，没有 Godot 交付。 不接入。",
     "status": "excluded",
     "directory": ""
   },
@@ -666,7 +666,7 @@
     "category": "不适配 / 排除",
     "url": "https://yurikokuun.itch.io/elemental-laser-pack",
     "license": "未导入",
-    "description": "下载为 .unitypackage 与 HDR_Particle.shadergraph，无 Godot 版本。 按要求不接入。",
+    "description": "下载为 .unitypackage 与 HDR_Particle.shadergraph，无 Godot 版本。 不接入。",
     "status": "excluded",
     "directory": ""
   },
@@ -677,7 +677,7 @@
     "category": "不适配 / 排除",
     "url": "https://smartwilliam.itch.io/sfas2021vfx",
     "license": "未导入",
-    "description": "作者安装说明明确要求 Unreal Engine 4.26 / Niagara。 按要求不接入。",
+    "description": "作者安装说明明确要求 Unreal Engine 4.26 / Niagara。 不接入。",
     "status": "excluded",
     "directory": ""
   },
@@ -688,7 +688,7 @@
     "category": "不适配 / 排除",
     "url": "https://laplahce.itch.io/cartoon-fx-pack",
     "license": "未导入",
-    "description": "itch 提供 Windows Unity 演示；完整版为 Unity URP 资源，未找到 Godot 交付。 按要求不接入。",
+    "description": "itch 提供 Windows Unity 演示；完整版为 Unity URP 资源，未找到 Godot 交付。 不接入。",
     "status": "excluded",
     "directory": ""
   }
