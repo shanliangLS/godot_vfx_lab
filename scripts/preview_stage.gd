@@ -266,6 +266,36 @@ func _center_camera_gust() -> void:
 	if not is_instance_valid(effect) or descriptor.get("preview_origin") != "camera_center":
 		return
 	var center := Vector3(0, float(effect.height) * 0.5, 0)
+	# Keep the focus centered while fitting the vertical range above the floor.
+	# Wind ribbons scatter in the shader beyond their authored mesh bounds.
+	var local_center := effect.transform * center
+	var lower_extent := absf(float(effect.height) * effect.scale.y) * 0.5
+	var floor_margin := 0.25
+	for node in _nodes(effect):
+		if node is MeshInstance3D and node.mesh:
+			for material in _materials(node):
+				if material is ShaderMaterial and material.shader and material.shader.resource_path.ends_with("/line.gdshader"):
+					var scatter: Vector3 = material.get_shader_parameter("scatter")
+					var bounds: AABB = node.mesh.get_aabb()
+					bounds.position -= scatter.abs()
+					bounds.size += scatter.abs() * 2.0
+					bounds = effect.transform * (node.transform * bounds)
+					lower_extent = maxf(lower_extent, local_center.y - bounds.position.y)
+				elif material is ShaderMaterial and material.shader and material.shader.resource_path.ends_with("/debris.gdshader"):
+					# Dust puffs already fade at their origin in the source shader.
+					if material.get_shader_parameter("shape") == 5:
+						continue
+					var half_size := float(material.get_shader_parameter("size")) * 1.3
+					var flutter := float(material.get_shader_parameter("flutter"))
+					var fall := absf(float(material.get_shader_parameter("fall")))
+					var stretch := float(material.get_shader_parameter("stretch"))
+					var step_x := 0.09 * flutter * absf(effect.scale.x)
+					var step_y := 0.01 * (fall + 4.2 * flutter) * absf(effect.scale.y)
+					var step_z := 0.032 * float(effect.radius) * absf(effect.scale.z)
+					var long_side := half_size + stretch * Vector3(step_x, step_y, step_z).length()
+					floor_margin = maxf(floor_margin, Vector2(half_size, long_side).length() + 0.02)
+	# Leave room for the camera-facing leaves and ribbon width.
+	carrier.scale.y = minf(1.0, maxf(focus.y - floor_margin, 0.01) / maxf(lower_extent, 0.001))
 	carrier.position = focus - carrier.basis * (effect.transform * center)
 
 func _frame_tornado() -> void:

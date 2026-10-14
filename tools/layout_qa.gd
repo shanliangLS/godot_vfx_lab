@@ -12,6 +12,22 @@ func capture(app: Control, name: String) -> void:
 	RenderingServer.force_draw()
 	app.get_viewport().get_texture().get_image().save_png("res://artifacts/layout-" + name + ".png")
 
+func check_gust_floor(stage: PreviewStage, name: String) -> void:
+	check(stage.effect.to_global(Vector3.ZERO).y >= 0.25 - 0.001, "Gust lower range stays above floor " + name)
+	for node in PreviewStage._nodes(stage.effect):
+		if not node is MeshInstance3D or not node.mesh:
+			continue
+		for material in PreviewStage._materials(node):
+			if material is ShaderMaterial and material.shader and material.shader.resource_path.ends_with("/line.gdshader"):
+				var scatter: Vector3 = material.get_shader_parameter("scatter")
+				var bounds: AABB = node.mesh.get_aabb()
+				bounds.position -= scatter.abs()
+				bounds.size += scatter.abs() * 2.0
+				bounds = node.global_transform * bounds
+				var thickness: Variant = material.get_shader_parameter("thickness")
+				var width := 0.035 * (float(thickness) if thickness != null else 1.0)
+				check(bounds.position.y - width >= 0.02, "Gust ribbons and shader scatter stay above floor " + name)
+
 func run(app: Control) -> void:
 	await get_tree().process_frame
 	var hint: Control = app.stage.get_node("CameraHintAnchor/CameraHint")
@@ -76,6 +92,16 @@ func run(app: Control) -> void:
 			await capture(app, entry.id.get_file())
 		elif entry.get("preview_origin") == "camera_center":
 			app.select_entry(entry)
+			await get_tree().process_frame
+			await get_tree().process_frame
+			check(is_equal_approx(app.stage.effect.height, 1.4), "Reduced default gust height")
+			check_gust_floor(app.stage, entry.id + " default")
+			for size in [Vector2(0.5, 3.0), Vector2(6.0, 1.6), Vector2(40.0, 3.0)]:
+				app.stage.effect.height = size.x
+				app.stage.set_effect_scale(size.y)
+				await get_tree().process_frame
+				await get_tree().process_frame
+				check_gust_floor(app.stage, entry.id + " height/scale " + str(size))
 			app.stage.effect.height = 6.0
 			app.stage.set_effect_scale(1.6)
 			await get_tree().process_frame

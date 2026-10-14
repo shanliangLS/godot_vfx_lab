@@ -59,7 +59,7 @@ def append_more(entries, sources):
             for style, label in [("storm", "雷暴"), ("arcane", "奥术"), ("fire", "烈焰"), ("toxic", "剧毒"), ("holy", "圣光"), ("void", "虚空")]:
                 add(script, label + " · 天降雷击", "area", initial={"kind": "strike", "style": style})
             for style, label in [("air", "空气"), ("leaves", "落叶"), ("snow", "飘雪"), ("sand", "沙尘"), ("petals", "花瓣"), ("ash", "灰烬")]:
-                add(script, label + " · 阵风", entry_category="环境 / 天气", initial={"kind": "gust", "style": style}, preview_origin="camera_center")
+                add(script, label + " · 阵风", entry_category="环境 / 天气", initial={"kind": "gust", "style": style, "height": 1.4}, preview_origin="camera_center")
         elif key == "fx_collection_free":
             for subpack, script, sampler, variants in [
                 ("vfx-2d-free", "vfx_2d/vfx_2d.gd", "vfx", [("explosion", "2D 爆炸"), ("smoke", "2D 烟雾"), ("spark", "2D 命中火花"), ("fire", "2D 火焰")]),
