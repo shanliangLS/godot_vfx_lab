@@ -266,7 +266,7 @@ func _center_camera_gust() -> void:
 	if not is_instance_valid(effect) or descriptor.get("preview_origin") != "camera_center":
 		return
 	var center := Vector3(0, float(effect.height) * 0.5, 0)
-	carrier.position = camera.position - carrier.basis * (effect.transform * center)
+	carrier.position = focus - carrier.basis * (effect.transform * center)
 
 func _frame_tornado() -> void:
 	var bounds := AABB()

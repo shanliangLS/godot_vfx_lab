@@ -62,12 +62,23 @@ func run(app: Control) -> void:
 			app.stage.set_effect_scale(1.6)
 			await get_tree().process_frame
 			var center: Vector3 = app.stage.effect.to_global(Vector3(0, app.stage.effect.height * 0.5, 0))
-			check(center.distance_to(app.stage.camera.global_position) < 0.001, "Gust volume centered on camera " + entry.id)
+			check(center.distance_to(app.stage.focus) < 0.001, "Gust volume centered on camera focus " + entry.id)
 			app.stage.set_playing(false)
 			app.stage.camera_preset(1)
 			await get_tree().process_frame
 			center = app.stage.effect.to_global(Vector3(0, app.stage.effect.height * 0.5, 0))
-			check(center.distance_to(app.stage.camera.global_position) < 0.001, "Paused gust follows camera")
+			check(center.distance_to(app.stage.focus) < 0.001, "Paused gust stays at camera focus")
+			var rotation := InputEventMouseMotion.new()
+			rotation.button_mask = MOUSE_BUTTON_MASK_RIGHT
+			rotation.relative = Vector2(50, -20)
+			app.stage._camera_input(rotation)
+			var zoom := InputEventMouseButton.new()
+			zoom.button_index = MOUSE_BUTTON_WHEEL_UP
+			zoom.pressed = true
+			app.stage._camera_input(zoom)
+			await get_tree().process_frame
+			center = app.stage.effect.to_global(Vector3(0, app.stage.effect.height * 0.5, 0))
+			check(center.distance_to(app.stage.focus) < 0.001, "Paused rotation and zoom preserve gust focus")
 			app.stage.set_playing(true)
 			if entry.initial.style == "leaves":
 				await get_tree().create_timer(0.5).timeout
