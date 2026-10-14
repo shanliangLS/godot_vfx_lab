@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://vendor/storm_free/storm-wind-3d-free/addons/storm_wind/demo/demo.gd" id="1"]
+
+[node name="Demo" type="Node3D"]
+script = ExtResource("1")

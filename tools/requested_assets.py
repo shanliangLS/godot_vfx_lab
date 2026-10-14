@@ -24,7 +24,8 @@ def normalize_requested(key, relative_root):
     marker = folder / "LAB-ADAPTATION.json"
     if marker.exists():
         return
-    base = folder / relative_root
+    base = folder / relative_root if relative_root is not None else folder
+    project_roots = sorted([p.parent for p in folder.rglob("project.godot")], key=lambda p: len(p.parts), reverse=True)
     prefix = "res://" + base.relative_to(ROOT).as_posix() + "/"
     for ghosts in folder.rglob("__MACOSX"):
         (ghosts / ".gdignore").write_text("", encoding="utf-8")
@@ -40,11 +41,15 @@ def normalize_requested(key, relative_root):
             continue
         original = path.read_text(encoding="utf-8-sig")
         text = original
+        file_prefix = prefix
+        if relative_root is None:
+            project_root = next((p for p in project_roots if p in path.parents), folder / path.relative_to(folder).parts[0])
+            file_prefix = "res://" + project_root.relative_to(ROOT).as_posix() + "/"
         if path.suffix == ".import":
             text = re.sub(r"^uid=.*\n", "", text, flags=re.M)
-            text = re.sub(r'(source_file=")res://', r"\1" + prefix, text)
+            text = re.sub(r'(source_file=")res://', r"\1" + file_prefix, text)
         else:
-            text = re.sub(r"res://(?!vendor/)", prefix, text)
+            text = re.sub(r"res://(?!vendor/)", file_prefix, text)
             text = re.sub(r'\s+uid="uid://[^"]+"', "", text)
             for name, adapted in classes.items():
                 text = re.sub(r"\b" + re.escape(name) + r"\b", adapted, text)
@@ -55,6 +60,8 @@ def normalize_requested(key, relative_root):
             changed.append(path.relative_to(folder).as_posix())
     for project in folder.rglob("project.godot"):
         project.rename(project.with_suffix(".godot.upstream"))
+    for uid in folder.rglob("*.uid"):
+        uid.unlink()  # Godot regenerates identifiers unique to this relocated copy.
     for obj in folder.rglob("*.obj"):
         if not obj.with_suffix(".mtl").exists():
             matches = re.findall(r"^usemtl (.+)$", obj.read_text(encoding="utf-8", errors="replace"), re.M)

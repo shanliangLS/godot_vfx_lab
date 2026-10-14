@@ -5,6 +5,7 @@ import html
 import io
 import json
 import re
+import time
 import zipfile
 from fetch_assets import ROOT, CACHE, client, request, safe_extract
 
@@ -22,7 +23,7 @@ SPECS = {
     "soygus_shield": ("https://soygus.itch.io/shield-force-vfx", "shield-vfx.zip", "Personal/commercial use and modification; no redistribution, resale or repackaging"),
 }
 
-def fetch(key):
+def fetch(key, allow_assets=False):
     url, filename, license_name = SPECS[key]
     folder = ROOT / "vendor" / key
     if (folder / "PROVENANCE.json").exists():
@@ -33,13 +34,26 @@ def fetch(key):
     token = re.search(r'name="csrf_token"\s+value="([^"]+)', page)
     data = {"csrf_token": html.unescape(token.group(1))} if token else {}
     if "generate_download_url" in page:
-        download_url = json.loads(request(opener, url + "/download_url", data, url))["url"]
-        download_page = request(opener, download_url).decode()
+        download_url = json.loads(request(opener, url + "/download_url?fresh=" + str(time.time_ns()), data, url))["url"]
+        download_page = request(opener, download_url, referer=url + "/purchase").decode()
     else:
         download_url, download_page = url, page
     uploads = re.findall(r'data-upload_id="(\d+)".*?<strong[^>]*title="([^"]+)"', download_page, re.S)
+    if not uploads:
+        # itch's own checkout frontend supports the central route when a subdomain
+        # generated URL redirects to the product page instead of the free download list.
+        game_id = re.search(r'content="games/(\d+)"', page)
+        if game_id:
+            central = request(opener, "https://itch.io").decode()
+            central_token = re.search(r'name="csrf_token"\s+value="([^"]+)', central)
+            if central_token:
+                central_payload = {"csrf_token": html.unescape(central_token.group(1))}
+                download_url = json.loads(request(opener, "https://itch.io/game/download_url/" + game_id.group(1), central_payload, url + "/purchase"))["url"]
+                download_page = request(opener, download_url, referer=url + "/purchase").decode()
+                uploads = re.findall(r'data-upload_id="(\d+)".*?<strong[^>]*title="([^"]+)"', download_page, re.S)
     selected = [item for item in uploads if html.unescape(item[1]) == filename]
     if len(selected) != 1:
+        (CACHE / (key + "_download.html")).write_text(download_page, encoding="utf-8")
         raise ValueError("Expected public free file %r; available files: %r" % (filename, [html.unescape(item[1]) for item in uploads]))
     token2 = re.search(r'name="csrf_token"\s+value="([^"]+)', download_page)
     payload = {"csrf_token": html.unescape(token2.group(1))} if token2 else data
@@ -49,12 +63,15 @@ def fetch(key):
     with zipfile.ZipFile(io.BytesIO(blob)) as archive:
         names = archive.namelist()
     native = [name for name in names if name.endswith((".gd", ".tscn", ".gdshader"))]
-    if not native:
+    assets = [name for name in names if name.lower().endswith((".png", ".fbx"))]
+    if not native and not (allow_assets and assets):
         result = {"id": key, "status": "excluded", "reason": "Download contains no native Godot scripts, scenes or shaders", "files": names}
         (CACHE / (key + "_inspection.json")).write_text(json.dumps(result, indent=2), encoding="utf-8")
         return result
     digest = safe_extract(blob, folder)
     record = {"id": key, "url": url, "file": filename, "sha256": digest, "license": license_name, "fetched": "2026-10-14", "native_godot_files": len(native)}
+    if allow_assets:
+        record["importable_assets"] = len(assets)
     (folder / "PROVENANCE.json").write_text(json.dumps(record, indent=2), encoding="utf-8")
     (folder / "SOURCE-LICENSE.txt").write_text("Author page license: " + license_name + "\nSource: " + url + "\nRetrieved: 2026-10-14\n", encoding="utf-8")
     return {"id": key, "status": "downloaded", "bytes": len(blob), "native_files": native[:18]}

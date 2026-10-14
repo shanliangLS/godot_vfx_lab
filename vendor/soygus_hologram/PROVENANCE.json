@@ -1,0 +1,9 @@
+{
+  "id": "soygus_hologram",
+  "url": "https://soygus.itch.io/hologram-vfx-godot",
+  "file": "hologram-vfx.zip",
+  "sha256": "dae6fe36badda139eba52502206fc8ff9c3656836f9bc1b0c6f1b0bf24a63232",
+  "license": "Personal/commercial use and modification; no redistribution, resale or repackaging",
+  "fetched": "2026-10-14",
+  "native_godot_files": 4
+}

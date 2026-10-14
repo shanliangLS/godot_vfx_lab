@@ -1,0 +1,65 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/models/SM_Portal_FloorRing.gltf" id="1_rhyuf"]
+[ext_resource type="PackedScene" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/effects/FX_PortalSwirl_Floor.tscn" id="2_7q2u3"]
+
+[sub_resource type="Environment" id="Environment_0hsor"]
+background_mode = 1
+background_color = Color(0.012, 0.01, 0.025, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.22, 0.2, 0.35, 1)
+ambient_light_energy = 0.5
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.9
+glow_bloom = 0.05
+fog_enabled = true
+fog_light_color = Color(0.03, 0.025, 0.06, 1)
+fog_density = 0.025
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vyn6m"]
+albedo_color = Color(0.09, 0.09, 0.11, 1)
+roughness = 0.4
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hvkt4"]
+size = Vector2(40, 40)
+
+[node name="Demo_FX_PortalSwirl_Floor" type="Node3D" unique_id=1053017520]
+
+[node name="Env" type="WorldEnvironment" parent="." unique_id=841591707]
+environment = SubResource("Environment_0hsor")
+
+[node name="Floor" type="MeshInstance3D" parent="." unique_id=1367413674]
+material_override = SubResource("StandardMaterial3D_vyn6m")
+mesh = SubResource("PlaneMesh_hvkt4")
+
+[node name="Moon" type="DirectionalLight3D" parent="." unique_id=1019553184]
+transform = Transform3D(0.8660254, -0.38302222, 0.32139382, 0, 0.64278764, 0.76604444, -0.5, -0.66341394, 0.5566704, 0, 0, 0)
+light_color = Color(0.6, 0.65, 1, 1)
+light_energy = 0.3
+shadow_enabled = true
+
+[node name="LevelParticleCollision" type="GPUParticlesCollisionHeightField3D" parent="." unique_id=782094372]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.5, 0)
+size = Vector3(12, 8, 12)
+
+[node name="SM_Portal_FloorRing" type="Node3D" parent="." unique_id=2009630379 instance=ExtResource("1_rhyuf")]
+
+[node name="FX_PortalSwirl_Floor" type="Node3D" parent="." unique_id=492232634 instance=ExtResource("2_7q2u3")]
+editor_description = "Horizontal portal pool with rising motes; sized for the floor ring (1.7 m)."
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22, 0)
+
+[node name="Camera" type="Camera3D" parent="." unique_id=747137873]
+transform = Transform3D(0.8715756, -0.22532536, 0.43541303, 0, 0.88812464, 0.45960268, -0.4902612, -0.40057847, 0.7740677, 1.8, 2.4, 3.2)
+fov = 50.0
+
+[node name="Overlay" type="CanvasLayer" parent="." unique_id=1854100327]
+
+[node name="Title" type="Label" parent="Overlay" unique_id=1652203487]
+offset_left = 28.0
+offset_top = 22.0
+offset_right = 28.0
+offset_bottom = 22.0
+theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.85, 0.97, 1, 1)
+text = "PortalSwirl Floor"

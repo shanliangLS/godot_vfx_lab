@@ -1,0 +1,25 @@
+[gd_scene format=3]
+
+[ext_resource type="PackedScene" path="res://vendor/soygus_chest/chest-looting-vfx/chest.tscn" id="1_ig7tw"]
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 1
+background_color = Color(0.75435704, 0.72579, 0.9864114, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.5965233, 0.35509998, 0.67, 1)
+glow_hdr_threshold = 2.0
+
+[node name="Main" type="Node3D" unique_id=1587553299]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1500707701]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=980144581]
+environment = SubResource("Environment_0xm2m")
+
+[node name="chest" parent="." unique_id=356442975 instance=ExtResource("1_ig7tw")]
+transform = Transform3D(0.95145494, 0, -0.30778843, 0, 1, 0, 0.30778843, 0, 0.95145494, 0.10420632, -0.0081118345, 0.09761047)
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1065684405]
+transform = Transform3D(-0.7223611, -0.18188936, 0.6671662, 0, 0.9647877, 0.26302984, -0.69151604, 0.19000253, -0.6969251, 1.8073146, 1.003184, -1.6016822)

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://vendor/rain_free/nimblux_lite_v1.0.3/project/demo/shared/demo_stage.gd" id="1"]
+
+[node name="DemoStage" type="Node3D"]
+script = ExtResource("1")

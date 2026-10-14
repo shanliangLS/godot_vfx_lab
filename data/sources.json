@@ -118,7 +118,7 @@
     "description": "作者免费样例：命中火花、剑斩与拾取闪光；完整版 25 个效果另售。",
     "status": "installed",
     "directory": "res://vendor/reeboo_free",
-    "author": "REEBOO"
+    "author": "REEBOO Labs"
   },
   {
     "id": "effectblocks",
@@ -184,7 +184,7 @@
     "description": "完整 25 个效果需购买；未下载样例时显示未接入。",
     "status": "pending",
     "directory": "",
-    "author": "REEBOO"
+    "author": "REEBOO Labs"
   },
   {
     "id": "effekseer",
@@ -363,135 +363,333 @@
     "author": "soygus"
   },
   {
+    "id": "fx_collection_free",
+    "name": "Godot FX Collection Free",
+    "author": "heyheythere",
+    "category": "屏幕 / 材质",
+    "url": "https://heyheythere.itch.io/godot-fx-collection-free",
+    "license": "CC BY 4.0 · 必须署名",
+    "description": "九个原生子包：新增 2D 效果、精灵材质、天气叠加、转场、复古屏幕、PSX 和卡通材质；魔法阵与风暴复用已单独接入的子包。",
+    "status": "installed",
+    "directory": "res://vendor/fx_collection_free"
+  },
+  {
+    "id": "rain_free",
+    "name": "Free Rain VFX · Rain / Ripples / Splashes",
+    "author": "gennai",
+    "category": "环境 / 天气",
+    "url": "https://gennai.itch.io/free-rain-vfx-godot-4",
+    "license": "可商用；禁止资源包再分发",
+    "description": "原生 3D 雨滴、地面波纹与水花；免费中雨预设，强度可实时调节。",
+    "status": "installed",
+    "directory": "res://vendor/rain_free"
+  },
+  {
+    "id": "soygus_chest",
+    "name": "Chest Looting VFX",
+    "author": "soygus",
+    "category": "掉落 / 拾取",
+    "url": "https://soygus.itch.io/chest-looting-vfx",
+    "license": "作者免费发布；未附明确许可文本，使用前核对来源",
+    "description": "原作者宝箱模型、开箱动画、发光形状与粒子；未把示例舞台相机导入预览。",
+    "status": "installed",
+    "directory": "res://vendor/soygus_chest"
+  },
+  {
+    "id": "storm_free",
+    "name": "Storm & Wind 3D Free",
+    "author": "heyheythere",
+    "category": "电击 / 闪电",
+    "url": "https://heyheythere.itch.io/storm-wind-3d-free",
+    "license": "CC BY 4.0 · 必须署名",
+    "description": "六种雷击与六种阵风，共 12 个免费原始预设；其他付费种类不开放。",
+    "status": "installed",
+    "directory": "res://vendor/storm_free"
+  },
+  {
+    "id": "glyph_free",
+    "name": "PARADOX Novissime · Glyph Cities Free",
+    "author": "PARADOX",
+    "category": "范围 / 魔法阵",
+    "url": "https://paradox-ai-creatives.itch.io/glyph-cities-free",
+    "license": "可商用；禁止素材再售与再分发",
+    "description": "地面传送门、水晶闪烁和灯光闪烁 × 四种配色；使用 Godot 交付与原始模型。",
+    "status": "installed",
+    "directory": "res://vendor/glyph_free"
+  },
+  {
+    "id": "soygus_hologram",
+    "name": "Hologram VFX 3D",
+    "author": "soygus",
+    "category": "屏幕 / 材质",
+    "url": "https://soygus.itch.io/hologram-vfx-godot",
+    "license": "可商用 / 可修改；禁止再分发与重新打包",
+    "description": "作者三个原始全息模型场景：桶和两种坦克；可调 Visual Shader 参数。",
+    "status": "installed",
+    "directory": "res://vendor/soygus_hologram"
+  },
+  {
+    "id": "christmas_assets",
+    "name": "VFX Library · Christmas Edition",
+    "author": "game.utb / Petr Medveď",
+    "category": "纹理 / 网格",
+    "url": "https://gameutb.itch.io/vfx-library-christmas",
+    "license": "可商用；禁止作为素材类产品再分发",
+    "description": "原始 PNG 和 FBX 素材预览，非成品特效。实验室载体支持颜色、强度、混合、序列帧和模型查看。",
+    "status": "installed",
+    "directory": "res://vendor/christmas_assets"
+  },
+  {
+    "id": "brackeys_bundle",
+    "name": "Brackeys VFX Bundle",
+    "author": "Brackeys",
+    "category": "纹理 / 网格",
+    "url": "https://brackeysgames.itch.io/brackeys-vfx-bundle",
+    "license": "CC0",
+    "description": "原始粒子纹理、TGA Flipbook 和 PNG 预绘序列帧；实验室 3D 载体预览，非作者成品场景。原创来源：Kenney、Picster、Thomas Iché、CodeManu。",
+    "status": "installed",
+    "directory": "res://vendor/brackeys_bundle"
+  },
+  {
+    "id": "binbun_grass",
+    "name": "Godot Grass Shader · 免费样例",
+    "author": "Binbun",
+    "category": "环境 / 天气",
+    "url": "https://binbun3d.itch.io/godot-grass",
+    "license": "CC0",
+    "description": "原生草地 MultiMesh、风动、渐变颜色与地面材质；免费一个样式，付费 10 个预设未持有。",
+    "status": "installed",
+    "directory": "res://vendor/binbun_grass"
+  },
+  {
+    "id": "soygus_card",
+    "name": "Holographic Card VFX",
+    "author": "soygus",
+    "category": "屏幕 / 材质",
+    "url": "https://soygus.itch.io/holographic-card-vfx-godot",
+    "license": "可商用 / 可修改；禁止再分发与重新打包",
+    "description": "三个原作者全息卡片节点，含动画和 Visual Shader；源演示包含品牌卡图，使用这些图像前需另行确认相应权利。",
+    "status": "installed",
+    "directory": "res://vendor/soygus_card"
+  },
+  {
     "id": "gap_godot_projectiles_1",
     "name": "Gabriel · Godot Projectiles Vol.1",
+    "author": "Gabriel Aguiar Prod.",
     "category": "魔法 / 飞弹",
     "url": "https://www.gabrielaguiarprod.com/product-page/unity-vfx-graph-muzzle-flash-effect",
     "license": "付费 · 未持有；以购买许可为准",
     "description": "30 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
     "status": "pending",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_godot_projectiles_2",
     "name": "Gabriel · Godot Projectiles Vol.2",
+    "author": "Gabriel Aguiar Prod.",
     "category": "魔法 / 飞弹",
     "url": "https://www.gabrielaguiarprod.com/product-page/godot-projectiles-vol-2",
     "license": "付费 · 未持有；以购买许可为准",
     "description": "60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
     "status": "pending",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_godot_projectiles_3",
     "name": "Gabriel · Godot Projectiles Vol.3",
+    "author": "Gabriel Aguiar Prod.",
     "category": "魔法 / 飞弹",
     "url": "https://www.gabrielaguiarprod.com/product-page/godot-projectiles-vol-3",
     "license": "付费 · 未持有；以购买许可为准",
     "description": "60 个 Godot 飞弹与配套发射 / 命中特效。itch 展示的是 Unity 版本；官网另售原生 Godot 版，未获得源文件，待导入。",
     "status": "pending",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_godot_magic_1",
     "name": "Gabriel · Godot Magic Abilities Vol.1",
+    "author": "Gabriel Aguiar Prod.",
     "category": "范围 / 魔法阵",
     "url": "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol",
     "license": "付费 · 未持有；以购买许可为准",
     "description": "31 个 Godot 魔法技能：光束、治疗、地面攻击、彗星、冲击和增益，售价 $20。未持有源文件，待导入。",
     "status": "pending",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_godot_magic_2",
     "name": "Gabriel · Godot Magic Abilities Vol.2",
+    "author": "Gabriel Aguiar Prod.",
     "category": "范围 / 魔法阵",
     "url": "https://www.gabrielaguiarprod.com/product-page/godot-magic-abilities-vol-2",
     "license": "付费 · 未持有；以购买许可为准",
     "description": "50 个 Godot 范围技能：增益、减益、箭雨、陨石、彗星与冲击，售价 $20。未持有源文件，待导入。",
     "status": "pending",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "laplahce_projectiles",
     "name": "laplahce · Stylized Projectiles",
+    "author": "laplahce",
     "category": "不适配 / 排除",
     "url": "https://laplahce.itch.io/stylized-projectiles-pack",
     "license": "未导入",
     "description": "提供 Unity URP / HDRP 资产和 Windows Demo，没有 Godot 场景。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "laplahce"
+    "directory": ""
   },
   {
     "id": "gap_projectiles_4",
     "name": "Gabriel · Unique Projectiles Vol.4",
+    "author": "Gabriel Aguiar Prod.",
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-projectiles-vol4",
     "license": "未导入",
     "description": "Unity Shader Graph / URP / HDRP / BIRP 版；在作者官网当前 Godot 产品列表中未找到对应 Vol.4。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_projectiles_5",
     "name": "Gabriel · Unique Projectiles Vol.5",
+    "author": "Gabriel Aguiar Prod.",
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-projectiles-vol5",
     "license": "未导入",
     "description": "当前交付为 Unity；官网 Godot 飞弹目前核实到 Vol.1–3，未找到 Vol.5。旧评论中的移植承诺不代表可下载交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_magic_3",
     "name": "Gabriel · Unique Magic Abilities Vol.3",
+    "author": "Gabriel Aguiar Prod.",
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/magic-abilities-vol3",
     "license": "未导入",
     "description": "Unity 和 Niagara 版本；官网 Godot 技能目前核实到 Vol.1–2，未找到 Vol.3。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_loot_1",
     "name": "Gabriel · Unique Loot Drops Vol.1",
+    "author": "Gabriel Aguiar Prod.",
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-loot-drops-vol-1",
     "license": "未导入",
     "description": "Unity HDRP / URP / BIRP 资产；未找到 Godot 交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "gap_sword_1",
     "name": "Gabriel · Unique Sword Slashes Vol.1",
+    "author": "Gabriel Aguiar Prod.",
     "category": "不适配 / 排除",
     "url": "https://gabrielaguiarprod.itch.io/unique-sword-slashes-vol1",
     "license": "未导入",
     "description": "Unity HDRP / URP / BIRP 资产；作者系列目录核实到此 Vol.1，未找到 Godot 剑斩系列交付。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "Gabriel Aguiar Prod."
+    "directory": ""
   },
   {
     "id": "wallcoeur_fire",
     "name": "wallcoeur · Fire Toon Particle",
+    "author": "wallcoeur",
     "category": "不适配 / 排除",
     "url": "https://wallcoeur.itch.io/unity-urp-vfx-fire-toon-particle",
     "license": "未导入",
     "description": "交付 .unitypackage 和 Unity URP Prefab，不能直接载入 Godot。 按用户要求排除，不下载、不移植，不加入效果目录。",
     "status": "excluded",
-    "directory": "",
-    "author": "wallcoeur"
+    "directory": ""
+  },
+  {
+    "id": "hun0fx_combat",
+    "name": "hun0fx · Stylized Combat VFX",
+    "author": "Hun0FX",
+    "category": "综合资源",
+    "url": "https://hun0fx.itch.io/stylized-combat-vfx",
+    "license": "付费 · 未持有；禁止源资源再分发",
+    "description": "网页演示仅供预览，明确禁止复用其纹理和特效。完整版另有 Godot 4.3+ 原生场景，目前 $20.99（原价 $29.99），未持有源文件，待购买后导入。",
+    "status": "pending",
+    "directory": ""
+  },
+  {
+    "id": "fox_lightning",
+    "name": "Lightning ShaderGraph",
+    "author": "Fox Jump",
+    "category": "不适配 / 排除",
+    "url": "https://fox-jump.itch.io/lightning-shadergraph",
+    "license": "未导入",
+    "description": "交付 Unity .shadergraph，无 Godot 场景或 Shader。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "matthorn_explosion",
+    "name": "Explosion FX Clips",
+    "author": "Matthew L. Hornbostel",
+    "category": "不适配 / 排除",
+    "url": "https://matthornb.itch.io/explosion",
+    "license": "未导入",
+    "description": "交付三段可抠像 MP4 视频，不是 3D 特效源场景；Godot 不原生播放 MP4，未进行转码或重建。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "nulltale_ascii",
+    "name": "Ascii Fx",
+    "author": "Null Tale",
+    "category": "不适配 / 排除",
+    "url": "https://nulltale.itch.io/asciifx",
+    "license": "未导入",
+    "description": "Unity URP Render Feature / RenderGraph 后处理，不能直接载入 Godot。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "nulltale_volfx",
+    "name": "VolFx",
+    "author": "Null Tale",
+    "category": "不适配 / 排除",
+    "url": "https://nulltale.itch.io/volfx",
+    "license": "未导入",
+    "description": "Unity 选择性后处理、LayerMask 和自定义渲染管线工具，没有 Godot 交付。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "yuriko_laser",
+    "name": "Elemental Laser VFX Pack",
+    "author": "YurikoKuun",
+    "category": "不适配 / 排除",
+    "url": "https://yurikokuun.itch.io/elemental-laser-pack",
+    "license": "未导入",
+    "description": "下载为 .unitypackage 与 HDR_Particle.shadergraph，无 Godot 版本。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "smartwilliam_dash",
+    "name": "Energy Dash",
+    "author": "smartwilliam",
+    "category": "不适配 / 排除",
+    "url": "https://smartwilliam.itch.io/sfas2021vfx",
+    "license": "未导入",
+    "description": "作者安装说明明确要求 Unreal Engine 4.26 / Niagara。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
+  },
+  {
+    "id": "laplahce_cartoon",
+    "name": "Cartoon Comic FX Pack",
+    "author": "laplahce",
+    "category": "不适配 / 排除",
+    "url": "https://laplahce.itch.io/cartoon-fx-pack",
+    "license": "未导入",
+    "description": "itch 提供 Windows Unity 演示；完整版为 Unity URP 资源，未找到 Godot 交付。 按要求不接入。",
+    "status": "excluded",
+    "directory": ""
   }
 ]

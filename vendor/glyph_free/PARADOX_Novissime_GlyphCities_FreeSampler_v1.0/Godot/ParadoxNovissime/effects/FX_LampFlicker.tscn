@@ -1,0 +1,61 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/textures/soft.png" id="1_xdk6c"]
+[ext_resource type="Script" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/scripts/flicker.gd" id="2_cjcbw"]
+
+[sub_resource type="Gradient" id="Gradient_wjo0q"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.25, 0.95, 1, 0, 0.25, 0.95, 1, 0.9, 0.25, 0.95, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ic61x"]
+gradient = SubResource("Gradient_wjo0q")
+use_hdr = true
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_gfltr"]
+emission_shape = 1
+emission_sphere_radius = 0.35
+spread = 180.0
+initial_velocity_min = 0.05
+initial_velocity_max = 0.15
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_ic61x")
+turbulence_enabled = true
+turbulence_noise_strength = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ubdad"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_xdk6c")
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_c2mtm"]
+material = SubResource("StandardMaterial3D_ubdad")
+size = Vector2(0.05, 0.05)
+
+[node name="FX_LampFlicker" type="Node3D" unique_id=1048798830]
+editor_description = "Flickering cyan lamp light with a soft halo; place on lamp heads."
+
+[node name="Motes" type="GPUParticles3D" parent="." unique_id=730938537]
+cast_shadow = 0
+amount = 14
+lifetime = 3.0
+preprocess = 3.0
+visibility_aabb = AABB(-6, -2, -6, 12, 14, 12)
+process_material = SubResource("ParticleProcessMaterial_gfltr")
+draw_pass_1 = SubResource("QuadMesh_c2mtm")
+
+[node name="LampLight" type="OmniLight3D" parent="." unique_id=298603343]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+light_color = Color(0.25, 0.95, 1, 1)
+light_energy = 9.0
+shadow_enabled = true
+omni_range = 9.0
+script = ExtResource("2_cjcbw")
+amount = 0.6

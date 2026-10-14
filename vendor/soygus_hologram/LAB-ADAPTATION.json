@@ -1,0 +1,19 @@
+{
+  "relocation_prefix": "res://vendor/soygus_hologram/hologram-vfx/",
+  "class_names": {},
+  "changed_files": [
+    "hologram-vfx/barrel.tscn",
+    "hologram-vfx/barrel_0.png.import",
+    "hologram-vfx/holo2.png.import",
+    "hologram-vfx/holo3.png.import",
+    "hologram-vfx/HologramLines.png.import",
+    "hologram-vfx/hologramVFX.tres",
+    "hologram-vfx/icon.svg.import",
+    "hologram-vfx/main.tscn",
+    "hologram-vfx/tank.tscn",
+    "hologram-vfx/tank2.tscn",
+    "hologram-vfx/tank_0.png.import",
+    "hologram-vfx/tank_1.png.import"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials."
+}

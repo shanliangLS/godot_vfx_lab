@@ -1,6 +1,6 @@
 extends Control
 
-const CATEGORIES := ["全部效果", "攻击 / 刀光", "受击 / 冲击", "魔法 / 飞弹", "激光 / 射线", "火焰 / 火球", "电击 / 闪电", "掉落 / 拾取", "状态 / 护盾", "范围 / 魔法阵", "拖尾 / 插件", "官方 / 粒子", "资源 / 授权"]
+const CATEGORIES := ["全部效果", "攻击 / 刀光", "受击 / 冲击", "魔法 / 飞弹", "激光 / 射线", "火焰 / 火球", "电击 / 闪电", "掉落 / 拾取", "状态 / 护盾", "范围 / 魔法阵", "环境 / 天气", "屏幕 / 材质", "纹理 / 网格", "拖尾 / 插件", "官方 / 粒子", "资源 / 授权"]
 const PRESETS := [
 	{"name":"作者默认", "color":"ffffff", "scale":1.0, "speed":1.0},
 	{"name":"烈焰 · Fire", "color":"ff702a", "secondary":"ffcf76", "scale":1.15, "speed":1.1},
@@ -68,6 +68,8 @@ func _ready() -> void:
 		call_deferred("_run_interaction_qa")
 	elif "--requested-qa" in OS.get_cmdline_user_args():
 		call_deferred("_run_requested_qa")
+	elif "--more-qa" in OS.get_cmdline_user_args():
+		call_deferred("_run_more_qa")
 
 func _build_ui() -> void:
 	var background := ColorRect.new()
@@ -396,7 +398,7 @@ func _ordered_sources() -> Array:
 		var b_status: int = status_order.get(b.status, 3)
 		if a_status != b_status:
 			return a_status < b_status
-		var author_order := str(a.get("author", "作者未注明")).naturalnocasecmp_to(str(b.get("author", "作者未注明")))
+		var author_order := str(a.get("author", "来源未注明")).naturalnocasecmp_to(str(b.get("author", "来源未注明")))
 		if author_order != 0:
 			return author_order < 0
 		var a_title: String = str(a.name).split(" · ", true, 1)[-1]
@@ -550,7 +552,7 @@ func _write_export(path: String) -> void:
 	if export_kind == "parameters":
 		var parameters: Array[Dictionary] = []
 		for p in inspector.all_parameters:
-			parameters.append({"id":p.id, "english":p.key, "chinese":ParameterDictionary.translate(p.key), "description":ParameterDictionary.describe(p.key), "value":var_to_str(inspector.read(p)) if not inspector.read(p) is Object else str(inspector.read(p)), "type":type_string(p.type), "hint":p.hint_string})
+			parameters.append({"id":p.id, "english":p.key, "chinese":p.get("label", ParameterDictionary.translate(p.key)), "description":p.get("description", ParameterDictionary.describe(p.key)), "value":var_to_str(inspector.read(p)) if not inspector.read(p) is Object else str(inspector.read(p)), "type":type_string(p.type), "hint":p.hint_string})
 		data = {"effect":current.label, "source":current.url, "parameters":parameters}
 	else:
 		data = _preset_record()
@@ -631,5 +633,10 @@ func _run_interaction_qa() -> void:
 
 func _run_requested_qa() -> void:
 	var qa: Node = load("res://tools/requested_qa.gd").new()
+	add_child(qa)
+	qa.run(self)
+
+func _run_more_qa() -> void:
+	var qa: Node = load("res://tools/more_qa.gd").new()
 	add_child(qa)
 	qa.run(self)

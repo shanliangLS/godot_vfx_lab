@@ -1,0 +1,23 @@
+; Engine configuration file.
+config_version=5
+
+[application]
+
+config/name="Scene Transitions Free"
+run/main_scene="res://addons/scene_transitions/demo/demo.tscn"
+config/features=PackedStringArray("4.3")
+
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+window/stretch/mode="canvas_items"
+
+[rendering]
+
+textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.07, 0.07, 0.11, 1)
+
+[autoload]
+
+FullPack="*res://addons/scene_transitions/demo/full_pack.gd"

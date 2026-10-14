@@ -1,0 +1,111 @@
+[gd_scene format=3]
+
+[ext_resource type="Texture2D" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/textures/star.png" id="1_1uubr"]
+[ext_resource type="Texture2D" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/textures/soft.png" id="2_5edwi"]
+[ext_resource type="Script" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/scripts/flicker.gd" id="3_avofs"]
+
+[sub_resource type="Gradient" id="Gradient_8o1mf"]
+colors = PackedColorArray(1.25, 4.75, 5, 1, 0.75, 2.85, 3, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_q4ptl"]
+gradient = SubResource("Gradient_8o1mf")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_8bt3p"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_bp2lo"]
+curve = SubResource("Curve_8bt3p")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_l0bl0"]
+emission_shape = 1
+emission_sphere_radius = 0.9
+angle_max = 90.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_bp2lo")
+color_ramp = SubResource("GradientTexture1D_q4ptl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_32nbf"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("1_1uubr")
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_mysd1"]
+material = SubResource("StandardMaterial3D_32nbf")
+size = Vector2(0.14, 0.14)
+
+[sub_resource type="Gradient" id="Gradient_j0adp"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.075, 0.285, 0.3, 0, 0.15, 0.57, 0.6, 0.6, 0.075, 0.285, 0.3, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_adraw"]
+gradient = SubResource("Gradient_j0adp")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_qew0b"]
+_data = [Vector2(0, 0.8), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.8), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_hpvgn"]
+curve = SubResource("Curve_qew0b")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_y0eeb"]
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_hpvgn")
+color_ramp = SubResource("GradientTexture1D_adraw")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r27yr"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("2_5edwi")
+disable_receive_shadows = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_xwrjt"]
+material = SubResource("StandardMaterial3D_r27yr")
+size = Vector2(1.6, 1.6)
+
+[node name="FX_CrystalShimmer" type="Node3D" unique_id=1445654625]
+editor_description = "Twinkling sparkles and a breathing glow around any crystal."
+
+[node name="Sparkles" type="GPUParticles3D" parent="." unique_id=903683007]
+cast_shadow = 0
+amount = 24
+lifetime = 1.2
+preprocess = 1.2
+visibility_aabb = AABB(-6, -2, -6, 12, 14, 12)
+process_material = SubResource("ParticleProcessMaterial_l0bl0")
+draw_pass_1 = SubResource("QuadMesh_mysd1")
+
+[node name="Glow" type="GPUParticles3D" parent="." unique_id=1933131269]
+cast_shadow = 0
+amount = 3
+lifetime = 2.5
+preprocess = 2.5
+visibility_aabb = AABB(-6, -2, -6, 12, 14, 12)
+process_material = SubResource("ParticleProcessMaterial_y0eeb")
+draw_pass_1 = SubResource("QuadMesh_xwrjt")
+
+[node name="CrystalLight" type="OmniLight3D" parent="." unique_id=130777101]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.4, 0)
+light_color = Color(0.25, 0.95, 1, 1)
+light_energy = 1.6
+omni_range = 4.0
+script = ExtResource("3_avofs")
+amount = 0.2
+speed = 2.0

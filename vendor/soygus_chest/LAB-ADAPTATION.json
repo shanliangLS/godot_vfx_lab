@@ -1,0 +1,18 @@
+{
+  "relocation_prefix": "res://vendor/soygus_chest/chest-looting-vfx/",
+  "class_names": {},
+  "changed_files": [
+    "chest-looting-vfx/chest.tscn",
+    "chest-looting-vfx/icon.svg.import",
+    "chest-looting-vfx/main.tscn",
+    "chest-looting-vfx/shapebox.tres",
+    "chest-looting-vfx/shapebox.tscn",
+    "chest-looting-vfx/assets/chest.gltf.import",
+    "chest-looting-vfx/assets/chest_0.png.import",
+    "chest-looting-vfx/assets/chest_1.png.import",
+    "chest-looting-vfx/assets/circle_05.png.import",
+    "chest-looting-vfx/assets/shapebox.glb.import",
+    "chest-looting-vfx/assets/star_01.png.import"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials."
+}

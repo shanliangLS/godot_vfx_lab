@@ -35,6 +35,8 @@ def request(opener, url, data=None, referer=None):
     if referer:
         headers["Referer"] = referer
     payload = urllib.parse.urlencode(data).encode() if data is not None else None
+    if data is not None:
+        headers["X-Requested-With"] = "XMLHttpRequest"
     for attempt in range(3):
         try:
             return opener.open(urllib.request.Request(url, data=payload, headers=headers), timeout=35).read()

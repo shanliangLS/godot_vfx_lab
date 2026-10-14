@@ -54,12 +54,19 @@ func inspect(effect: Node3D) -> void:
 		_render()
 		return
 	for node in PreviewStage._nodes(effect):
+		if preview_stage and preview_stage.descriptor.get("pack_id") == "soygus_card" and node is Node3D and not node.is_visible_in_tree():
+			continue
 		if preview_stage and preview_stage.descriptor.get("pack_id") == "berry_hit_free" and node != effect:
 			continue  # Generated layers are replaced by play(); edit their persistent preset data.
 		var relative := String(effect.get_path_to(node))
 		var fields: Array[Dictionary] = []
 		for property in node.get_property_list():
 			if property.usage & PROPERTY_USAGE_SCRIPT_VARIABLE and property.usage & PROPERTY_USAGE_EDITOR:
+				if node == effect and preview_stage and preview_stage.descriptor.get("pack_id") in ["fx_collection_free", "christmas_assets", "brackeys_bundle"]:
+					if property.name in ["source_script", "sampler", "variant", "source_asset"]:
+						continue
+					if "source_asset" in effect and str(effect.source_asset).ends_with(".fbx") and property.name not in ["color", "intensity"]:
+						continue
 				if property.type != TYPE_NIL:
 					fields.append(_descriptor(node, property, relative + ":" + property.name))
 		if node is GPUParticles3D or node is CPUParticles3D:
@@ -81,12 +88,20 @@ func inspect(effect: Node3D) -> void:
 			for material in PreviewStage._materials(node):
 				_add_resource(material, relative + "/材质 " + str(index), relative + ":material" + str(index), 0)
 				index += 1
+		if node is CanvasItem and node.material is ShaderMaterial:
+			_add_resource(node.material, relative + "/屏幕材质", relative + ":canvas_material", 0)
 		for p in fields:
 			var value: Variant = read(p)
 			if value is Resource and not value is Material and not value is Mesh and not value is Script:
 				_add_resource(value, relative + "/" + ParameterDictionary.translate(p.key), p.id + ":resource", 0)
 	for group in groups:
 		selector.add_item(group.name)
+	if preview_stage and preview_stage.descriptor.get("pack_id") == "glyph_free":
+		for i in groups.size():
+			if groups[i].name.begins_with("FX_"):
+				selected = i
+				selector.select(i)
+				break
 	selector.tooltip_text = "查看主控制器、子节点、粒子材质和 Shader 的实际参数。资源对象也有独立参数页。"
 	_render()
 
@@ -107,7 +122,16 @@ func _add_native_properties(object: Object, relative: String, fields: Array[Dict
 
 func _descriptor(object: Object, p: Dictionary, id: String, shader := false) -> Dictionary:
 	var result := {"target": object, "key": String(p.name), "type": p.type, "hint": p.get("hint", 0), "hint_string": p.get("hint_string", ""), "id": id, "shader": shader}
-	if preview_stage and preview_stage.descriptor.get("pack_id") == "magic_circles_free":
+	if preview_stage and preview_stage.descriptor.get("pack_id") == "rain_free" and object == root_effect and p.name == "amount":
+		result.label = "降雨强度"
+		result.description = "0 为关闭，1 为满强度；控制实际绘制的雨滴比例，满强度数量由 max_drops 设置。"
+	if shader and preview_stage and preview_stage.descriptor.get("pack_id") == "fx_collection_free":
+		for node in PreviewStage._nodes(root_effect):
+			if node is CanvasItem and node.material == object:
+				result.target = node
+				result.canvas_shader = true
+				break
+	if preview_stage and preview_stage.descriptor.get("pack_id") in ["magic_circles_free", "storm_free"]:
 		for role in ["_sparks", "_light"]:
 			if object == root_effect.get(role):
 				result.target = root_effect
@@ -126,6 +150,8 @@ func _resolved_target(p: Dictionary) -> Object:
 		return null
 	if p.has("role"):
 		return p.target.get(p.role)
+	if p.has("canvas_shader"):
+		return p.target.material
 	if p.has("magic_shader"):
 		var materials: Array = p.target.get("_materials")
 		return materials[p.magic_shader] if p.magic_shader < materials.size() else null
@@ -197,6 +223,11 @@ func write(p: Dictionary, value: Variant) -> void:
 		preview_stage.parameter_edited(p)
 	parameter_changed.emit(p.id, value)
 
+func _write_choice(p: Dictionary, value: Variant) -> void:
+	write(p, value)
+	if preview_stage and preview_stage.descriptor.get("pack_id") in ["storm_free", "fx_collection_free"] and p.key in ["kind", "style", "effect", "preset"]:
+		inspect(root_effect)
+
 func _render() -> void:
 	if list == null:
 		return
@@ -208,7 +239,7 @@ func _render() -> void:
 		return
 	var fields: Array = groups[selected].fields
 	if not search.text.is_empty():
-		fields = all_parameters.filter(func(p: Dictionary): return search.text.to_lower() in (p.key + ParameterDictionary.translate(p.key)).to_lower())
+		fields = all_parameters.filter(func(p: Dictionary): return search.text.to_lower() in (p.key + p.get("label", ParameterDictionary.translate(p.key))).to_lower())
 	count_label.text = "当前 %d 项 / 共 %d 项 · 悬停查看中文说明" % [fields.size(), all_parameters.size()]
 	for p in fields:
 		_add_editor(p)
@@ -218,12 +249,12 @@ func _add_editor(p: Dictionary) -> void:
 		return
 	var card := PanelContainer.new()
 	card.add_theme_stylebox_override("panel", LabTheme.box(Color("172237"), 7))
-	card.tooltip_text = ParameterDictionary.describe(p.key) + "\n" + p.id
+	card.tooltip_text = p.get("description", ParameterDictionary.describe(p.key)) + "\n" + p.id
 	list.add_child(card)
 	var column := VBoxContainer.new()
 	column.add_theme_constant_override("separation", 5)
 	card.add_child(column)
-	column.add_child(LabTheme.label(ParameterDictionary.translate(p.key), 14))
+	column.add_child(LabTheme.label(p.get("label", ParameterDictionary.translate(p.key)), 14))
 	var english := LabTheme.label(p.key, 11, LabTheme.MUTED)
 	english.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
 	column.add_child(english)
@@ -232,7 +263,7 @@ func _add_editor(p: Dictionary) -> void:
 		TYPE_BOOL:
 			var check := CheckButton.new()
 			check.text = "启用 / 禁用"
-			check.button_pressed = bool(value)
+			check.button_pressed = value == true
 			if p.key in ["auto_free", "free_on_finish", "one_shot_free"]:
 				check.disabled = true
 				check.text = "预览中固定关闭"
@@ -250,7 +281,7 @@ func _add_editor(p: Dictionary) -> void:
 					options.add_item(ParameterDictionary.translate(parts[0]) + " · " + parts[0], choice_id)
 					if choice_id == int(value): options.select(idx)
 					idx += 1
-				options.item_selected.connect(func(next: int): write(p, options.get_item_id(next)))
+				options.item_selected.connect(func(next: int): _write_choice(p, options.get_item_id(next)))
 				column.add_child(options)
 			else:
 				column.add_child(_spin(p, float(value) if value != null else 0.0, func(next: float): write(p, int(next) if p.type == TYPE_INT else next)))
@@ -282,11 +313,18 @@ func _add_editor(p: Dictionary) -> void:
 				var choices: PackedStringArray = String(p.hint_string).split(",")
 				if preview_stage and preview_stage.descriptor.get("pack_id") == "magic_circles_free" and p.key == "kind":
 					choices = PackedStringArray(["circle", "ripple"])
+				if preview_stage and preview_stage.descriptor.get("pack_id") == "storm_free":
+					if p.key == "kind":
+						choices = PackedStringArray(root_effect.kinds())
+					elif p.key == "style":
+						choices = PackedStringArray(root_effect.styles(root_effect.kind))
+				if preview_stage and preview_stage.descriptor.get("pack_id") == "fx_collection_free" and p.key == "effect" and p.target.has_method("effects"):
+					choices = PackedStringArray(p.target.effects())
 				for choice in choices:
 					options.add_item(ParameterDictionary.translate(choice) + " · " + choice)
 					if choice == str(value):
 						options.select(options.item_count - 1)
-				options.item_selected.connect(func(index: int): write(p, choices[index]))
+				options.item_selected.connect(func(index: int): _write_choice(p, choices[index]))
 				column.add_child(options)
 				return
 			var input := LineEdit.new()

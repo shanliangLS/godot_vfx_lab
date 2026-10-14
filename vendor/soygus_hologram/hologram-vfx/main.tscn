@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="PackedScene" path="res://vendor/soygus_hologram/hologram-vfx/barrel.tscn" id="1_ig7tw"]
+[ext_resource type="PackedScene" path="res://vendor/soygus_hologram/hologram-vfx/tank.tscn" id="2_0xm2m"]
+[ext_resource type="PackedScene" path="res://vendor/soygus_hologram/hologram-vfx/tank2.tscn" id="3_h2yge"]
+
+[sub_resource type="Environment" id="Environment_h2yge"]
+background_mode = 1
+background_color = Color(0.152941, 0, 0.243137, 1)
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="barrel" parent="." instance=ExtResource("1_ig7tw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.000161499, 0, 0.121539)
+
+[node name="Node" parent="." instance=ExtResource("2_0xm2m")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.725312, 0, 0.0422389)
+
+[node name="Node2" parent="." instance=ExtResource("3_h2yge")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.800682, 0, 0.0406899)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_h2yge")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.965926, -0.12941, 0.224144, 0, 0.866025, 0.5, -0.258819, -0.482963, 0.836516, 0.422605, 0.865574, 1.33718)

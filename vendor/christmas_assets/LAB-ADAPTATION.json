@@ -1,0 +1,6 @@
+{
+  "relocation_prefix": "res://vendor/christmas_assets/",
+  "class_names": {},
+  "changed_files": [],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials."
+}

@@ -1,0 +1,56 @@
+VFX Library ñ Christmas edition
+This asset contains a set of textures and unwrapped 3D models, that are made to be flexible and can save you a lot of time while making your own christmas themed visual effects. (Package does not include an example VFX file.)
+
+Created by Petr MedveÔ (student of Tom·ö Baùa university at ZlÌn, atelier of game design, 2022)
+
+Files included (PNG and FBX): 
+1.	Circular_explosion_1
+2.	Circular_explosion_2
+3.	CircularSplash_1
+4.	CircularSplash_2
+5.	CircularSplash_3
+6.	CircularSplash_4
+7.	CircularSplash_5
+8.	Crack_1
+9.	Crack_2
+10.	Basic_particle_improved
+11.	Flow_pattern_tiling_1
+12.	Flow_pattern_tiling_2
+13.	Gradient
+14.	Ice_imperfection
+15.	Noise_1
+16.	Noise_2
+17.	Noise_3
+18.	Noise_4
+19.	Shape_mask_1
+20.	Shape_mask_2
+21.	Smoke_1
+22.	Smoke_2
+23.	Snowflake_1
+24.	Snowflake_2
+25.	Snowflake_3
+26.	Splash
+27.	Wind_1
+28.	Wind_2
+29.	X_tiled_explosion_1
+30.	X_tiled_explosion_2
+31.	X_tiled_trail
+32.	Y_tiled_explosion
+33.	Candy_cane
+34.	Candy_cane (PNG)
+35.	Circle_1
+36.	Circle_2
+37.	Circular_wall
+38.	Crystal_1
+39.	Crystal_2
+40.	Crystal_3
+41.	Crystal_4
+42.	Globe
+43.	Present
+44.	Present (PNG)
+45.	Ribbon_1
+46.	Ribbon_2
+47.	Ribbon_3
+48.	Ribbon_4
+
+

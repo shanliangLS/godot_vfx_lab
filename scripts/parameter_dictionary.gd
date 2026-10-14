@@ -229,19 +229,95 @@ const REQUESTED_TERMS := {
 	"textureObj": ["形状纹理", "用于定义火焰、烟雾或护盾纹理的贴图。"]
 }
 
+const MORE_TERMS := {
+	"area_center": "天气区域中心", "area_size": "天气区域尺寸", "drop_width": "雨滴宽度", "follow_camera": "天气跟随镜头", "follow_target": "天气跟随目标",
+	"ground_from_raycast": "射线检测地面高度", "ground_height": "地面高度", "ground_mask": "地面碰撞检测层", "look_ahead": "镜头前方覆盖比例",
+	"max_drops": "满强度雨滴数量", "max_ripples": "最大波纹数量", "max_splashes": "最大水花数量", "near_fade": "近镜头淡化距离", "offset": "空间偏移",
+	"pixel_angle": "像素角度", "ripple_size": "波纹尺寸", "ripples": "启用地面波纹", "size_variation": "尺寸随机度", "speed_variation": "速度随机度",
+	"splash_color": "水花颜色", "splash_radius": "地面水花范围", "splash_size": "水花尺寸", "velocity": "运动速度向量",
+	"strike": "天降雷击", "gust": "阵风", "storm": "雷暴", "arcane": "奥术", "air": "空气", "leaves": "落叶", "snow": "飘雪", "sand": "沙尘", "petals": "花瓣", "ash": "灰烬",
+	"crt": "显像管", "arcade": "街机", "vhs": "磁带录像", "film": "老电影",
+	"In_front_or_mix": "前景覆盖 / 混合", "active": "启用效果", "affine": "仿射纹理变形", "age": "效果年龄", "albedo": "基础颜色", "albedo_texture": "基础纹理",
+	"angle": "旋转角度", "angle_curve": "角度曲线", "angle_max": "最大角度", "angle_min": "最小角度",
+	"angular_velocity_curve": "角速度曲线", "angular_velocity_max": "最大角速度", "angular_velocity_min": "最小角速度",
+	"anim_offset_curve": "动画偏移曲线", "anim_offset_max": "最大动画偏移", "anim_offset_min": "最小动画偏移",
+	"anim_speed_curve": "动画速度曲线", "anim_speed_max": "最大动画速度", "anim_speed_min": "最小动画速度",
+	"band_softness": "色阶柔和度", "band_threshold": "色阶阈值", "bands": "卡通色阶数量", "border_rotated": "边框旋转",
+	"burst": "爆发强度", "card_texture": "卡片纹理", "cells": "网格单元数", "center": "中心位置", "chromatic": "色差偏移",
+	"color_a": "颜色 A", "color_b": "颜色 B", "color_bleed": "色彩溢出", "color_gradient": "颜色渐变纹理",
+	"color_initial_ramp": "初始颜色渐变", "color_mid": "中间颜色", "color_outline": "描边颜色", "color_steps": "颜色阶数",
+	"contrast": "对比度", "corner_radius": "圆角半径", "curvature": "屏幕弯曲度", "damping_curve": "阻尼曲线",
+	"damping_max": "最大阻尼", "damping_min": "最小阻尼", "diagonals": "对角方向", "direction_mix": "方向混合", "directtion": "流动方向（作者拼写）",
+	"draw_order": "粒子绘制顺序", "drift": "漂移幅度", "drop_length": "雨滴长度", "emission_colors": "发射点颜色",
+	"emission_sphere_radius": "球形发射半径", "fall": "下落方向与幅度", "fall_speed": "下落速度", "fired": "最近触发时间",
+	"flake_size": "雪片尺寸", "flash": "闪光强度", "flash_amount": "闪白强度", "flash_color": "闪白颜色", "flatness": "平面化程度",
+	"flip": "翻转方向", "flutter": "飘动幅度", "fog_scale": "雾纹理尺度", "fps": "每秒帧数", "fract_delta": "分数时间补偿",
+	"frame": "静态帧索引", "frames": "动画帧数", "front_color": "卡片前景颜色", "front_opacity": "卡片前景透明度",
+	"glitch_active": "启用故障干扰", "glitch_power": "故障干扰强度", "glitch_size": "故障条带尺寸", "glitch_speed": "故障变化速度",
+	"glossiness": "光泽度", "glow": "辉光强度", "ground": "地面位置", "ground_fog": "地面雾强度", "grow": "生长进度",
+	"holo_color": "全息颜色", "holo_direction": "全息流动方向", "holo_speed": "全息流动速度", "holo_texture": "全息纹理",
+	"hue_variation_curve": "色相变化曲线", "hue_variation_max": "最大色相变化", "hue_variation_min": "最小色相变化", "inside": "内部填充",
+	"intensity_holo": "全息发光强度", "jitter": "画面抖动", "lifetime_randomness": "寿命随机度",
+	"linear_accel_curve": "线性加速度曲线", "linear_accel_max": "最大线性加速度", "linear_accel_min": "最小线性加速度",
+	"mask_size": "遮罩尺寸", "monster_texture": "卡片主体纹理", "motion": "运动幅度", "noise_tex": "噪声纹理",
+	"omni_range": "点光源范围", "opacity_holo": "全息透明度", "outline_color": "描边颜色", "outline_intensity": "描边强度",
+	"particle_flag_align_y": "粒子朝运动方向对齐", "particle_flag_disable_z": "禁用粒子深度轴", "particle_flag_rotate_y": "允许粒子绕竖轴旋转",
+	"period": "循环周期", "pixel_size": "像素尺寸", "pixel_snap": "顶点像素吸附", "progress": "播放进度",
+	"radial_accel_curve": "径向加速度曲线", "radial_accel_max": "最大径向加速度", "radial_accel_min": "最小径向加速度",
+	"ramp": "渐变强度", "random_variation": "随机配色差异", "rate": "闪烁频率", "rect_size": "画布区域尺寸",
+	"scale_amount_curve": "尺寸变化曲线", "scanline_count": "扫描线数量", "scanlines": "扫描线强度", "scanlines_scale": "扫描线尺度",
+	"scanlines_speed": "扫描线流动速度", "scanlines_texture": "扫描线纹理", "scatter": "散布范围", "scorch": "地面灼痕强度",
+	"seed": "随机种子", "shadow_color": "阴影颜色", "shadow_enabled": "启用阴影", "shake_frecuency": "抖动频率（作者拼写）",
+	"shape_atlas": "草叶形状图集", "shift": "颜色偏移", "shine_color": "扫光颜色", "snap_pixels": "顶点吸附网格大小", "specular": "镜面反射强度",
+	"splashes": "水花强度", "split": "分裂程度", "split_scale": "分轴缩放", "stars_active": "启用星光",
+	"stars_direction": "星光流动方向", "stars_opacity": "星光透明度", "stars_scale": "星光纹理尺度", "stars_speed": "星光流动速度", "stars_texture": "星光纹理",
+	"style": "风格预设", "tangential_accel_curve": "切向加速度曲线", "tangential_accel_max": "最大切向加速度", "tangential_accel_min": "最小切向加速度",
+	"targets": "连接目标点", "textureMask": "形状遮罩纹理", "textureShiny": "闪光纹理", "thickness": "厚度",
+	"three_point": "三点纹理过滤", "tint": "整体染色", "tint_a": "碎片颜色 A", "tint_b": "碎片颜色 B", "tracking": "磁带追踪干扰",
+	"trail": "拖尾强度", "twirl_force": "旋涡扭曲强度", "unlit": "不受灯光影响", "use_atlas": "使用草叶图集", "use_fixed_seed": "固定随机种子",
+	"use_ramp": "使用颜色渐变", "uv_offset": "纹理坐标偏移", "uv_scale": "纹理坐标缩放", "uv_scroll": "纹理坐标滚动",
+	"vertex_colors": "使用顶点颜色", "vignette": "暗角强度", "visibility_aabb": "可见范围包围盒",
+	"wave_height": "波动高度", "wave_length": "波长", "wave_pinned": "固定波动起点", "wave_speed": "波动速度",
+	"wind": "风强度", "wind_texture": "风动噪声纹理", "wind_velocity": "风动方向与速度", "world_origin": "世界坐标原点",
+	"source_asset": "原始素材", "additive": "叠加混合", "billboard": "始终朝向镜头", "columns": "序列帧列数", "rows": "序列帧行数",
+	"frames_per_second": "序列帧播放帧率", "animate": "播放序列帧", "alpha_value": "发光形状透明度", "script": "控制脚本"
+}
+
+const MORE_TOKENS := {
+	"render": "渲染", "priority": "优先级", "next": "后续", "pass": "通道", "blend": "混合", "scissor": "裁切", "hash": "散列", "disabled": "关闭",
+	"mix": "混合", "add": "叠加", "subtract": "减色", "multiply": "相乘", "alpha": "透明度", "depth": "深度", "opaque": "不透明",
+	"prepass": "预渲染", "pre": "预先", "shading": "着色", "unshaded": "无光照", "per": "每", "pixel": "像素", "vertex": "顶点", "cull": "剔除",
+	"back": "背面", "front": "正面", "diffuse": "漫反射", "specular": "镜面反射", "metallic": "金属度", "roughness": "粗糙度",
+	"emission": "自发光", "normal": "法线", "map": "贴图", "ambient": "环境", "occlusion": "遮蔽", "ao": "环境遮蔽", "clearcoat": "清漆",
+	"rim": "边缘光", "anisotropy": "各向异性", "subsurf": "次表面", "subsurface": "次表面", "scattering": "散射", "transmittance": "透射",
+	"refraction": "折射", "heightmap": "高度贴图", "height": "高度", "lod": "细节层级", "bias": "偏移", "filter": "过滤",
+	"channel": "通道", "triplanar": "三平面", "uv": "纹理坐标", "uv1": "纹理坐标一", "uv2": "纹理坐标二", "proximity": "接近",
+	"msdf": "距离场", "distance": "距离", "fade": "淡化", "grow": "扩张", "bilinear": "双线性", "trilinear": "三线性",
+	"receive": "接收", "shadow": "阴影", "shadows": "阴影", "fog": "雾", "screen": "屏幕", "space": "空间", "world": "世界",
+	"keep": "保持", "scale": "缩放", "fixed": "固定", "size": "尺寸", "particle": "粒子", "particles": "粒子", "h": "横向", "v": "纵向",
+	"loop": "循环", "min": "最小", "max": "最大", "textures": "纹理", "texture": "纹理", "flag": "标记", "flags": "标记", "sampling": "采样",
+	"repeat": "重复", "enabled": "开启", "on": "开启", "off": "关闭", "detail": "细节", "alignment": "对齐", "animation": "动画"
+}
+
 static func translate(key: String) -> String:
 	var clean := key.trim_prefix("shader_parameter/")
+	if MORE_TERMS.has(clean):
+		return MORE_TERMS[clean]
+	if MORE_TERMS.has(clean.to_lower()):
+		return MORE_TERMS[clean.to_lower()]
 	if REQUESTED_TERMS.has(clean):
 		return REQUESTED_TERMS[clean][0]
 	if TERMS.has(clean):
 		return TERMS[clean][0]
 	var words: Array[String] = []
 	for word in clean.to_snake_case().split("_"):
-		words.append(TOKENS.get(word.to_lower(), word))
+		words.append(MORE_TOKENS.get(word.to_lower(), TOKENS.get(word.to_lower(), word)))
 	return "·".join(words)
 
 static func describe(key: String) -> String:
 	var clean := key.trim_prefix("shader_parameter/")
+	if MORE_TERMS.has(clean):
+		return "%s。修改后立即作用于当前预览实例；范围和单位见输入框，作者默认值可通过重置恢复。" % MORE_TERMS[clean]
 	if REQUESTED_TERMS.has(clean):
 		return REQUESTED_TERMS[clean][1]
 	if TERMS.has(clean):

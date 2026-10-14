@@ -1,0 +1,313 @@
+{
+  "verified_at": "2026-10-14",
+  "policy": "只接入原生 Godot 或其可直接导入的 PNG/TGA/FBX 素材；素材载体、2D 叠加与成品 3D 效果明确标注；付费未持有和下载失败不冒充已安装。",
+  "items": [
+    {
+      "id": "fx_collection_free",
+      "name": "Godot FX Collection Free",
+      "author": "heyheythere",
+      "category": "屏幕 / 材质",
+      "url": "https://heyheythere.itch.io/godot-fx-collection-free",
+      "requested_url": "https://heyheythere.itch.io/godot-fx-collection-free",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "CC BY 4.0 · 必须署名",
+      "description": "九个原生子包：新增 2D 效果、精灵材质、天气叠加、转场、复古屏幕、PSX 和卡通材质；魔法阵与风暴复用已单独接入的子包。",
+      "evidence": [
+        "https://heyheythere.itch.io/godot-fx-collection-free",
+        "vendor/fx_collection_free/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "rain_free",
+      "name": "Free Rain VFX · Rain / Ripples / Splashes",
+      "author": "gennai",
+      "category": "环境 / 天气",
+      "url": "https://gennai.itch.io/free-rain-vfx-godot-4",
+      "requested_url": "https://gennai.itch.io/free-rain-vfx-godot-4",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "可商用；禁止资源包再分发",
+      "description": "原生 3D 雨滴、地面波纹与水花；免费中雨预设，强度可实时调节。",
+      "evidence": [
+        "https://gennai.itch.io/free-rain-vfx-godot-4",
+        "vendor/rain_free/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "soygus_chest",
+      "name": "Chest Looting VFX",
+      "author": "soygus",
+      "category": "掉落 / 拾取",
+      "url": "https://soygus.itch.io/chest-looting-vfx",
+      "requested_url": "https://soygus.itch.io/chest-looting-vfx",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "作者免费发布；未附明确许可文本，使用前核对来源",
+      "description": "原作者宝箱模型、开箱动画、发光形状与粒子；未把示例舞台相机导入预览。",
+      "evidence": [
+        "https://soygus.itch.io/chest-looting-vfx",
+        "vendor/soygus_chest/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "storm_free",
+      "name": "Storm & Wind 3D Free",
+      "author": "heyheythere",
+      "category": "电击 / 闪电",
+      "url": "https://heyheythere.itch.io/storm-wind-3d-free",
+      "requested_url": "https://heyheythere.itch.io/storm-wind-3d-free",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "CC BY 4.0 · 必须署名",
+      "description": "六种雷击与六种阵风，共 12 个免费原始预设；其他付费种类不开放。",
+      "evidence": [
+        "https://heyheythere.itch.io/storm-wind-3d-free",
+        "vendor/storm_free/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "glyph_free",
+      "name": "PARADOX Novissime · Glyph Cities Free",
+      "author": "PARADOX",
+      "category": "范围 / 魔法阵",
+      "url": "https://paradox-ai-creatives.itch.io/glyph-cities-free",
+      "requested_url": "https://paradox-ai-creatives.itch.io/glyph-cities-free",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "可商用；禁止素材再售与再分发",
+      "description": "地面传送门、水晶闪烁和灯光闪烁 × 四种配色；使用 Godot 交付与原始模型。",
+      "evidence": [
+        "https://paradox-ai-creatives.itch.io/glyph-cities-free",
+        "vendor/glyph_free/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "soygus_hologram",
+      "name": "Hologram VFX 3D",
+      "author": "soygus",
+      "category": "屏幕 / 材质",
+      "url": "https://soygus.itch.io/hologram-vfx-godot",
+      "requested_url": "https://soygus.itch.io/hologram-vfx-godot",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "可商用 / 可修改；禁止再分发与重新打包",
+      "description": "作者三个原始全息模型场景：桶和两种坦克；可调 Visual Shader 参数。",
+      "evidence": [
+        "https://soygus.itch.io/hologram-vfx-godot",
+        "vendor/soygus_hologram/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "christmas_assets",
+      "name": "VFX Library · Christmas Edition",
+      "author": "game.utb / Petr Medveď",
+      "category": "纹理 / 网格",
+      "url": "https://gameutb.itch.io/vfx-library-christmas",
+      "requested_url": "https://gameutb.itch.io/vfx-library-christmas",
+      "status": "installed",
+      "godot": true,
+      "delivery": "素材 / 实验室载体",
+      "license": "可商用；禁止作为素材类产品再分发",
+      "description": "原始 PNG 和 FBX 素材预览，非成品特效。实验室载体支持颜色、强度、混合、序列帧和模型查看。",
+      "evidence": [
+        "https://gameutb.itch.io/vfx-library-christmas",
+        "vendor/christmas_assets/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "brackeys_bundle",
+      "name": "Brackeys VFX Bundle",
+      "author": "Brackeys",
+      "category": "纹理 / 网格",
+      "url": "https://brackeysgames.itch.io/brackeys-vfx-bundle",
+      "requested_url": "https://brackeysgames.itch.io/brackeys-vfx-bundle",
+      "status": "installed",
+      "godot": true,
+      "delivery": "素材 / 实验室载体",
+      "license": "CC0",
+      "description": "原始粒子纹理、TGA Flipbook 和 PNG 预绘序列帧；实验室 3D 载体预览，非作者成品场景。原创来源：Kenney、Picster、Thomas Iché、CodeManu。",
+      "evidence": [
+        "https://brackeysgames.itch.io/brackeys-vfx-bundle",
+        "vendor/brackeys_bundle/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "binbun_grass",
+      "name": "Godot Grass Shader · 免费样例",
+      "author": "Binbun",
+      "category": "环境 / 天气",
+      "url": "https://binbun3d.itch.io/godot-grass",
+      "requested_url": "https://binbun3d.itch.io/godot-grass",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "CC0",
+      "description": "原生草地 MultiMesh、风动、渐变颜色与地面材质；免费一个样式，付费 10 个预设未持有。",
+      "evidence": [
+        "https://binbun3d.itch.io/godot-grass",
+        "vendor/binbun_grass/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "soygus_card",
+      "name": "Holographic Card VFX",
+      "author": "soygus",
+      "category": "屏幕 / 材质",
+      "url": "https://soygus.itch.io/holographic-card-vfx-godot",
+      "requested_url": "https://soygus.itch.io/holographic-card-vfx-godot",
+      "status": "installed",
+      "godot": true,
+      "delivery": "原生 Godot",
+      "license": "可商用 / 可修改；禁止再分发与重新打包",
+      "description": "三个原作者全息卡片节点，含动画和 Visual Shader；源演示包含品牌卡图，使用这些图像前需另行确认相应权利。",
+      "evidence": [
+        "https://soygus.itch.io/holographic-card-vfx-godot",
+        "vendor/soygus_card/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "reeboo_free",
+      "name": "REEBOO · Stylized VFX Free Sample",
+      "author": "REEBOO Labs",
+      "category": "攻击 / 刀光",
+      "url": "https://reebo0.itch.io/stylized-vfx-godot-free",
+      "requested_url": "https://reebo0.itch.io/stylized-vfx-godot-free",
+      "status": "installed",
+      "godot": true,
+      "license": "可商用；禁止源文件再分发",
+      "description": "已有 v1.2 的命中火花、剑斩和拾取闪光，核实后复用，不重复接入。",
+      "evidence": [
+        "vendor/reeboo_free/PROVENANCE.json"
+      ]
+    },
+    {
+      "id": "hun0fx_combat",
+      "name": "hun0fx · Stylized Combat VFX",
+      "author": "Hun0FX",
+      "category": "综合资源",
+      "requested_url": "https://hun0fx.itch.io/combat-vfx-demo",
+      "url": "https://hun0fx.itch.io/stylized-combat-vfx",
+      "status": "pending",
+      "godot": true,
+      "price_usd": 20.99,
+      "license": "付费 · 未持有；禁止源资源再分发",
+      "description": "网页演示仅供预览，明确禁止复用其纹理和特效。完整版另有 Godot 4.3+ 原生场景，目前 $20.99（原价 $29.99），未持有源文件，待购买后导入。",
+      "evidence": [
+        "https://hun0fx.itch.io/combat-vfx-demo",
+        "https://hun0fx.itch.io/stylized-combat-vfx"
+      ]
+    },
+    {
+      "id": "fox_lightning",
+      "name": "Lightning ShaderGraph",
+      "author": "Fox Jump",
+      "category": "不适配 / 排除",
+      "requested_url": "https://fox-jump.itch.io/lightning-shadergraph",
+      "url": "https://fox-jump.itch.io/lightning-shadergraph",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "交付 Unity .shadergraph，无 Godot 场景或 Shader。 按要求不接入。",
+      "evidence": [
+        "https://fox-jump.itch.io/lightning-shadergraph"
+      ]
+    },
+    {
+      "id": "matthorn_explosion",
+      "name": "Explosion FX Clips",
+      "author": "Matthew L. Hornbostel",
+      "category": "不适配 / 排除",
+      "requested_url": "https://matthornb.itch.io/explosion",
+      "url": "https://matthornb.itch.io/explosion",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "交付三段可抠像 MP4 视频，不是 3D 特效源场景；Godot 不原生播放 MP4，未进行转码或重建。 按要求不接入。",
+      "evidence": [
+        "https://matthornb.itch.io/explosion"
+      ]
+    },
+    {
+      "id": "nulltale_ascii",
+      "name": "Ascii Fx",
+      "author": "Null Tale",
+      "category": "不适配 / 排除",
+      "requested_url": "https://nulltale.itch.io/asciifx",
+      "url": "https://nulltale.itch.io/asciifx",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "Unity URP Render Feature / RenderGraph 后处理，不能直接载入 Godot。 按要求不接入。",
+      "evidence": [
+        "https://nulltale.itch.io/asciifx"
+      ]
+    },
+    {
+      "id": "nulltale_volfx",
+      "name": "VolFx",
+      "author": "Null Tale",
+      "category": "不适配 / 排除",
+      "requested_url": "https://nulltale.itch.io/volfx",
+      "url": "https://nulltale.itch.io/volfx",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "Unity 选择性后处理、LayerMask 和自定义渲染管线工具，没有 Godot 交付。 按要求不接入。",
+      "evidence": [
+        "https://nulltale.itch.io/volfx"
+      ]
+    },
+    {
+      "id": "yuriko_laser",
+      "name": "Elemental Laser VFX Pack",
+      "author": "YurikoKuun",
+      "category": "不适配 / 排除",
+      "requested_url": "https://yurikokuun.itch.io/elemental-laser-pack",
+      "url": "https://yurikokuun.itch.io/elemental-laser-pack",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "下载为 .unitypackage 与 HDR_Particle.shadergraph，无 Godot 版本。 按要求不接入。",
+      "evidence": [
+        "https://yurikokuun.itch.io/elemental-laser-pack"
+      ]
+    },
+    {
+      "id": "smartwilliam_dash",
+      "name": "Energy Dash",
+      "author": "smartwilliam",
+      "category": "不适配 / 排除",
+      "requested_url": "https://smartwilliam.itch.io/sfas2021vfx",
+      "url": "https://smartwilliam.itch.io/sfas2021vfx",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "作者安装说明明确要求 Unreal Engine 4.26 / Niagara。 按要求不接入。",
+      "evidence": [
+        "https://smartwilliam.itch.io/sfas2021vfx"
+      ]
+    },
+    {
+      "id": "laplahce_cartoon",
+      "name": "Cartoon Comic FX Pack",
+      "author": "laplahce",
+      "category": "不适配 / 排除",
+      "requested_url": "https://laplahce.itch.io/cartoon-fx-pack",
+      "url": "https://laplahce.itch.io/cartoon-fx-pack",
+      "status": "excluded",
+      "godot": false,
+      "license": "未导入",
+      "description": "itch 提供 Windows Unity 演示；完整版为 Unity URP 资源，未找到 Godot 交付。 按要求不接入。",
+      "evidence": [
+        "https://laplahce.itch.io/cartoon-fx-pack"
+      ]
+    }
+  ]
+}

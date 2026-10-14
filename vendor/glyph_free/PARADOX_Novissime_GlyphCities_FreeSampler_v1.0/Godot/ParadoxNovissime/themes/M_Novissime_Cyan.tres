@@ -1,0 +1,13 @@
+[gd_resource type="StandardMaterial3D" format=3]
+
+[ext_resource type="Texture2D" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/themes/T_Novissime_Palette_Cyan.png" id="1_bqmk0"]
+[ext_resource type="Texture2D" path="res://vendor/glyph_free/PARADOX_Novissime_GlyphCities_FreeSampler_v1.0/Godot/ParadoxNovissime/themes/T_Novissime_Emission_Cyan.png" id="2_eboon"]
+
+[resource]
+resource_name = "M_Novissime_Cyan"
+albedo_texture = ExtResource("1_bqmk0")
+roughness = 0.45
+emission_enabled = true
+emission_energy_multiplier = 6.0
+emission_texture = ExtResource("2_eboon")
+texture_filter = 0

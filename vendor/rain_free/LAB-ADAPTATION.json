@@ -1,0 +1,24 @@
+{
+  "relocation_prefix": "res://vendor/rain_free/nimblux_lite_v1.0.3/project/",
+  "class_names": {
+    "NimbluxEffect3D": "LabRainFreeNimbluxEffect3D",
+    "NimbluxMeshes": "LabRainFreeNimbluxMeshes",
+    "NimbluxRain3D": "LabRainFreeNimbluxRain3D"
+  },
+  "changed_files": [
+    "nimblux_lite_v1.0.3/project/icon.svg.import",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/core/nimblux_effect_3d.gd",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/core/nimblux_meshes.gd",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/icons/effect.svg.import",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/icons/rain.svg.import",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/nodes_3d/nimblux_rain_3d.gd",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/presets/3d/rain_steady.tscn",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/shaders/nimblux_precip.gdshader",
+    "nimblux_lite_v1.0.3/project/addons/nimblux_fx/shaders/nimblux_splash.gdshader",
+    "nimblux_lite_v1.0.3/project/demo/lite_demo.gd",
+    "nimblux_lite_v1.0.3/project/demo/lite_demo.tscn",
+    "nimblux_lite_v1.0.3/project/demo/shared/demo_stage.gd",
+    "nimblux_lite_v1.0.3/project/demo/shared/demo_stage.tscn"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials."
+}

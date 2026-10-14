@@ -149,6 +149,22 @@ func load_effect(entry: Dictionary) -> void:
 	if not effect:
 		return
 	effect.name = "Effect"
+	if entry.has("visible_subnode"):
+		for node in effect.get_children():
+			if node is Node3D and not node is Camera3D and not node is WorldEnvironment:
+				node.visible = node.name == entry.visible_subnode
+				if node.visible:
+					node.position = Vector3.ZERO
+	if entry.get("strip_demo_stage", false):
+		for node in _nodes(effect):
+			if node is Camera3D or node is WorldEnvironment or node is DirectionalLight3D:
+				node.get_parent().remove_child(node)
+				node.queue_free()
+	for path_to_remove in entry.get("strip_demo_nodes", []):
+		var decoration := effect.get_node_or_null(path_to_remove)
+		if decoration:
+			decoration.get_parent().remove_child(decoration)
+			decoration.queue_free()
 	authored_scale = effect.scale
 	for key in entry.get("initial", {}):
 		effect.set(key, entry.initial[key])
@@ -175,6 +191,8 @@ func load_effect(entry: Dictionary) -> void:
 		_set_trail_gradient(effect, LabTheme.ACCENT)
 	_setup_beam()
 	_frame_effect()
+	if entry.has("preview_scale"):
+		carrier.scale = Vector3.ONE * float(entry.preview_scale)
 	if _is_inspired_projectile():
 		# The preview owns motion and lifetime; the source script otherwise frees itself.
 		effect.set_process(false)
@@ -367,7 +385,9 @@ func _sync_requested_loop() -> void:
 	if not is_instance_valid(effect):
 		return
 	var pack: String = descriptor.get("pack_id", "")
-	if pack == "magic_circles_free":
+	if "repeat_preview" in effect:
+		effect.repeat_preview = repeat_effect
+	if pack in ["magic_circles_free", "storm_free"]:
 		effect.one_shot = not repeat_effect
 	elif pack == "starter_lite" and descriptor.get("mode") == "static":
 		effect.is_looping = repeat_effect
@@ -489,14 +509,21 @@ func tint(color: Color) -> void:
 			_set_trail_gradient(node, color)
 		if node is Light3D:
 			node.light_color = color
+		if node is CanvasItem and node.material is ShaderMaterial:
+			_tint_shader(node.material, color)
 		if node is GeometryInstance3D:
 			for material in _materials(node):
 				if material is ShaderMaterial:
-					for p in material.shader.get_shader_uniform_list():
-						if p.type == TYPE_COLOR or (p.type == TYPE_VECTOR3 and "color" in p.name.to_lower()):
-							material.set_shader_parameter(p.name, color if p.type == TYPE_COLOR else Vector3(color.r, color.g, color.b))
+					_tint_shader(material, color)
 		if node is GPUParticles3D and node.process_material is ParticleProcessMaterial:
 			node.process_material.color = color
+
+func _tint_shader(material: ShaderMaterial, color: Color) -> void:
+	for p in material.shader.get_shader_uniform_list():
+		if p.type == TYPE_COLOR:
+			material.set_shader_parameter(p.name, color)
+		elif p.type == TYPE_VECTOR3 and "color" in p.name.to_lower():
+			material.set_shader_parameter(p.name, Vector3(color.r, color.g, color.b))
 
 func _set_trail_gradient(node: GPUTrail3D, color: Color) -> void:
 	var gradient := Gradient.new()

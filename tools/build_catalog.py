@@ -24,7 +24,7 @@ AUTHOR_GROUPS = {
     "laplahce": ("laplahce_projectiles",),
     "metanoia83": ("motion_trail",),
     "MinSeok Hong": ("fab_textures",),
-    "REEBOO": ("reeboo_free", "reeboo"),
+    "REEBOO Labs": ("reeboo_free", "reeboo"),
     "soygus": ("soygus_tornado", "soygus_shield"),
     "wallcoeur": ("wallcoeur_fire",),
     "WhyNilliana": ("simple_laser",),
@@ -162,18 +162,21 @@ def build():
     data.mkdir(exist_ok=True)
     from requested_assets import append_requested
     append_requested(entries, sources)
-    research_file = data / "requested_research.json"
-    if research_file.exists():
+    from more_assets import append_more
+    append_more(entries, sources)
+    for research_file in [data / "requested_research.json", data / "more_research.json"]:
+        if not research_file.exists():
+            continue
         for item in json.loads(research_file.read_text(encoding="utf-8"))["items"]:
             if item["status"] in ("pending", "excluded") and not any(source["id"] == item["id"] for source in sources):
-                sources.append(dict(id=item["id"], name=item["name"], category=item["category"], url=item["url"], license=item["license"], description=item["description"], status=item["status"], directory=""))
+                sources.append(dict(id=item["id"], name=item["name"], author=item.get("author", SOURCE_AUTHORS.get(item["id"], "来源未注明")), category=item["category"], url=item["url"], license=item["license"], description=item["description"], status=item["status"], directory=""))
     custom_file = data / "custom_sources.json"
     if custom_file.exists():
         for source in json.loads(custom_file.read_text(encoding="utf-8")):
             sources.append(source["source"])
             entries.extend(source["entries"])
     for source in sources:
-        source["author"] = source.get("author") or SOURCE_AUTHORS.get(source["id"], "作者未注明")
+        source["author"] = source.get("author") or SOURCE_AUTHORS.get(source["id"], "来源未注明")
     (data / "catalog.json").write_text(json.dumps(entries, ensure_ascii=False, indent=2), encoding="utf-8")
     (data / "sources.json").write_text(json.dumps(sources, ensure_ascii=False, indent=2), encoding="utf-8")
     print("Catalog:", len(entries), "effects;", len(sources), "sources")

@@ -1,0 +1,16 @@
+{
+  "relocation_prefix": "res://vendor/binbun_grass/",
+  "class_names": {},
+  "changed_files": [
+    "assets/BinbunGrass/main.tscn",
+    "assets/BinbunGrass/src/materials/grass_01/grass_01.tres",
+    "assets/BinbunGrass/src/materials/grass_01/grass_ground_01.tres",
+    "assets/BinbunGrass/src/palette/palette_01.tres",
+    "assets/BinbunGrass/src/texture/basic/grass_basic_01.png.import",
+    "assets/BinbunGrass/src/texture/basic/grass_basic_02.png.import",
+    "assets/BinbunGrass/src/texture/basic/grass_basic_03.png.import",
+    "assets/BinbunGrass/src/texture/basic/grass_basic_04.png.import",
+    "assets/BinbunGrass/src/texture/basic/grass_basic_atlas.png.import"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials."
+}

@@ -1,0 +1,20 @@
+{
+  "version": 2,
+  "note": "Remove texture/video objects referring to a directory instead of an image and their connections; geometry, UVs and animation remain unchanged. Original ZIP retained.",
+  "removed_objects": {
+    "VFX_library_Christmas_edition/3D_models/Candy_cane.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Circle_1.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Circle_2.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Circular_wall.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Crystal_1.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Crystal_2.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Crystal_3.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Crystal_4.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Globe.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Present.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Ribbon_1.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Ribbon_2.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Ribbon_3.fbx": 2,
+    "VFX_library_Christmas_edition/3D_models/Ribbon_4.fbx": 2
+  }
+}

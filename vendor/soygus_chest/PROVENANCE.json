@@ -1,0 +1,9 @@
+{
+  "id": "soygus_chest",
+  "url": "https://soygus.itch.io/chest-looting-vfx",
+  "file": "chest-looting-vfx.zip",
+  "sha256": "86ff5d45dc87169b9a3300df0a1da579693424aaea3256463005aab1b41b8e5f",
+  "license": "Author's free release; consult upstream included license",
+  "fetched": "2026-10-14",
+  "native_godot_files": 4
+}

@@ -1,0 +1,14 @@
+{
+  "relocation_prefix": "res://vendor/storm_free/storm-wind-3d-free/",
+  "class_names": {
+    "StormFX": "LabStormFreeStormFX"
+  },
+  "changed_files": [
+    "storm-wind-3d-free/addons/storm_wind/storm_fx.gd",
+    "storm-wind-3d-free/addons/storm_wind/demo/demo.gd",
+    "storm-wind-3d-free/addons/storm_wind/demo/demo.tscn",
+    "storm-wind-3d-free/addons/storm_wind/demo/stage.gd",
+    "storm-wind-3d-free/addons/storm_wind/shaders/storm.gdshaderinc"
+  ],
+  "note": "Original ZIP retained; isolate paths/classes and stale UIDs; ignore macOS metadata; supply missing OBJ materials."
+}
