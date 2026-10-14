@@ -138,8 +138,101 @@ const TERMS := {
 
 const TOKENS := {"color":"颜色", "emission":"发光", "energy":"能量", "light":"灯光", "speed":"速度", "size":"尺寸", "radius":"半径", "scale":"缩放", "noise":"噪声", "texture":"纹理", "alpha":"透明度", "fade":"淡出", "strength":"强度", "min":"最小", "max":"最大", "hardness":"硬度", "edge":"边缘", "width":"宽度", "length":"长度", "shape":"形状", "amount":"程度", "time":"时间", "duration":"时长", "one":"单次", "shot":"发射", "scroll":"滚动", "offset":"偏移", "pulse":"脉冲", "flaring":"扩张", "flare":"闪光", "wobble":"摆动", "smooth":"平滑", "dither":"抖动", "proximity":"邻近", "enable":"启用", "enabled":"启用", "use":"使用", "auto":"自动", "play":"播放", "cut":"裁剪", "rotation":"旋转", "distortion":"扭曲", "intensity":"强度", "flame":"火焰", "spark":"火花", "target":"目标", "softness":"柔和度", "exponent":"指数", "twist":"扭转", "factor":"系数", "emitting":"发射", "resolution":"分辨率", "mesh":"网格", "subdivision":"细分", "saturation":"饱和度", "value":"明度", "hue":"色相", "base":"基础", "main":"主体", "particles":"粒子", "range":"范围", "transparency":"透明度", "density":"密度", "fringe":"边缘", "sharpness":"锐度", "mode":"模式", "type":"类型", "loop":"循环", "start":"起始", "end":"结束", "position":"位置", "brightness":"亮度", "coloring":"着色", "falloff":"衰减", "power":"强度", "soft":"柔和", "exp":"指数", "frequency":"频率", "fresnel":"菲涅耳", "rim":"边缘", "flashes":"闪光", "strengths":"强度", "local":"局部", "global":"全局", "depth":"深度", "distance":"距离", "threshold":"阈值", "opacity":"不透明度", "blur":"模糊", "smoothing":"平滑", "border":"边界", "widths":"宽度", "speedscale":"播放倍率", "surface":"表面", "metallic":"金属度", "roughness":"粗糙度", "detail":"细节", "secondary":"次级", "animation":"动画", "delay":"延迟"}
 
+const REQUESTED_TERMS := {
+	"kind": ["效果种类", "免费 Magic Circles 提供魔法阵与波纹两类；选择后重建对应效果。"],
+	"element": ["元素预设", "应用作者的烈焰、冰霜、剧毒、圣光、暗影、奥术、自然或鲜血配色与形状。"],
+	"circle": ["魔法阵", "圆环、符文带与旋转星形组成的地面施法效果。"],
+	"ripple": ["扩散波纹", "从中心向外扩散的地面圆环。"],
+	"fire": ["烈焰", "火元素原始预设。"], "frost": ["冰霜", "冰霜元素原始预设。"],
+	"poison": ["剧毒", "剧毒元素原始预设。"], "holy": ["圣光", "圣光元素原始预设。"],
+	"shadow": ["暗影", "暗影元素原始预设。"], "arcane": ["奥术", "奥术元素原始预设。"],
+	"nature": ["自然", "自然元素原始预设。"], "blood": ["鲜血", "鲜血元素原始预设。"],
+	"height": ["高度", "效果高度，单位为米；适用于有高度的网格或组件。"],
+	"appear": ["成形时间（秒）", "从开始到完全展开的时间。"],
+	"light": ["启用灯光", "切换效果自带的动态灯光。"],
+	"particles": ["启用粒子", "切换效果自带的装饰粒子。"],
+	"fx_name": ["预设名称", "作者数据资源中的效果名称。"],
+	"preset": ["效果数据预设", "颜色、层、动画、火花和灯光设置；选择对应资源分组编辑。"],
+	"palette": ["调色板资源", "统一控制核心、光晕、灯光、粒子及渐变。"],
+	"color_core": ["核心颜色", "命中特效最亮部分的颜色，可使用 HDR 颜色。"],
+	"color_main": ["主体颜色", "命中特效主体颜色。"],
+	"color_accent": ["强调颜色", "溶解边缘与次级层颜色。"],
+	"layers": ["纹理层", "逐层设置尺寸、寿命、缩放、延迟和溶解；每层有独立参数分组。"],
+	"flash_size": ["瞬闪尺寸", "开始时中心闪光的大小；0 关闭。"],
+	"ring_size": ["冲击环尺寸", "扩散冲击环的大小；0 关闭。"],
+	"ring_lifetime": ["冲击环寿命（秒）", "冲击环从出现到消失的时间。"],
+	"sparks_amount": ["火花数量", "单次爆发的火花粒子数；0 关闭。"],
+	"spark_speed": ["火花速度", "火花向外飞散的初速度。"],
+	"spark_lifetime": ["火花寿命（秒）", "火花粒子存活时间。"],
+	"scale_from": ["初始缩放", "纹理层动画开始时的缩放。"],
+	"scale_to": ["结束缩放", "纹理层动画结束时的缩放。"],
+	"overshoot": ["弹性超调", "扩大时超过目标尺寸的程度，增强冲击感。"],
+	"random_angle": ["随机角度", "每次播放随机旋转纹理层。"],
+	"use_hot_start": ["使用高亮起始色", "纹理层由核心亮色过渡到主体颜色。"],
+	"dissolve_amount": ["溶解幅度", "噪声蚀刻纹理的程度。"],
+	"spin": ["旋转速度", "纹理层或图案的旋转速度。"],
+	"stretch": ["拉伸比例", "调整纹理层宽高比例。"],
+	"auto_play": ["自动播放", "进入场景时启动效果。"],
+	"loop_rest": ["循环间歇（秒）", "作者控制器两次播放之间的间歇；实验室由工具栏统一管理循环。"],
+	"one_shot_free": ["结束自动删除", "实验室固定关闭，确保结束后仍能重播。"],
+	"free_on_finish": ["结束自动删除", "实验室固定关闭，确保结束后仍能重播。"],
+	"vfx_scale": ["效果整体缩放", "按作者规则一起缩放粒子尺寸、初速度和发射范围。"],
+	"is_looping": ["粒子连续循环", "切换单次与连续发射；营火随工具栏循环设置同步。"],
+	"preview_interval": ["作者预览间隔", "原控制器的自动预览间隔；实验室管理播放时不使用此计时器。"],
+	"end_point": ["默认终点", "闪电默认局部终点；绑定舞台目标时以目标位置为准。"],
+	"interval": ["重复间隔（秒）", "控制器自行重复闪电时的基础间隔。"],
+	"interval_jitter": ["间隔随机幅度", "让两次闪电之间的间隔产生随机变化。"],
+	"chaos": ["弯折随机强度", "控制闪电主通道的随机偏移。"],
+	"segment_length": ["线段长度", "闪电通道相邻采样点之间的距离。"],
+	"branches": ["分支数量", "闪电的侧向分支数量。"],
+	"branch_length": ["分支长度比例", "分支相对于主通道长度的比例。"],
+	"branch_angle": ["分支角度", "分支与主通道之间的角度。"],
+	"branch_depth": ["分支递归层数", "侧分支继续生成更小分支的层数。"],
+	"end_width": ["末端宽度比例", "闪电在终点处相对于起点的宽度。"],
+	"bow": ["主通道弯曲", "主通道沿局部 Y 方向的弓形弯曲程度。"],
+	"halo_width": ["外围光晕宽度", "光晕相对于核心宽度的倍率；0 关闭。"],
+	"leader_time": ["先导传播时间", "闪电先导从起点传播到终点所用的时间。"],
+	"stepped_leader": ["阶梯式先导", "让闪电先导分段跳跃推进。"],
+	"restrikes": ["回击次数", "首次闪光后的额外回击次数。"],
+	"flicker_time": ["回击窗口（秒）", "回击闪烁发生的时间窗口。"],
+	"afterglow": ["余辉时间（秒）", "最后一次回击后通道保留辉光的时间。"],
+	"branch_decay": ["分支衰减速度", "侧分支相对于主通道的消退速度。"],
+	"impact_flare": ["启用命中闪光", "在闪电终点显示光晕。"],
+	"impact_flare_size": ["命中闪光尺寸", "闪电或激光终点的光晕大小。"],
+	"source_flare": ["启用起点闪光", "在闪电源头显示光晕。"],
+	"impact_sparks": ["命中火花数量", "闪电终点爆发的火花数量。"],
+	"light_position": ["灯光位置比例", "灯光沿通道的位置：0 为起点，1 为终点。"],
+	"time_scale": ["控制器播放倍率", "作者控制器内部动画的时间倍率。"],
+	"preview_in_editor": ["编辑器自动预览", "在 Godot 编辑器视口中持续播放。"],
+	"random_seed": ["随机种子", "固定种子可重复通道形状；0 使用随机种子。"],
+	"flare_occlusion_mask": ["光晕遮挡层", "哪些物理碰撞层遮挡光晕。"],
+	"max_length": ["最大射线长度", "激光允许的最大长度；目标和碰撞可缩短光束。"],
+	"collide": ["启用射线碰撞", "让光束终止于第一个物理碰撞体。"],
+	"collision_mask": ["碰撞检测层", "射线检测的物理碰撞层。"],
+	"ramp_time": ["开启淡入时间", "激光开启和关闭时渐变的时间。"],
+	"core_ratio": ["核心宽度比例", "明亮核心在光束宽度中所占比例。"],
+	"body_glow": ["光束内部辉光", "光束主体的辉光强度。"],
+	"outer_glow": ["外层辉光", "宽光晕条带的强度。"],
+	"flow_speed": ["流动速度", "噪声沿光束流动的速度。"],
+	"body_noise": ["主体噪声", "光束内部明暗扰动程度。"],
+	"edge_noise": ["边缘噪声", "光束边缘扰动程度。"],
+	"muzzle_flare_size": ["枪口闪光尺寸", "激光起点的闪光大小。"],
+	"impact_sparks_per_second": ["每秒命中火花数", "连续激光命中处的火花发射率。"],
+	"impact_in_air": ["空中末端显示命中", "无碰撞时也在最大射程处显示命中特效。"],
+	"core_energy": ["核心发光强度", "调色板中亮色核心的发光倍率。"],
+	"glow_energy": ["光晕发光强度", "调色板中外围颜色的发光倍率。"],
+	"spark_color": ["火花颜色", "火花粒子的颜色。"],
+	"ColorParameter": ["主色", "作者 Shader 的颜色参数。"],
+	"intesityColor": ["发光强度", "作者保留的拼写；控制龙卷风和护盾的发光强度。"],
+	"speedWobble": ["摆动速度", "网格形状摆动随时间变化的速度。"],
+	"polarcoord": ["极坐标缩放", "控制纹理环绕与高度方向的重复。"],
+	"textureObj": ["形状纹理", "用于定义火焰、烟雾或护盾纹理的贴图。"]
+}
+
 static func translate(key: String) -> String:
 	var clean := key.trim_prefix("shader_parameter/")
+	if REQUESTED_TERMS.has(clean):
+		return REQUESTED_TERMS[clean][0]
 	if TERMS.has(clean):
 		return TERMS[clean][0]
 	var words: Array[String] = []
@@ -149,6 +242,8 @@ static func translate(key: String) -> String:
 
 static func describe(key: String) -> String:
 	var clean := key.trim_prefix("shader_parameter/")
+	if REQUESTED_TERMS.has(clean):
+		return REQUESTED_TERMS[clean][1]
 	if TERMS.has(clean):
 		return TERMS[clean][1]
 	return "原资源参数：%s。修改后立即应用到当前实例；重置可恢复作者默认值。" % clean
