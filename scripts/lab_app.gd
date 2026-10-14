@@ -495,6 +495,20 @@ func _save_imported() -> void:
 	file.store_string(JSON.stringify(saved, "\t"))
 	_refresh_saved()
 
+func _input(event: InputEvent) -> void:
+	if not event is InputEventMouseButton or not event.pressed:
+		return
+	if event.button_index not in [MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT]:
+		return
+	var focused := get_viewport().gui_get_focus_owner()
+	if not focused is LineEdit and not focused is TextEdit:
+		return
+	var field: Control = focused
+	if focused.get_parent() is SpinBox:
+		field = focused.get_parent()
+	if not field.get_global_rect().has_point(event.position):
+		focused.release_focus()
+
 func _unhandled_key_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and not event.echo:
 		if get_viewport().gui_get_focus_owner() is LineEdit: return
