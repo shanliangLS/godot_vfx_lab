@@ -154,6 +154,8 @@ func load_effect(entry: Dictionary) -> void:
 		_set_trail_gradient(effect, LabTheme.ACCENT)
 	_setup_beam()
 	_frame_effect()
+	if descriptor.get("mode") == "hit":
+		_overlay_hit_materials()
 	replay()
 	effect_changed.emit(effect)
 
@@ -177,6 +179,28 @@ func _frame_effect() -> void:
 		carrier.position = Vector3(-2.5, 1.2, 0)
 	if descriptor.get("mode") == "slash":
 		carrier.position = Vector3(0, 1.5, 0)
+
+func _overlay_hit_materials() -> void:
+	# Only adapt this preview instance. Priority alone cannot bypass the dummy's depth.
+	var shaders: Dictionary = {}
+	for node in _nodes(effect):
+		if not node is GeometryInstance3D:
+			continue
+		for material in _materials(node):
+			material.render_priority = 100
+			if material is BaseMaterial3D:
+				material.no_depth_test = true
+				material.proximity_fade_enabled = false
+			elif material is ShaderMaterial and material.shader:
+				var source: Shader = material.shader
+				if not shaders.has(source):
+					var overlay := Shader.new()
+					overlay.code = source.code.replace("shader_type spatial;", "shader_type spatial;\nrender_mode depth_test_disabled;")
+					shaders[source] = overlay
+				material.shader = shaders[source]
+				for uniform in material.shader.get_shader_uniform_list():
+					if uniform.name == "proximity_fade":
+						material.set_shader_parameter("proximity_fade", false if uniform.type == TYPE_BOOL else 0.0)
 
 func _setup_beam() -> void:
 	if descriptor.get("mode") != "beam" or not effect:
